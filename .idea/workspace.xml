@@ -81,7 +81,7 @@
         <entry file="file://$PROJECT_DIR$/../fgfg/src/main/webapp/WEB-INF/config/dispatcher-servlet.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
-              <caret line="9" selection-start-line="9" selection-end-line="9" selection-end-column="42" />
+              <caret line="9" column="42" lean-forward="true" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -575,7 +575,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1554745490869</updated>
-      <workItem from="1554745493527" duration="6635000" />
+      <workItem from="1554745493527" duration="6784000" />
     </task>
     <task id="LOCAL-00001" summary="webflowProject">
       <created>1554756512089</created>
@@ -584,15 +584,21 @@
       <option name="project" value="LOCAL" />
       <updated>1554756512089</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="webflowProject">
+      <created>1554756527391</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1554756527391</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6635000" />
+    <option name="totallyTimeSpent" value="6784000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
@@ -820,7 +826,7 @@
     <entry file="file://$PROJECT_DIR$/../fgfg/src/main/webapp/WEB-INF/config/dispatcher-servlet.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="9" selection-start-line="9" selection-end-line="9" selection-end-column="42" />
+          <caret line="9" column="42" lean-forward="true" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
         </state>
       </provider>
     </entry>
