@@ -24,6 +24,11 @@ public class ChangeOps {
         this.serviceWorker = serviceWorker;
     }
 
+    public void Del(String key) throws IOException
+    {
+    serviceWorker.del(library,key);
+    }
+
     public void enterPoint() throws IOException {
         ListOfVocabulary vocabulary = null;
         System.out.println("1-латино-русский");

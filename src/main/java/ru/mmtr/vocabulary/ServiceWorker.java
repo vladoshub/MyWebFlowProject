@@ -26,11 +26,16 @@ public class ServiceWorker {
         String key = Input.input();
         Library.deleteFromTxt(key);
     }
-
+    public void del(Library Library,String key) throws IOException {//метод для работы с методом удаление клаасс аLibrary
+        Library.deleteFromTxt(key);
+    }
     public List<String> seacrh(Library Library) throws IOException {//метод для работы с методом поиска по ключу клаасса Library
         System.out.println("введите ключ:");
         String key = Input.input();
        return Library.readFromTxt(key);
+    }
+    public List<String> seacrh(Library Library,String key) throws IOException {//метод для работы с методом поиска по ключу клаасса Library
+        return Library.readFromTxt(key);
     }
 
     public void add(Library Library, ListOfVocabulary type) throws IOException {//метод для работы с методом добавление клаасса Library
@@ -38,6 +43,12 @@ public class ServiceWorker {
         String key = Input.input();
         System.out.println("введите слово:");
         String word = Input.input();
+        if (searchFromVocabulary(key, type))
+            Library.addToTxt(key, word);
+        else System.out.println("несоответсвие правилам словаря ");
+    }
+
+    public void add(Library Library, ListOfVocabulary type,String key,String word) throws IOException {//метод для работы с методом добавление клаасса Library
         if (searchFromVocabulary(key, type))
             Library.addToTxt(key, word);
         else System.out.println("несоответсвие правилам словаря ");

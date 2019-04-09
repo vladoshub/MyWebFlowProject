@@ -1,7 +1,11 @@
 <form method="post">
-    <label>enter:
-    <input type="text" name="inputName" value=""/>
-    <input type="hidden" name="_flowExecutionKey"/>
-    <input type="submit" class="button" name="_eventId_next" value="Next view"/>
+    <label>
+        <input type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}"/>
+        <br>
+        <h>Change the Vocabulary</h>
+        <br>
+        <input type="submit" class="button" name="_eventId_nextRus" value="Rus-Lat"/>
+        <br>
+        <input type="submit" class="button" name="_eventId_nextBin" value="Bin-Dec"/>
     </label>
 </form>
