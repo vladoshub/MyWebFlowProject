@@ -38,12 +38,12 @@ public class JavaServlet extends HttpServlet {
 
         if("1".equals(req.getParameter("param"))) {
             vocabulary = ListOfVocabulary.Latins_Rus;
-            nameVoc="Vocabulares.jsp";
+            nameVoc="vocabulares.jsp";
 
         }
         else {
             vocabulary = ListOfVocabulary.Number;
-            nameVoc="Vocabulares.jsp";
+            nameVoc="vocabulares.jsp";
         }
        String s = req.getParameter("param");
     }

@@ -10,7 +10,7 @@ import java.io.IOException;
 public class TranslateToJsp extends HttpServlet {
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp, String s) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("Vocabulares.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("vocabulares.jsp");
         req.setAttribute("req", s);
     }
 

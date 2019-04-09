@@ -9,10 +9,13 @@ import ru.mmtr.dao.KeysDaoImpl;
 import ru.mmtr.entity.Keys;
 import ru.mmtr.entity.Words;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@ManagedBean
+@RequestScoped
 @Component("Library")
 public class Library {
 
