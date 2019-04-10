@@ -1,6 +1,13 @@
 <form method="post">
     <h>Rus-Lat</h>
     <br>
+    <h2>Hello ${out.outMess}!!!</h2>
+    <br>
+    <c:forEach items="${out.outList}" var="iteme">
+        ${iteme}<br>
+    </c:forEach>
+    <br>
+    <br>
     <h>Change the Operations</h>
     <br>
     <input type="text" name="inputNameRus" value=""/>
@@ -12,7 +19,7 @@
     <br>
     <input type="submit" class="button" name="_eventId_nextRusAdd" value="add by key"/>
     <br>
-    <input type="submit" class="button" name="_eventId_nextRusOut" value="out vocabulary"/>
+    <input type="submit" class="button" name="_eventId_nextRusPrint" value="out vocabulary"/>
     <br>
     <input type="submit" class="button" name="_eventId_next" value="Main"/>
     <br>

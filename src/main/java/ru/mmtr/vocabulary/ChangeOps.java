@@ -2,8 +2,10 @@ package ru.mmtr.vocabulary;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import ru.mmtr.flow.Out;
 
 import java.io.IOException;
+import java.util.List;
 
 
 @Component("ChangeOps")
@@ -14,7 +16,7 @@ public class ChangeOps {
     private Library library;
     private ServiceWorker serviceWorker;
     private static String message;
-
+    ListOfVocabulary vocabulary = null;
 
 
 
@@ -24,13 +26,42 @@ public class ChangeOps {
         this.serviceWorker = serviceWorker;
     }
 
-    public void Del(String key) throws IOException
-    {
-    serviceWorker.del(library,key);
+    private Out createOut(List<String> input){
+        Out out = new Out(input);
+        return out;
     }
 
-    public void enterPoint() throws IOException {
-        ListOfVocabulary vocabulary = null;
+    private Out createOut(String input){
+        Out out = new Out(input);
+        return out;
+    }
+    public Out del(String key) throws IOException
+    {
+    return createOut(serviceWorker.del(library,key));
+    }
+    public  Out search(String key) throws IOException
+    {
+        return createOut(serviceWorker.seacrh(library,key));
+    }
+    public Out add(String key,String word,String voc ) throws IOException
+    {
+        int num = Integer.parseInt(voc);
+        if (num == 1) {
+            vocabulary = ListOfVocabulary.Latins_Rus;
+
+        } else if (num == 2) {
+            vocabulary = ListOfVocabulary.Number;
+        }
+        return createOut(serviceWorker.add(library,vocabulary,key,word));
+    }
+    public Out print() throws IOException
+    {
+
+        return createOut(serviceWorker.printAll(library));
+    }
+
+    /*public void enterPoint() throws IOException { //для ком.строки
+
         System.out.println("1-латино-русский");
         System.out.println("2-десятично-доичный");
         int num = Integer.parseInt(Input.input());
@@ -74,5 +105,6 @@ public class ChangeOps {
         }
 
     }
+    */
 
 }

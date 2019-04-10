@@ -4,6 +4,8 @@
       xsi:schemaLocation="http://www.springframework.org/schema/webflow
     http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
 
+    <var name="out"
+         class="ru.mmtr.flow.Out"/>
 
     <view-state id="main">
         <transition on="nextRus" to="setMessageRus"/>
@@ -20,9 +22,13 @@
         <transition on="ok" to="bin-dec"/>
     </action-state>
 
-    <view-state id="rus-lat" view="rus-lat.jsp">
+    <view-state id="rus-lat" view="rus-lat.jsp" model="ChangeOps">
         <transition on="nextBin" to="setMessageBin"/>
         <transition on="next" to="end"/>
+        <transition on="nextRusAdd" to="add"/>
+        <transition on="nextRusDel" to="delete"/>
+        <transition on="nextRusSearch" to="search"/>
+        <transition on="nextRusPrint" to="print"/>
     </view-state>
 
     <view-state id="bin-dec" view="bin-dec.jsp">
@@ -32,25 +38,31 @@
 
 
     <action-state id="delete">
-        <evaluate result="user" expression=
+        <evaluate result="out" expression=
                 "ChangeOps.Del(requestParameters.inputNameRus)" />
+        <transition to="rus-lat"/>
     </action-state>
     <action-state id="search">
-        <evaluate result="user" expression=
-                "hellojohnFlowActions.createUser(requestParameters.name)" />
+        <evaluate result="out" expression=
+                "ChangeOps.search(requestParameters.inputNameRus)" />
+        <transition to="rus-lat"/>
     </action-state>
     <action-state id="add">
-        <evaluate result="user" expression=
-                "hellojohnFlowActions.createUser(requestParameters.name)" />
+        <evaluate result="out" expression=
+                "ChangeOps.add(requestParameters.inputNameRus,requestParameters.inputNameRus,requestParameters.inputNameRus)" />
+        <transition to="rus-lat"/>
     </action-state>
-    <action-state id="out">
-        <evaluate result="user" expression=
-                "hellojohnFlowActions.createUser(requestParameters.name)" />
+    <action-state id="print">
+        <evaluate result="out" expression=
+                "ChangeOps.print()" />
+        <transition to="rus-lat"/>
     </action-state>
 
 
 
-
+    <end-state id="rusReady">
+        <output name="out" />
+    </end-state>
 
 
     <end-state id="end" view="main.jsp"/>

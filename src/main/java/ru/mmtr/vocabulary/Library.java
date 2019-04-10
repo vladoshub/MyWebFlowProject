@@ -24,7 +24,7 @@ public class Library {
     private String regexVocFirstLib;
     private String regexVocSecondLib;
     private KeysDao keysDao;
-    private List<String> print;
+    private List<String> print = new ArrayList<>();
 
 
 
@@ -78,11 +78,16 @@ public class Library {
             for (Words w : k.getWords()) {
                 print.add("key: " + k.getKey() + " - " + "word: " + w.getWord());
             }
+            if (print==null)
+                print.add("List null");
+            else
+                print.add("Operation is Ok");
         }
         return print;
     }
 
     public List<String> readFromTxt(String key) {//-	поиск записи по ключу
+
         List<String> readFromTxt = new ArrayList<String>();
      /*   try {
             Console.outConsole(key, states.get(key));
@@ -90,16 +95,26 @@ public class Library {
             Console.outError(e);
         }
         */
-     print.clear();
-        for (Words w : keysDao.getWordsByKey(key)) {
-            print.add("key: " + key + " - " + "word: " + w.getWord());
+
+        if (print != null) print.clear();
+        try {
+            for (Words w : keysDao.getWordsByKey(key)) {
+                print.add("key: " + key + " - " + "word: " + w.getWord());
+            }
+            if (print == null)
+                print.add("not match");
+            else
+                print.add("Operation is Ok");
+            return print;
+        } catch (Exception e) {
+            print.add("Operation is denied");
+            return print;
         }
-        return print;
 
 
     }
 
-    public void deleteFromTxt(String key) {//-	удаление записи по ключу
+    public String deleteFromTxt(String key) {//-	удаление записи по ключу
        /* for (Iterator<Map.Entry<String, String>> it = states.entrySet().iterator(); it.hasNext(); ) {
             Map.Entry<String, String> entry = it.next();
             if (entry.getKey().equals(key)) {
@@ -108,15 +123,27 @@ public class Library {
         }
         saveToTxt();
         */
-        keysDao.deleteByKey(key);
+       try {
+           keysDao.deleteByKey(key);
+           return "Word is deleted";
+       }
+       catch (Exception e){
+           return "error in datebase";
+       }
 
 
     }
 
-    public void addToTxt(String key, String value) {//--	добавление записей
+    public String addToTxt(String key, String value) {//--	добавление записей
         // states.put(key, value);
         //saveToTxt();
-        keysDao.AddKey(key, value);
+        try {
+            keysDao.AddKey(key, value);
+            return "Word is added";
+        }
+        catch (Exception e) {
+            return "error in datebase";
+        }
         //readAllFromTxt();
     }
 
