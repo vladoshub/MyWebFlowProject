@@ -1,12 +1,16 @@
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <form method="post">
     <h>Rus-Lat</h>
     <br>
-    <h2>Hello ${out.outMess}!!!</h2>
+    <h2>Message from Server: ${out.outMess}</h2>
     <br>
-    <c:forEach items="${out.outList}" var="iteme">
-        ${iteme}<br>
+    <c:if test="${not empty out.outList}">
+    <c:forEach items="${out.outList}" var="items">
+        ${items}
     </c:forEach>
+    </c:if>
     <br>
+    <c:out value = "${out.outMess}"/>
     <br>
     <h>Change the Operations</h>
     <br>

@@ -79,9 +79,9 @@ public class Library {
                 print.add("key: " + k.getKey() + " - " + "word: " + w.getWord());
             }
             if (print==null)
-                print.add("List null");
+                print.add(0,"List null");
             else
-                print.add("Operation is Ok");
+                print.add(0,"Operation is Ok");
         }
         return print;
     }
@@ -102,12 +102,12 @@ public class Library {
                 print.add("key: " + key + " - " + "word: " + w.getWord());
             }
             if (print == null)
-                print.add("not match");
+                print.add(0,"not match");
             else
-                print.add("Operation is Ok");
+                print.add(0,"Operation is Ok");
             return print;
         } catch (Exception e) {
-            print.add("Operation is denied");
+            print.add(0,"Operation is denied");
             return print;
         }
 

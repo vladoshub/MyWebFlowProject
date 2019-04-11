@@ -8,14 +8,17 @@ public class Out implements Serializable {
     private String outMess ="hello";
     private List<String> outList;
 
+
     public Out() {
 
     }
 
     public Out(List<String> outList) {
-        if(outList!=null)
-        this.outMess = outList.get(outList.size()-1);
-        this.outList = outList;
+        if(outList!=null) {
+            this.outMess = outList.get(0);
+            outList.remove(0);
+            this.outList = outList;
+        }
     }
     public Out(String outMess) {
         this.outMess = outMess;
