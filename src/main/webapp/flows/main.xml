@@ -8,7 +8,9 @@
          class="ru.mmtr.flow.Out"/>
 
     <view-state id="main">
-        <transition on="nextRus" to="setMessageRus"/>
+        <transition on="nextRus" to="setMessageRus">
+            <set name="rus" value="true"/>
+        </transition>
         <transition on="nextBin" to="setMessageBin"/>
     </view-state>
 
@@ -36,11 +38,14 @@
         <transition on="next" to="end"/>
     </view-state>
 
+    <view-state id="rus-lat1" view="view1"/>
 
     <action-state id="delete">
         <evaluate result="out" expression=
                 "ChangeOps.Del(requestParameters.inputNameRus)" />
-        <transition to="rus-lat"/>
+        <transition to="rus-lat">
+            <render fragments="view1"/>
+        </transition>
     </action-state>
     <action-state id="search">
         <evaluate result="out" expression=
