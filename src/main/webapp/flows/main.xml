@@ -16,7 +16,7 @@
 
     <action-state id="setMessageRus">
         <evaluate expression="setMessageController"/>
-        <transition on="ok" to="rus-lat"/>
+        <transition on="ok" to="rus-lat1"/>
     </action-state>
 
     <action-state id="setMessageBin">
@@ -38,29 +38,39 @@
         <transition on="next" to="end"/>
     </view-state>
 
-    <view-state id="rus-lat1" view="view1"/>
+    <view-state id="rus-lat1" view="/WEB-INF/jsp/rus-lat1.jsp"/>
 
     <action-state id="delete">
         <evaluate result="out" expression=
                 "ChangeOps.Del(requestParameters.inputNameRus)" />
-        <transition to="rus-lat">
-            <render fragments="view1"/>
+        <transition to="rus-lat1">
+            <render fragments="messageFromServer"/>
+            <render fragments="requestFromServer"/>
         </transition>
     </action-state>
     <action-state id="search">
         <evaluate result="out" expression=
                 "ChangeOps.search(requestParameters.inputNameRus)" />
-        <transition to="rus-lat"/>
+        <transition to="rus-lat1">
+            <render fragments="messageFromServer"/>
+            <render fragments="requestFromServer"/>
+        </transition>
     </action-state>
     <action-state id="add">
         <evaluate result="out" expression=
                 "ChangeOps.add(requestParameters.inputNameRus,requestParameters.inputNameRus,requestParameters.inputNameRus)" />
-        <transition to="rus-lat"/>
+        <transition to="rus-lat1">
+            <render fragments="messageFromServer"/>
+            <render fragments="requestFromServer"/>
+        </transition>
     </action-state>
     <action-state id="print">
         <evaluate result="out" expression=
                 "ChangeOps.print()" />
-        <transition to="rus-lat"/>
+        <transition to="rus-lat1">
+            <render fragments="messageFromServer"/>
+            <render fragments="requestFromServer"/>
+        </transition>
     </action-state>
 
 

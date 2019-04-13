@@ -3,5 +3,8 @@
         "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
         "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
-<definition name="view1" template="/WEB-INF/jsp/view1.jsp"></definition>
+    <definition name="rus-lat1" template="/WEB-INF/jsp/rus-lat1.jsp">
+        <put-attribute name="messageFromServer" value="/WEB-INF/jsp/messageFromServer.jsp"/>
+        <put-attribute name="requestFromServer" value="/WEB-INF/jsp/requestFromServer.jsp"/>
+    </definition>
 </tiles-definitions>
