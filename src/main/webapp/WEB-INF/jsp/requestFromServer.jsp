@@ -7,10 +7,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<label>
+<p>
 <c:if test="${not empty out.outList}">
     <c:forEach items="${out.outList}" var="items">
         ${items}
     </c:forEach>
 </c:if>
-</label>
+</p>

@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE tiles-definitions PUBLIC
-        "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
-        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
 <tiles-definitions>
-    <definition name="rus-lat1" template="/WEB-INF/jsp/rus-lat1.jsp">
-        <put-attribute name="messageFromServer" value="/WEB-INF/jsp/messageFromServer.jsp"/>
-        <put-attribute name="requestFromServer" value="/WEB-INF/jsp/requestFromServer.jsp"/>
+
+    <!-- Base Definition -->
+    <definition name="base-definition"
+                template="/WEB-INF/jsp/rus-lat1.jsp">
+        <put-attribute name="messageFromServer" value="/WEB-INF/jsp/messageFromServer.jsp" />
+        <put-attribute name="requestFromServer" value="/WEB-INF/jsp/requestFromServer.jsp" />
+        <put-attribute name="hello" value="/WEB-INF/jsp/hello.jsp" />
+        <put-attribute name = "title" value = "" />
     </definition>
+
 </tiles-definitions>

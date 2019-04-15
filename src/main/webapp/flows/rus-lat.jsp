@@ -5,7 +5,6 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 
 <form id="forma1"  method="post">
-    <h><c:choose><c:when test="${rus eq true}"></c:when></c:choose></h>
     <br>
     <h2>Message from Server: ${out.outMess}</h2>
     <br>

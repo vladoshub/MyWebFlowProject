@@ -1,21 +1,21 @@
-<c:set var="contextPath" value="${pageContext.request.contextPath}" scope="request"/>
-<script type="text/javascript" src="${contextPath}/js/form/jquery.form.min.js"/>
-<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-<body>
 <head>
 
-    <title><tiles:getAsString name="title"/></title>
+    <title>hellooooooo</title>
 </head>
+<body>
 <form id="forma1"  method="post">
+    <div><tiles:insertAttribute name="hello"/></div>
     <div><c:choose><c:when test="${rus eq true}"></c:when></c:choose></div>
     <br>
-    <h1><tiles:insert attribute="messageFromServer" irgore="true"/></h1>
+    <div><tiles:insertAttribute name="messageFromServer"/></div>
     <br>
-    <label><tiles:insert attribute="requestFromServer" irgore="true"/></label>
+    <div ><tiles:insertAttribute name="requestFromServer"/></div>
     <br>
     <input  type="text" name="inputNameRus" value=""/>
+    <br>
     <input type="hidden" name="_flowExecutionKey"/>
     <br>
     <input id="knopka1" type="submit" class="button" name="_eventId_nextRusDelete" value="Delete"/>
@@ -30,6 +30,9 @@
     <br>
     <input type="submit" class="button" name="_eventId_nextBin" value="Bin-Dec"/>
 </form>
+</body>
+</html>
+<script type="text/javascript" src="${contextPath}/js/form/jquery.form.min.js"/>
 <script type="application/javascript">
     $(document).ready(function () {
         $("#knopka1").on("click",function () {
@@ -45,5 +48,3 @@
         })
     })
 </script>
-</body>
-</html>
