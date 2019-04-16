@@ -9,6 +9,7 @@
 
     <view-state id="main">
         <transition on="nextRus" to="setMessageRus">
+            <set  name = "out.rus"  value = "true"/>
         </transition>
         <transition on="nextBin" to="setMessageBin"/>
     </view-state>
@@ -37,7 +38,9 @@
         <transition on="next" to="end"/>
     </view-state>
 
-    <view-state id="rus-lat1" view="/WEB-INF/jsp/template.jsp"/>
+    <view-state id="rus-lat1" view="/WEB-INF/jsp/template.jsp">
+    </view-state>
+
 
     <action-state id="delete">
         <evaluate result="out" expression=
