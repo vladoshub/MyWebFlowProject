@@ -4,15 +4,21 @@
 <head>
 
     <title>hellooooooo</title>
+    <script src="/js/form/jquery.js"></script>
+    <script src="/js/form/jquery.form.js"></script>
+    <script src="/js/Render.js"></script>
+    <script type="application/javascript">
+        Render("_eventId_nextRusSearch");
+    </script>
 </head>
 <body>
 <form id="forma1"  method="post">
     <div><tiles:insertAttribute name="hello"/></div>
-    <div><c:choose><c:when test="${rus eq true}"></c:when></c:choose></div>
+    <div><c:choose><c:when test="${out.rus eq true}"><h1>you chose Russ to Latin</h1></c:when><c:when test="${out.rus ne true}"><h1>you chose Bin to Dec</h1></c:when></c:choose></div>
     <br>
-    <div><tiles:insertAttribute name="messageFromServer"/></div>
+    <div id="mess"><tiles:insertAttribute name="messageFromServer"/></div>
     <br>
-    <div ><tiles:insertAttribute name="requestFromServer"/></div>
+    <div id="req"><tiles:insertAttribute name="requestFromServer"/></div>
     <br>
     <input  type="text" name="inputNameRus" value=""/>
     <br>
@@ -32,19 +38,3 @@
 </form>
 </body>
 </html>
-<script type="text/javascript" src="${contextPath}/js/form/jquery.form.min.js"/>
-<script type="application/javascript">
-    $(document).ready(function () {
-        $("#knopka1").on("click",function () {
-            $("#forma1").ajaxSubmit({
-                url:"${flowExecutionUrl}&_eventId=nextRusDelete",
-                success:function (html) {
-                    $("#h3").html(html);
-                },
-                error:function (error) {
-                    console.log(error)
-                }
-            })
-        })
-    })
-</script>

@@ -7,6 +7,7 @@ import java.util.List;
 public class Out implements Serializable {
     private String outMess ="hello";
     private List<String> outList;
+    private Boolean rus;
 
 
     public Out() {
@@ -38,5 +39,13 @@ public class Out implements Serializable {
 
     public void setOutMess(String outMess) {
         this.outMess = outMess;
+    }
+
+    public void setRus(Boolean rus) {
+        this.rus = rus;
+    }
+
+    public Boolean getRus() {
+        return rus;
     }
 }
