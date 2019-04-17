@@ -6,7 +6,7 @@
 
     <!-- Base Definition -->
     <definition name="base-definition"
-                template="/WEB-INF/jsp/rus-lat1.jsp">
+                template="/WEB-INF/jsp/voc.jsp">
         <put-attribute name="messageFromServer" value="/WEB-INF/jsp/messageFromServer.jsp"/>
         <put-attribute name="requestFromServer" value="/WEB-INF/jsp/requestFromServer.jsp"/>
         <put-attribute name="hello" value="/WEB-INF/jsp/hello.jsp"/>

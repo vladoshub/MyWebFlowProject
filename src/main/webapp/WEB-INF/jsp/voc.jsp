@@ -8,7 +8,7 @@
 <body>
 <form id="forma1"  method="post">
     <div><tiles:insertAttribute name="hello"/></div>
-    <div><c:choose><c:when test="${out.rus eq true}"><h1>you chose Russ to Latin</h1></c:when><c:when test="${out.rus ne true}"><h1>you chose Bin to Dec</h1></c:when></c:choose></div>
+    <div><c:choose><c:when test="${out.voc == 1}"><h1>you chose Russ to Latin</h1></c:when><c:when test="${out.voc == 2}"><h1>you chose Bin to Dec</h1></c:when></c:choose></div>
     <br>
     <div id="mess"><tiles:insertAttribute name="messageFromServer"/></div>
     <br>
@@ -18,17 +18,17 @@
     <br>
     <input type="hidden" name="_flowExecutionKey"/>
     <br>
-    <input id="knopka1" onclick="formSubmit(this)" type="button" class="button" name="_eventId_nextRusDelete" value="Delete"/>
+    <input id="knopka1" onclick="formSubmit(this)" type="button" class="button" name="_eventId_nextDelete" value="Delete"/>
     <br>
-    <input id="knopka3" onclick="formSubmit(this)" type="button" class="button" name="_eventId_nextRusSearch" value="search by key"/>
+    <input id="knopka3" onclick="formSubmit(this)" type="button" class="button" name="_eventId_nextSearch" value="search by key"/>
     <br>
-    <input  id="knopka4" onclick="formSubmit(this)" type="button" class="button" name="_eventId_nextRusAdd" value="add by key"/>
+    <input  id="knopka4" onclick="formSubmit(this)" type="button" class="button" name="_eventId_nextAdd" value="add by key"/>
     <br>
-    <input  id="knopka5" onclick="formSubmit(this)" type="button" class="button" name="_eventId_nextRusPrint" value="out vocabulary"/>
+    <input  id="knopka5" onclick="formSubmit(this)" type="button" class="button" name="_eventId_nextPrint" value="out vocabulary"/>
     <br>
-    <input  id="knopka6" onclick="formSubmit(this)" type="button" class="button" name="_eventId_next" value="Main"/>
+    <input  id="knopka6"  type="button" class="button" name="_eventId_next" value="Main"/>
     <br>
-    <input  id="knopka7" onclick="formSubmit(this)" type="button" class="button" name="_eventId_nextBin" value="Bin-Dec"/>
+    <input  id="knopka7"  type="button" class="button" name="_eventId_nextBin" value="Bin-Dec"/>
 </form>
 </body>
 </html>
@@ -43,7 +43,7 @@ function  formSubmit(input) {
 
  function render(event){$(document).ready(function () {
             $("#forma1").ajaxSubmit({
-                url:"${flowExecutionUrl}&_"+event,
+                url:"${flowExecutionUrl}&"+event,
                 success:function (html) {
                     $("#mess").html(html);
                     $("#req").html(html);

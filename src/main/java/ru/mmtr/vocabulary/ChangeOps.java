@@ -35,15 +35,15 @@ public class ChangeOps {
         Out out = new Out(input);
         return out;
     }
-    public Out del(String key) throws IOException
+    public Out del(String key,int typeOfVoc) throws IOException
     {
     return createOut(serviceWorker.del(library,key));
     }
-    public  Out search(String key) throws IOException
+    public  Out search(String key,int typeOfVoc) throws IOException
     {
         return createOut(serviceWorker.seacrh(library,key));
     }
-    public Out add(String key,String word,String voc ) throws IOException
+    public Out add(String key,String word,String voc,int typeOfVoc) throws IOException
     {
         int num = Integer.parseInt(voc);
         if (num == 1) {
@@ -54,7 +54,7 @@ public class ChangeOps {
         }
         return createOut(serviceWorker.add(library,vocabulary,key,word));
     }
-    public Out print() throws IOException
+    public Out print(int typeOfVoc) throws IOException
     {
 
         return createOut(serviceWorker.printAll(library));
