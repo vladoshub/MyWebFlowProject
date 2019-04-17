@@ -40,6 +40,7 @@
 
 
 
+
     <action-state id="delete">
         <evaluate result="out" expression=
                 "ChangeOps.Del(requestParameters.inputNameRus)" />
