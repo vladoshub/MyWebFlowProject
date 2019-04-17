@@ -7,9 +7,9 @@
     <var name="out"
          class="ru.mmtr.flow.Out"/>
 
-    <view-state id="main">
+    <view-state id="main" view="/WEB-INF/jsp/main.jsp">
         <transition on="nextRus" to="setMessageRus">
-            <set name="out.rus" value="true"/>
+            <set  name = "out.rus"  value = "true"/>
         </transition>
         <transition on="nextBin" to="setMessageBin"/>
     </view-state>
@@ -33,11 +33,10 @@
         <transition on="nextRusPrint" to="print"/>
     </view-state>
 
-    <view-state id="bin-dec" view="bin-dec.jsp">
+    <view-state id="bin-dec" view="/WEB-INF/jsp/bin-dec.jsp">
         <transition on="nextRus" to="setMessageRus"/>
         <transition on="next" to="end"/>
     </view-state>
-
 
 
 
@@ -45,32 +44,32 @@
         <evaluate result="out" expression=
                 "ChangeOps.Del(requestParameters.inputNameRus)" />
         <transition to="rus-lat1">
-            <render fragments="mess"/>
-            <render fragments="req"/>
+            <render fragments="messageFromServer"/>
+            <render fragments="requestFromServer"/>
         </transition>
     </action-state>
     <action-state id="search">
         <evaluate result="out" expression=
                 "ChangeOps.search(requestParameters.inputNameRus)" />
         <transition to="rus-lat1">
-            <render fragments="mess"/>
-            <render fragments="req"/>
+            <render fragments="messageFromServer"/>
+            <render fragments="requestFromServer"/>
         </transition>
     </action-state>
     <action-state id="add">
         <evaluate result="out" expression=
                 "ChangeOps.add(requestParameters.inputNameRus,requestParameters.inputNameRus,requestParameters.inputNameRus)" />
         <transition to="rus-lat1">
-            <render fragments="mess"/>
-            <render fragments="req"/>
+            <render fragments="messageFromServer"/>
+            <render fragments="requestFromServer"/>
         </transition>
     </action-state>
     <action-state id="print">
         <evaluate result="out" expression=
                 "ChangeOps.print()" />
         <transition to="rus-lat1">
-            <render fragments="mess"/>
-            <render fragments="req"/>
+            <render fragments="messageFromServer"/>
+            <render fragments="requestFromServer"/>
         </transition>
     </action-state>
 
@@ -81,5 +80,5 @@
     </end-state>
 
 
-    <end-state id="end" view="main.jsp"/>
+    <end-state id="end" view="../WEB-INF/jsp/main.jsp"/>
 </flow>

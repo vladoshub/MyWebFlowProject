@@ -4,12 +4,6 @@
 <head>
 
     <title>hellooooooo</title>
-    <script src="/js/form/jquery.js"></script>
-    <script src="/js/form/jquery.form.js"></script>
-    <script src="/js/Render.js"></script>
-    <script type="application/javascript">
-        Render("_eventId_nextRusSearch");
-    </script>
 </head>
 <body>
 <form id="forma1"  method="post">
@@ -26,7 +20,7 @@
     <br>
     <input id="knopka1" type="submit" class="button" name="_eventId_nextRusDelete" value="Delete"/>
     <br>
-    <input type="submit" class="button" name="_eventId_nextRusSearch" value="search by key"/>
+    <input type="button" class="button" name="_eventId_nextRusSearch" value="search by key"/>
     <br>
     <input type="submit" class="button" name="_eventId_nextRusAdd" value="add by key"/>
     <br>
@@ -38,3 +32,20 @@
 </form>
 </body>
 </html>
+<script type="text/javascript" src="${contextPath}/js/form/jquery.form.min.js"/>
+<script type="application/javascript">
+    $(document).ready(function () {
+        $("#knopka1").on("click",function () {
+            $("#forma1").ajaxSubmit({
+                url:"${flowExecutionUrl}&_eventId=nextRusDelete",
+                success:function (html) {
+                    $("#mess").html(html);
+                    $("#req").html(html);
+                },
+                error:function (error) {
+                    console.log(error)
+                }
+            })
+        })
+    })
+</script>

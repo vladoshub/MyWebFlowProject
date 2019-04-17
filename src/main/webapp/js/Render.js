@@ -4,6 +4,7 @@ function Render(str) {
             $("#forma1").ajaxSubmit({
                 url:"${flowExecutionUrl}&"+str,
                 success:function (html) {
+                    $("#mess").html(html);
                     $("#req").html(html);
                 },
                 error:function (error) {
