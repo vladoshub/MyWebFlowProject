@@ -8,77 +8,42 @@
          class="ru.mmtr.flow.Out"/>
 
     <view-state id="main" view="main">
-        <transition on="nextRus" to="setMessageRus">
+        <transition on="nextRus" to="temp">
             <set  name = "out.voc"  value = "1"/>
         </transition>
-        <transition on="nextBin" to="setMessageBin">
+        <transition on="nextBin" to="temp">
         <set  name = "out.voc"  value = "2"/>
         </transition>
     </view-state>
 
-    <action-state id="setMessageRus">
-        <evaluate expression="setMessageController"/>
-        <transition on="ok" to="temp"/>
-    </action-state>
-
-    <action-state id="setMessageBin">
-        <evaluate expression="setMessageController"/>
-        <transition on="ok" to="temp"/>
-    </action-state>
 
     <view-state id="temp" view="temp" model="ChangeOps">
-        <transition on="nextBin" to="setMessageBin"/>
-        <transition on="next" to="end"/>
-        <transition on="nextAdd" to="add"/>
-        <transition on="nextDel" to="delete"/>
+        <transition on="nextBin" to="temp">
+            <set  name = "out.voc"  value = "2"/>
+        </transition>
+        <transition on="nextRus" to="temp">
+            <set  name = "out.voc"  value = "1"/>
+        </transition>
+        <transition on="next" to="main"/>
+        <transition on="nextAdd">
+            <evaluate result="out" expression=
+                    "ChangeOps.add(requestParameters.inputNameRus,requestParameters.inputNameRus,requestParameters.inputNameRusc,out.voc)"/>
+            <render fragments="requestFromServer,messageFromServer"/>
+        </transition>
+        <transition on="nextDel" >
+            <evaluate result="out" expression=
+                    "ChangeOps.Del(requestParameters.inputNameRus,out.voc)"/>
+            <render fragments="requestFromServer,messageFromServer"/>
+        </transition>
         <transition on="nextSearch">
             <evaluate result="out" expression=
                     "ChangeOps.search(requestParameters.inputNameRus,out.voc)" />
             <render fragments="requestFromServer,messageFromServer"/>
         </transition>
-        <transition on="nextPrint" to="print"/>
+        <transition on="nextPrint">
+            <evaluate result="out" expression=
+                    "ChangeOps.print(out.voc)" />
+            <render fragments="requestFromServer,messageFromServer"/>
+        </transition>
     </view-state>
-
-
-
-
-    <action-state id="delete">
-        <evaluate result="out" expression=
-                "ChangeOps.Del(requestParameters.inputNameRus,out.voc)" />
-        <transition to="temp">
-            <render fragments="requestFromServer"/>
-            <render fragments="messageFromServer"/>
-        </transition>
-    </action-state>
-    <action-state id="search">
-        <evaluate result="out" expression=
-                "ChangeOps.search(requestParameters.inputNameRus,out.voc)" />
-            <render fragments="requestFromServer"/>
-            <render fragments="messageFromServer"/>
-    </action-state>
-    <action-state id="add">
-        <evaluate result="out" expression=
-                "ChangeOps.add(requestParameters.inputNameRus,requestParameters.inputNameRus,requestParameters.inputNameRusc,out.voc)" />
-        <transition to="temp">
-            <render fragments="requestFromServer"/>
-            <render fragments="messageFromServer"/>
-        </transition>
-    </action-state>
-    <action-state id="print">
-        <evaluate result="out" expression=
-                "ChangeOps.print(out.voc)" />
-        <transition to="temp">
-            <render fragments="requestFromServer"/>
-            <render fragments="messageFromServer"/>
-        </transition>
-    </action-state>
-
-
-
-    <end-state id="rusReady">
-        <output name="out" />
-    </end-state>
-
-
-    <end-state id="end" view="../jsp/main.jsp"/>
 </flow>

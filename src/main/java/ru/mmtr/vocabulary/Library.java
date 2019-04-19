@@ -76,13 +76,14 @@ public class Library {
         print.clear();
         for (Keys k : keysDao.getKeysList()) {
             for (Words w : k.getWords()) {
-                print.add("key: " + k.getKey() + " - " + "word: " + w.getWord());
+                print.add("key: " + k.getKey() + " - " + "word: " + w.getWord()+"   ");
             }
+        }
             if (print==null)
                 print.add(0,"List null");
             else
                 print.add(0,"Operation is Ok");
-        }
+
         return print;
     }
 
@@ -99,7 +100,7 @@ public class Library {
         if (print != null) print.clear();
         try {
             for (Words w : keysDao.getWordsByKey(key)) {
-                print.add("key: " + key + " - " + "word: " + w.getWord());
+                print.add("key: " + key + " - " + "word: " + w.getWord()+" ");
             }
             if (print == null)
                 print.add(0,"not match");

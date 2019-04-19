@@ -22,8 +22,6 @@
         }
 
     </script>
-
-    <title>hellooooooo</title>
 </head>
 <body>
 <form id="forma1"  method="post">
@@ -46,9 +44,9 @@
     <br>
     <input  id="knopka5" onclick="formSubmit(this)" type="button" class="button" name="_eventId_nextPrint" value="out vocabulary"/>
     <br>
-    <input  id="knopka6"  type="button" class="button" name="_eventId_next" value="Main"/>
+    <input  id="knopka6"  type="submit" class="button" name="_eventId_next" value="Main"/>
     <br>
-    <input  id="knopka7"  type="button" class="button" name="_eventId_nextBin" value="Bin-Dec"/>
+    <c:choose><c:when test="${out.voc == 1}"><input  id="knopka7"  type="submit" class="button" name="_eventId_nextBin" value="BinVoc"/></c:when><c:when test="${out.voc == 2}"><input  id="knopka7"  type="submit" class="button" name="_eventId_nextRus" value="RusVoc"/></c:when></c:choose>
 </form>
 </body>
 </html>
