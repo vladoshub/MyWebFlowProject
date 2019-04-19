@@ -1,7 +1,27 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/form/jquery.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/form/jquery.form.js"></script>
+    <script type="application/javascript">
+
+        function  formSubmit(input) {
+            $("#forma1").ajaxSubmit({
+
+                url:"${flowExecutionUrl}&"+input.name+"&ajaxSource=true",
+                success:function (html) {
+                    $("#requestFromServer").html($(html).filter("#requestFromServer"));
+                    $("#messageFromServer").html($(html).filter("#messageFromServer"));
+                },
+                error:function (error) {
+                    console.log(error)
+                }
+            })
+        }
+
+    </script>
 
     <title>hellooooooo</title>
 </head>
@@ -10,9 +30,9 @@
     <div><tiles:insertAttribute name="hello"/></div>
     <div><c:choose><c:when test="${out.voc == 1}"><h1>you chose Russ to Latin</h1></c:when><c:when test="${out.voc == 2}"><h1>you chose Bin to Dec</h1></c:when></c:choose></div>
     <br>
-    <div id="mess"><tiles:insertAttribute name="messageFromServer"/></div>
+    <tiles:insertAttribute name="messageFromServer"/>
     <br>
-    <div id="req"><tiles:insertAttribute name="requestFromServer"/></div>
+    <tiles:insertAttribute name="requestFromServer"/>
     <br>
     <input  type="text" name="inputNameRus" value=""/>
     <br>
@@ -32,26 +52,3 @@
 </form>
 </body>
 </html>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/form/jquery.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/form/jquery.form.js"></script>
-<script type="application/javascript">
-
-function  formSubmit(input) {
-    var nameEvent = input.name;
-    render(nameEvent);
-}
-
- function render(event){$(document).ready(function () {
-            $("#forma1").ajaxSubmit({
-                url:"${flowExecutionUrl}&"+event,
-                success:function (html) {
-                    $("#mess").html(html);
-                    $("#req").html(html);
-                },
-                error:function (error) {
-                    console.log(error)
-                }
-            })
-
-    })}
-</script>

@@ -12,7 +12,7 @@
     <mvc:resources location="/" mapping="/resources/**"/>
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
+        <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
         <property name="order" value="0"/>
     </bean>
     <bean id="tilesConfigurer"
@@ -24,6 +24,16 @@
         </property>
     </bean>
 
+
+
+    <bean id="mvcViewFactoryCreator" class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
+        <property name="viewResolvers" ref="tilesViewResolver"/>
+    </bean>
+
+    <bean id="tilesViewResolver" class="org.springframework.js.ajax.AjaxUrlBasedViewResolver">
+        <property name="viewClass" value="org.springframework.webflow.mvc.view.FlowAjaxTiles3View"/>
+    </bean>
+
     <mvc:annotation-driven/>
     <context:component-scan base-package="ru.mmtr.controller,ru.mmtr.vocabulary"/>
 
@@ -31,9 +41,6 @@
         <property name="prefix" value="/WEB-INF/views/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-
-
-
 
 
 </beans>

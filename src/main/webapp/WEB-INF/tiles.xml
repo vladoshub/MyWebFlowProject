@@ -5,12 +5,17 @@
 <tiles-definitions>
 
     <!-- Base Definition -->
-    <definition name="base-definition"
+    <definition name="temp"
                 template="/WEB-INF/jsp/voc.jsp">
         <put-attribute name="messageFromServer" value="/WEB-INF/jsp/messageFromServer.jsp"/>
         <put-attribute name="requestFromServer" value="/WEB-INF/jsp/requestFromServer.jsp"/>
         <put-attribute name="hello" value="/WEB-INF/jsp/hello.jsp"/>
         <put-attribute name="title" value=""/>
+    </definition>
+
+    <definition name="main"
+                template="/WEB-INF/jsp/main.jsp">
+
     </definition>
 
 </tiles-definitions>
