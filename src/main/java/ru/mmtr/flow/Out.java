@@ -5,9 +5,10 @@ import java.util.List;
 
 @SuppressWarnings("flow")
 public class Out implements Serializable {
-    private String outMess ="hello";
+    private String outMess;
     private List<String> outList;
-    private int voc=0;
+    private int voc;
+    private String inp;
 
 
     public Out() {
@@ -47,5 +48,13 @@ public class Out implements Serializable {
 
     public int getVoc() {
         return voc;
+    }
+
+    public String getInp() {
+        return inp;
+    }
+
+    public void setInp(String inp) {
+        this.inp = inp;
     }
 }

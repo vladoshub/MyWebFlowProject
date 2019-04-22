@@ -66,7 +66,7 @@ public class JavaServlet extends HttpServlet {
                 req.setAttribute("req0", "deleted is ok");
                 break;
             case "2":
-                list=serviceWorker.seacrh(library);
+                list=serviceWorker.seacrh(library,1);
                 if(list.size()>0)
                     req.setAttribute("req0", list);
                 else
@@ -77,7 +77,7 @@ public class JavaServlet extends HttpServlet {
                 req.setAttribute("req0", "added is ok");
                 break;
             case "4":
-               list=serviceWorker.printAll(library);
+               list=serviceWorker.printAll(library,1);
                if(list.size()>0)
                    req.setAttribute("req0", list);
                else

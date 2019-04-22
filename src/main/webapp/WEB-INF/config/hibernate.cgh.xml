@@ -19,6 +19,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
             <list>
                 <value>ru.mmtr.entity.Words</value>
                 <value>ru.mmtr.entity.Keys</value>
+                <value>ru.mmtr.entity.Type</value>
             </list>
         </property>
         <property name="hibernateProperties">

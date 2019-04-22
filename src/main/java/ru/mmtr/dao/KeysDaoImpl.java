@@ -75,12 +75,11 @@ public class KeysDaoImpl implements KeysDao {
         return ux;
     }
 
-    public List<Words> getWordsByKey(String key) { // возврат слов по ключю
+    public List<Words> getWordsByKey(String key,int type) { // возврат слов по ключю
         Session session = this.sessionFactory.openSession();
        /* List ux = session.createQuery("SELECT id FROM Keys where key='"+key+"'").list();
         Words  w = findWordsById((int)ux.get(1));*/
-        Criteria criteria = session.createCriteria(Keys.class);
-        List<Keys> ux = criteria.add(Restrictions.eq("key", key)).list();
+        List<Keys> ux = session.createQuery("From Keys where key='"+key+"' and type_id='"+type+"'").list();
         session.close();
         return ux.get(0).getWords();
     }
@@ -121,9 +120,9 @@ public class KeysDaoImpl implements KeysDao {
     }
 
     @Override
-    public List<Keys> getKeysList() {
+    public List<Keys> getKeysList(int type) {
         Session session = this.sessionFactory.openSession();
-        String hql = "FROM Keys";
+        String hql = "FROM Keys WHERE type_id="+type ;
         List<Keys> VocabularyList = session.createQuery(hql).list();
         session.close();
         return VocabularyList;

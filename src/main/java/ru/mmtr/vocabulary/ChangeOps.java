@@ -41,7 +41,7 @@ public class ChangeOps {
     }
     public  Out search(String key,int typeOfVoc) throws IOException
     {
-        return createOut(serviceWorker.seacrh(library,key));
+        return createOut(serviceWorker.seacrh(library,key,typeOfVoc));
     }
     public Out add(String key,String word,String voc,int typeOfVoc) throws IOException
     {
@@ -57,7 +57,7 @@ public class ChangeOps {
     public Out print(int typeOfVoc) throws IOException
     {
 
-        return createOut(serviceWorker.printAll(library));
+        return createOut(serviceWorker.printAll(library,typeOfVoc));
     }
 
     /*public void enterPoint() throws IOException { //для ком.строки

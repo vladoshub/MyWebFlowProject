@@ -1,11 +1,13 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
+<style><%@include file="/WEB-INF/css/styleMain.css"%></style>
 <form method="post">
-    <label>
+    <body id="main">
         <input type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}"/>
         <br>
-        <h>Change the Vocabulary</h>
+        <h>Выберите словарь</h>
         <br>
-        <input type="submit" class="button" name="_eventId_nextRus" value="Rus-Lat"/>
+        <button type="submit" class="button" name="_eventId_nextRus"><img src="${pageContext.request.contextPath}/images/rus.png"/></button>
         <br>
-        <input type="submit" class="button" name="_eventId_nextBin" value="Bin-Dec"/>
-    </label>
+        <button type="submit" class="button" name="_eventId_nextBin"><img src="${pageContext.request.contextPath}/images/Bin.jpg"/></button>
+    </body>
 </form>

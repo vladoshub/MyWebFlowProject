@@ -12,5 +12,6 @@
     <c:forEach items="${out.outList}" var="items">
         ${items}
     </c:forEach>
+    ${out.outList=null}
 </c:if>
 </p>

@@ -13,16 +13,32 @@ public class Keys {
     private String key;
     @OneToMany(mappedBy = "key", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Words> words;
+    @ManyToOne
+    @JoinColumn(name="type_id")
+    private Type type;
 
     public Keys() {
         super();
     }
 
-    public Keys(String key, List<Words> words) {
+    public Keys(String key, List<Words> words,Type type) {
         this.key = key;
         this.words = words;
+        this.type=type;
     }
 
+    public Keys(String key,Type type) {
+        this.key = key;
+        this.type=type;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
 
     public long getId() {
         return id;

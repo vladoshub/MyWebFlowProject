@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: влад
@@ -6,4 +7,9 @@
 To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
-<p id="messageFromServer">Message from Server: ${out.outMess}</p>
+<p id="messageFromServer">
+<c:if test="${not empty out.outMess}">
+    Message from Server: ${out.outMess}
+    ${out.outMess=null}
+</c:if>
+</p>

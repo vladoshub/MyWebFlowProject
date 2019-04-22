@@ -70,8 +70,8 @@
     <schema id="15" parent="2" name="public">
       <ObjectId>2200</ObjectId>
       <Comment>standard public schema</Comment>
-      <IntrospectionTimestamp>2019-04-10.15:31:27.617</IntrospectionTimestamp>
-      <IntrospectionStateNumber>568</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2019-04-22.22:38:47.206</IntrospectionTimestamp>
+      <IntrospectionStateNumber>640</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -143,13 +143,17 @@
     </sequence>
     <table id="25" parent="15" name="keys">
       <ObjectId>16394</ObjectId>
-      <StateNumber>567</StateNumber>
+      <StateNumber>640</StateNumber>
     </table>
-    <table id="26" parent="15" name="words">
+    <table id="26" parent="15" name="types">
+      <ObjectId>16459</ObjectId>
+      <StateNumber>640</StateNumber>
+    </table>
+    <table id="27" parent="15" name="words">
       <ObjectId>16397</ObjectId>
       <StateNumber>567</StateNumber>
     </table>
-    <column id="27" parent="25" name="id">
+    <column id="28" parent="25" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
@@ -158,24 +162,65 @@
       <TypeId>23</TypeId>
       <SequenceName>keys_id_seq</SequenceName>
     </column>
-    <column id="28" parent="25" name="key">
+    <column id="29" parent="25" name="key">
       <Position>2</Position>
       <DataType>varchar|0s</DataType>
       <StateNumber>564</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="29" parent="25" name="keys_pkey">
+    <column id="30" parent="25" name="type_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>626</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="31" parent="25" name="keys_pkey">
       <ObjectId>16412</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="30" parent="25" name="keys_pkey">
+    <key id="32" parent="25" name="keys_pkey">
       <ObjectId>16413</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>keys_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="31" parent="26" name="id">
+    <foreign-key id="33" parent="25" name="keys_type_id_fkey">
+      <ObjectId>16488</ObjectId>
+      <ColNames>type_id</ColNames>
+      <RefTableId>16459</RefTableId>
+      <RefColPositions>4</RefColPositions>
+      <RefTableName>types</RefTableName>
+      <RefKeyName>types_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="34" parent="26" name="type">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>628</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="35" parent="26" name="id">
+      <Position>4</Position>
+      <DataType>numeric|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>639</StateNumber>
+      <DefaultExpression>nextval(&apos;keys_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>1700</TypeId>
+    </column>
+    <index id="36" parent="26" name="types_pkey">
+      <ObjectId>16486</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="37" parent="26" name="types_pkey">
+      <ObjectId>16487</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>types_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="38" parent="27" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
@@ -184,13 +229,13 @@
       <TypeId>23</TypeId>
       <SequenceName>words_id_seq</SequenceName>
     </column>
-    <column id="32" parent="26" name="word">
+    <column id="39" parent="27" name="word">
       <Position>2</Position>
       <DataType>varchar|0s</DataType>
       <StateNumber>565</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="33" parent="26" name="key_id">
+    <column id="40" parent="27" name="key_id">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
@@ -199,22 +244,22 @@
       <TypeId>23</TypeId>
       <SequenceName>words_key_id_seq</SequenceName>
     </column>
-    <index id="34" parent="26" name="words_pkey">
+    <index id="41" parent="27" name="words_pkey">
       <ObjectId>16414</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="35" parent="26" name="fki_ё">
+    <index id="42" parent="27" name="fki_ё">
       <ObjectId>16437</ObjectId>
       <ColNames>key_id</ColNames>
     </index>
-    <key id="36" parent="26" name="words_pkey">
+    <key id="43" parent="27" name="words_pkey">
       <ObjectId>16415</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>words_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="37" parent="26" name="words_key_id_fkey">
+    <foreign-key id="44" parent="27" name="words_key_id_fkey">
       <ObjectId>16432</ObjectId>
       <ColNames>key_id</ColNames>
       <RefTableId>16394</RefTableId>

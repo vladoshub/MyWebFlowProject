@@ -64,7 +64,7 @@ public class Library {
     }
     */
 
-    public List<String> printAll() { //-	чтение списка пар из файла
+    public List<String> printAll(int type) { //-	чтение списка пар из файла
       /*  try {
             for (Map.Entry<String, String> pair : states.entrySet()) {
                 Console.outConsole(pair.getKey(), pair.getValue());
@@ -74,7 +74,7 @@ public class Library {
         }
         */
         print.clear();
-        for (Keys k : keysDao.getKeysList()) {
+        for (Keys k : keysDao.getKeysList(type)) {
             for (Words w : k.getWords()) {
                 print.add("key: " + k.getKey() + " - " + "word: " + w.getWord()+"   ");
             }
@@ -87,7 +87,7 @@ public class Library {
         return print;
     }
 
-    public List<String> readFromTxt(String key) {//-	поиск записи по ключу
+    public List<String> readFromTxt(String key,int type) {//-	поиск записи по ключу
 
         List<String> readFromTxt = new ArrayList<String>();
      /*   try {
@@ -99,7 +99,7 @@ public class Library {
 
         if (print != null) print.clear();
         try {
-            for (Words w : keysDao.getWordsByKey(key)) {
+            for (Words w : keysDao.getWordsByKey(key,type)) {
                 print.add("key: " + key + " - " + "word: " + w.getWord()+" ");
             }
             if (print == null)

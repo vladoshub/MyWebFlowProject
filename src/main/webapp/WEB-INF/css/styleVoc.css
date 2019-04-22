@@ -1,0 +1,16 @@
+img{
+    height: 40px;
+    width: 40px;
+}
+button{
+    height: 60px;
+    width: 120px;
+    background: url(/images/woodimg.jpg);
+}
+body#voc{
+    width: 200px;
+    padding: 10px;
+    margin: auto;
+    background: url(/images/MainBack.jpg);
+    background-size: 100%;
+}

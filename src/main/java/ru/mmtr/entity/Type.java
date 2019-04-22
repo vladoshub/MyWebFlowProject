@@ -4,23 +4,23 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "type")
+@Table(name = "types")
 public class Type {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String key;
-    @OneToMany(mappedBy = "key", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private List<Words> words;
+    private String type;
+    @OneToMany(mappedBy = "type", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<Keys> keys;
 
     public Type() {
         super();
     }
 
-    public Type(String key, List<Words> words) {
-        this.key = key;
-        this.words = words;
+    public Type(String type, List<Keys> keys) {
+        this.type = type;
+        this.keys = keys;
     }
 
 
@@ -32,34 +32,34 @@ public class Type {
         this.id = id;
     }
 
-    public String getKey() {
-        return key;
+    public String getType() {
+        return type;
     }
 
-    public void setKey(String key_id) {
-        this.key = key_id;
+    public void setType(String key_id) {
+        this.type = key_id;
     }
 
-    public List<Words> getWords() {
-        return words;
+    public List<Keys> getKeys() {
+        return keys;
     }
 
-    public void setWords(Words words) {
+    public void setKeys(Keys keys) {
 
-        this.words.add(words);
+        this.keys.add(keys);
     }
 
-    public void setWords(List<Words> words) {
+    public void setWords(List<Keys> keys) {
 
-        this.words=words;
+        this.keys=keys;
     }
 
     @Override
     public String toString() {
         return "KEYS{" +
                 "id=" + id +
-                ", Key='" + key + '\'' +
-                ", Words=" + words +
+                ", Key='" + type + '\'' +
+                ", Words=" + keys +
                 '}';
     }
 }
