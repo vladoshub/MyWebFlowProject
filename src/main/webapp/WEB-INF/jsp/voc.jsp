@@ -46,6 +46,7 @@
     <c:choose><c:when test="${out.voc == 1}"><button id="knopka7"  type="submit" class="button" name="_eventId_nextBin"><img src="${pageContext.request.contextPath}/images/Bin.jpg"/>другой словарь</button></c:when><c:when test="${out.voc == 2}"><button id="knopka7"  type="submit" class="button" name="_eventId_nextRus"><img src="${pageContext.request.contextPath}/images/rus.png"/>другой словарь</button></c:when></c:choose>
     <br>
     <button id="knopka6"  type="submit" class="button" name="_eventId_next"><img src="${pageContext.request.contextPath}/images/main.png"/>Главная страница</button>
+    <button id="knopka7"  type="submit" class="button" name="_eventId_view">Вывод Всего</button>
 </form>
 </body>
 </html>

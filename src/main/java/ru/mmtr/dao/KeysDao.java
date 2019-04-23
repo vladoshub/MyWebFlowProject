@@ -1,6 +1,7 @@
 package ru.mmtr.dao;
 
 import ru.mmtr.entity.Keys;
+import ru.mmtr.entity.Type;
 import ru.mmtr.entity.Words;
 
 import java.util.List;
@@ -13,6 +14,11 @@ public interface KeysDao {
     public void deleteByObj(Object K);
     public void deleteByKey(String keys);
     public void AddKey(String Key, String... words);
+    public void update(String keys,List<Words>words,Type type);
+    public void update(String keys,List<Words>words,String newKeys);
+    public void update(String keys,String newKeys);
+    public void update(String keys,List<Words>words);
+
     public Words findWordsById(long id);
 
     public List<Keys> findByKey(String key);

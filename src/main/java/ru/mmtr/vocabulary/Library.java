@@ -11,6 +11,7 @@ import ru.mmtr.entity.Words;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -110,6 +111,16 @@ public class Library {
         } catch (Exception e) {
             print.add(0,"Operation is denied");
             return print;
+        }
+
+
+    }
+
+    public List<Keys> getKeys(int type) {//-	поиск записи по ключу
+        try {
+            return   keysDao.getKeysList(type);
+        } catch (Exception e) {
+            return null;
         }
 
 

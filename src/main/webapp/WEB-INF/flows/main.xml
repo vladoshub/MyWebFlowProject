@@ -17,6 +17,10 @@
     </view-state>
 
 
+    <view-state id="view" view="view">
+    </view-state>
+
+
     <view-state id="temp" view="temp" model="ChangeOps">
         <transition on="nextBin" to="temp">
             <set  name = "out.voc"  value = "2"/>
@@ -44,6 +48,10 @@
             <evaluate result="out" expression=
                     "ChangeOps.print(out.voc)" />
             <render fragments="requestFromServer,messageFromServer"/>
+        </transition>
+        <transition on="view" to="view">
+            <evaluate result="out" expression=
+                    "ChangeOps.printKeys(out.voc)" />
         </transition>
     </view-state>
 </flow>

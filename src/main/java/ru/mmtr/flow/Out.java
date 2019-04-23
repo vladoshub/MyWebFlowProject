@@ -1,19 +1,24 @@
 package ru.mmtr.flow;
 
+import ru.mmtr.dao.KeysDaoImpl;
+import ru.mmtr.entity.Keys;
+
 import java.io.Serializable;
 import java.util.List;
 
 @SuppressWarnings("flow")
-public class Out implements Serializable {
+public  class Out implements Serializable {
     private String outMess;
     private List<String> outList;
     private int voc;
     private String inp;
+    private List<Keys> keys;
 
 
     public Out() {
 
     }
+
 
     public Out(List<String> outList) {
         if(outList!=null) {
@@ -56,5 +61,14 @@ public class Out implements Serializable {
 
     public void setInp(String inp) {
         this.inp = inp;
+    }
+
+    public void setKeys(List<Keys> keys) {
+        this.keys = keys;
+    }
+
+    public List<Keys> getKeys() {
+
+        return keys;
     }
 }

@@ -18,4 +18,9 @@
 
     </definition>
 
+    <definition name="view"
+                template="/WEB-INF/jsp/viewVoc.jsp">
+
+    </definition>
+
 </tiles-definitions>

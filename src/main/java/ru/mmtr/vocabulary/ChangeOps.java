@@ -2,6 +2,7 @@ package ru.mmtr.vocabulary;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import ru.mmtr.entity.Keys;
 import ru.mmtr.flow.Out;
 
 import java.io.IOException;
@@ -17,6 +18,7 @@ public class ChangeOps {
     private ServiceWorker serviceWorker;
     private static String message;
     ListOfVocabulary vocabulary = null;
+    Out out;
 
 
 
@@ -24,13 +26,18 @@ public class ChangeOps {
     public ChangeOps(Library library, ServiceWorker serviceWorker) {
         this.library = library;
         this.serviceWorker = serviceWorker;
+        out=new Out();
     }
 
     private Out createOut(List<String> input){
         Out out = new Out(input);
         return out;
     }
-
+    private Out createOutKeys(List<Keys> input){
+        Out out = new Out();
+        out.setKeys(input);
+        return out;
+    }
     private Out createOut(String input){
         Out out = new Out(input);
         return out;
@@ -58,6 +65,12 @@ public class ChangeOps {
     {
 
         return createOut(serviceWorker.printAll(library,typeOfVoc));
+    }
+
+    public Out printKeys(int typeOfVoc) throws IOException
+    {
+       out.setKeys(serviceWorker.printKeys(library,typeOfVoc));
+       return out;
     }
 
     /*public void enterPoint() throws IOException { //для ком.строки

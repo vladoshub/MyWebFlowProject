@@ -2,6 +2,7 @@ package ru.mmtr.vocabulary;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import ru.mmtr.entity.Keys;
 
 import java.io.IOException;
 import java.util.List;
@@ -56,6 +57,9 @@ public class ServiceWorker {
 
     public List<String> printAll(Library Library,int type) {//метод для работы с методом печать всего словаря клаасса Library
         return  Library.printAll(type);
+    }//метод для работы с методом печать всего словаря клаасса Library
+    public List<Keys> printKeys(Library Library, int type) {
+        return  Library.getKeys(type);
     }
 
     public boolean searchFromVocabulary(String word, ListOfVocabulary num) {//поставить регулярку
