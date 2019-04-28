@@ -44,13 +44,26 @@ public class ChangeOps {
     }
     public Out del(String key,int typeOfVoc) throws IOException
     {
-    return createOut(serviceWorker.del(library,key));
+    serviceWorker.del(library,key);
+    return this.printKeys(typeOfVoc);
     }
     public  Out search(String key,int typeOfVoc) throws IOException
     {
         return createOut(serviceWorker.seacrh(library,key,typeOfVoc));
     }
     public Out add(String key,String word,String voc,int typeOfVoc) throws IOException
+    {
+        int num = Integer.parseInt(voc);
+        if (num == 1) {
+            vocabulary = ListOfVocabulary.Latins_Rus;
+
+        } else if (num == 2) {
+            vocabulary = ListOfVocabulary.Number;
+        }
+        return createOut(serviceWorker.add(library,vocabulary,key,word));
+    }
+
+    public Out add(String key,String[] word,String voc,int typeOfVoc) throws IOException
     {
         int num = Integer.parseInt(voc);
         if (num == 1) {

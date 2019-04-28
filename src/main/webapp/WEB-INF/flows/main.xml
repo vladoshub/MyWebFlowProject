@@ -6,18 +6,42 @@
 
     <var name="out"
          class="ru.mmtr.flow.Out"/>
+    <var name="type"
+         class="ru.mmtr.flow.Type"/>
 
     <view-state id="main" view="main">
         <transition on="nextRus" to="temp">
             <set  name = "out.voc"  value = "1"/>
+            <set  name = "type.type"  value = "1"/>
         </transition>
         <transition on="nextBin" to="temp">
         <set  name = "out.voc"  value = "2"/>
+            <set  name = "type.type"  value = "2"/>
         </transition>
     </view-state>
 
 
     <view-state id="view" view="view">
+        <transition on="deletedWord" >
+            <evaluate result="out" expression=
+                    "ChangeOps.del(requestParameters.delWord,type.type)"/>
+            <render fragments="list,search"/>
+        </transition>
+        <transition on="deletedKey" >
+            <evaluate result="out" expression=
+                    "ChangeOps.del(requestParameters.delKey,type.type)"/>
+            <render fragments="list,search"/>
+        </transition>
+        <transition on="SearchKey" >
+        <evaluate result="out" expression=
+                "ChangeOps.del(requestParameters.delKey,type.type)"/>
+        <render fragments="list,search"/>
+    </transition>
+        <transition on="SearchWord" >
+            <evaluate result="out" expression=
+                    "ChangeOps.del(requestParameters.delWrod,type.type)"/>
+            <render fragments="list,search"/>
+        </transition>
     </view-state>
 
 
@@ -51,7 +75,7 @@
         </transition>
         <transition on="view" to="view">
             <evaluate result="out" expression=
-                    "ChangeOps.printKeys(out.voc)" />
+                    "ChangeOps.printKeys(type.type)" />
         </transition>
     </view-state>
 </flow>

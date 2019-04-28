@@ -55,6 +55,12 @@ public class ServiceWorker {
         else return "несоответсвие правилам словаря ";
     }
 
+    public String add(Library Library, ListOfVocabulary type,String key,String[] word) throws IOException {//метод для работы с методом добавление клаасса Library
+        if (searchFromVocabulary(key, type))
+            return Library.addToTxt(key, word);
+        else return "несоответсвие правилам словаря ";
+    }
+
     public List<String> printAll(Library Library,int type) {//метод для работы с методом печать всего словаря клаасса Library
         return  Library.printAll(type);
     }//метод для работы с методом печать всего словаря клаасса Library

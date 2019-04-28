@@ -159,6 +159,19 @@ public class Library {
         //readAllFromTxt();
     }
 
+
+    public String addToTxt(String key, String[] value) {//--	добавление записей
+        // states.put(key, value);
+        //saveToTxt();
+        try {
+            keysDao.AddKey(key, value);
+            return "Word is added";
+        }
+        catch (Exception e) {
+            return "error in datebase";
+        }
+        //readAllFromTxt();
+    }
   /*  public void saveToTxt() {//сохранить мапу в документ
         try (PrintWriter pw = new PrintWriter(nameFile)) {
             for (Map.Entry<String, String> entry : states.entrySet()) {
