@@ -1,9 +1,10 @@
 package ru.mmtr.entity;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
-
 @Entity
 @Table(name = "types")
 public class Type implements Serializable {

@@ -40,7 +40,7 @@ public class KeysDaoImpl implements KeysDao {
         }
     }
     @Override
-    public void AddKey(String Key,String... words) {//добавление новой записи
+    public void AddKey(String Key,int type,String... words) {//добавление новой записи
         List<Words> wordList=new ArrayList<>();
         try {
         int k=0;
@@ -119,33 +119,17 @@ public class KeysDaoImpl implements KeysDao {
         session.close();
     }
 
-    @Override
-    public void update(String keys,List<Words>words,Type type) { //Обновление по о всему
+    public void deleteByWord(String word) { //удаление по слову
         Session session = this.sessionFactory.openSession();
         Transaction tx1 = session.beginTransaction();
-        Criteria criteria = session.createCriteria(Keys.class);
-        Keys key = (Keys)criteria.add(Restrictions.eq("key", keys)).list().get(0);
-        key.setKey(keys);
-        key.setWords(words);
-        key.setType(type);
-        session.update(key);
+        Criteria criteria = session.createCriteria(Words.class);
+        List<Words> ux = criteria.add(Restrictions.eq("word", word)).list();
+        session.delete(ux.get(0));
         tx1.commit();
         session.close();
     }
     @Override
-    public void update(String keys,List<Words>words,String newKeys) { //Обновление по словам
-        Session session = this.sessionFactory.openSession();
-        Transaction tx1 = session.beginTransaction();
-        Criteria criteria = session.createCriteria(Keys.class);
-        Keys key = (Keys)criteria.add(Restrictions.eq("key", keys)).list().get(0);
-        key.setKey(keys);
-        key.setWords(words);
-        session.update(key);
-        tx1.commit();
-        session.close();
-    }
-    @Override
-    public void update(String keys,String newKeys) { //Обновление по ключу
+    public void updateByKey(String keys,String newKeys,int type) { //Обновление по ключу
         Session session = this.sessionFactory.openSession();
         Transaction tx1 = session.beginTransaction();
         Criteria criteria = session.createCriteria(Keys.class);
@@ -156,13 +140,13 @@ public class KeysDaoImpl implements KeysDao {
         session.close();
     }
     @Override
-    public void update(String keys,List<Words>words) { //Обновление по словам
+    public void updateByWord(String word,String newWords,int type) { //Обновление по словам
         Session session = this.sessionFactory.openSession();
         Transaction tx1 = session.beginTransaction();
         Criteria criteria = session.createCriteria(Keys.class);
-        Keys key = (Keys)criteria.add(Restrictions.eq("key", keys)).list().get(0);
-        key.setWords(words);
-        session.update(key);
+        Words words = (Words) criteria.add(Restrictions.eq("word", word)).list().get(0);
+        words.setWord(newWords);
+        session.update(words);
         tx1.commit();
         session.close();
     }

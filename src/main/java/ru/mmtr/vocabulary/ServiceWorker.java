@@ -39,25 +39,41 @@ public class ServiceWorker {
         return Library.readFromTxt(key,type);
     }
 
+    public String updateByKey(Library Library,String key,String newKey,int type) throws IOException {//метод для работы с методом поиска по ключу клаасса Library
+        return Library.updateByKey(key,newKey,type);
+    }
+
+    public String updateByWord(Library Library,String word,String newWord,int type) throws IOException {//метод для работы с методом поиска по ключу клаасса Library
+        return Library.updateByWord(word,newWord,type);
+    }
+
     public void add(Library Library, ListOfVocabulary type) throws IOException {//метод для работы с методом добавление клаасса Library
         System.out.println("введите ключ:");
         String key = Input.input();
         System.out.println("введите слово:");
         String word = Input.input();
         if (searchFromVocabulary(key, type))
-            Library.addToTxt(key, word);
+            Library.addToTxt(key, word,1);
         else System.out.println("несоответсвие правилам словаря ");
     }
 
     public String add(Library Library, ListOfVocabulary type,String key,String word) throws IOException {//метод для работы с методом добавление клаасса Library
+        int k;
+        if(type.name().equals("Latins_Rus"))
+            k=1;
+        else k=2;
         if (searchFromVocabulary(key, type))
-           return Library.addToTxt(key, word);
+           return Library.addToTxt(key, word,k);
         else return "несоответсвие правилам словаря ";
     }
 
     public String add(Library Library, ListOfVocabulary type,String key,String[] word) throws IOException {//метод для работы с методом добавление клаасса Library
+        int k;
+        if(type.name().equals("Latins_Rus"))
+            k=1;
+        else k=2;
         if (searchFromVocabulary(key, type))
-            return Library.addToTxt(key, word);
+            return Library.addToTxt(key, word,k);
         else return "несоответсвие правилам словаря ";
     }
 

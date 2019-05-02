@@ -1,8 +1,9 @@
 package ru.mmtr.entity;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.*;
 import java.io.Serializable;
-
 @Entity
 @Table(name = "words")
 public class Words implements Serializable {
@@ -10,6 +11,7 @@ public class Words implements Serializable {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(name = "word")
     private String word;
     @ManyToOne
     @JoinColumn(name="key_id")

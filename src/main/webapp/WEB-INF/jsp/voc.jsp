@@ -47,6 +47,7 @@
     <br>
     <button id="knopka6"  type="submit" class="button" name="_eventId_next"><img src="${pageContext.request.contextPath}/images/main.png"/>Главная страница</button>
     <button id="knopka7"  type="submit" class="button" name="_eventId_view">Вывод Всего</button>
+    <button id="knopka8"  type="submit" class="button" name="_eventId_addMany">Добавление значений</button>
 </form>
 </body>
 </html>

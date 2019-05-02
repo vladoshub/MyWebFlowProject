@@ -146,11 +146,11 @@ public class Library {
 
     }
 
-    public String addToTxt(String key, String value) {//--	добавление записей
+    public String addToTxt(String key, String value,int type) {//--	добавление записей
         // states.put(key, value);
         //saveToTxt();
         try {
-            keysDao.AddKey(key, value);
+            keysDao.AddKey(key,type,value);
             return "Word is added";
         }
         catch (Exception e) {
@@ -158,13 +158,37 @@ public class Library {
         }
         //readAllFromTxt();
     }
-
-
-    public String addToTxt(String key, String[] value) {//--	добавление записей
+    public String updateByKey(String key,String newKey,int type) {//--	добавление записей
         // states.put(key, value);
         //saveToTxt();
         try {
-            keysDao.AddKey(key, value);
+            keysDao.updateByKey(key, newKey,type);
+            return "Key is edit";
+        }
+        catch (Exception e) {
+            return "error in datebase";
+        }
+        //readAllFromTxt();
+    }
+    public String updateByWord(String word,String newWord,int type) {//--	добавление записей
+        // states.put(key, value);
+        //saveToTxt();
+        try {
+            keysDao.updateByWord(word, newWord,type);
+            return "Word is edit";
+        }
+        catch (Exception e) {
+            return "error";
+        }
+        //readAllFromTxt();
+    }
+
+
+    public String addToTxt(String key,String[] value,int type) {//--	добавление записей
+        // states.put(key, value);
+        //saveToTxt();
+        try {
+            keysDao.AddKey(key, type,value);
             return "Word is added";
         }
         catch (Exception e) {

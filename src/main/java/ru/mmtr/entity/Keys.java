@@ -1,9 +1,10 @@
 package ru.mmtr.entity;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
-
 @Entity
 @Table(name = "keys")
 public class Keys implements Serializable {
@@ -11,6 +12,7 @@ public class Keys implements Serializable {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(name = "key")
     private String key;
     @OneToMany(mappedBy = "key", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Words> words;

@@ -22,6 +22,16 @@
 
 
     <view-state id="view" view="view">
+        <transition on="editWord" >
+            <evaluate result="out" expression=
+                    "ChangeOps.del(requestParameters.editWord,type.type)"/>
+            <render fragments="list,search"/>
+        </transition>
+        <transition on="editKey" >
+            <evaluate result="out" expression=
+                    "ChangeOps.del(requestParameters.editKey,type.type)"/>
+            <render fragments="list,search"/>
+        </transition>
         <transition on="deletedWord" >
             <evaluate result="out" expression=
                     "ChangeOps.del(requestParameters.delWord,type.type)"/>
@@ -42,6 +52,13 @@
                     "ChangeOps.del(requestParameters.delWrod,type.type)"/>
             <render fragments="list,search"/>
         </transition>
+    </view-state>
+
+    <view-state id="addMany" view="addMany">
+        <transition on="addMany" >
+            <render fragments="editVocAddManyWordsFragment"/>
+        </transition>
+
     </view-state>
 
 
@@ -76,6 +93,8 @@
         <transition on="view" to="view">
             <evaluate result="out" expression=
                     "ChangeOps.printKeys(type.type)" />
+        </transition>
+        <transition on="addMany" to="addMany">
         </transition>
     </view-state>
 </flow>

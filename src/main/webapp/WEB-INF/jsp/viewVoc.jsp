@@ -15,12 +15,12 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/form/jquery.form.js"></script>
 <script type="application/javascript">
 
-    function  getList() {
-        $('#hidden').toggle();//-будет работать ко всем
+    function  getList(el) {
+        var name = "."+el.name;
+        $(name).toggle();
     }
-    $(function(){
-        $(".button").on("click", function(){
-            $("#Key").attr("value",this.name)
+    function  delByKey(el){
+            $("#Key").attr("value",el.name)
             $("#forma1").ajaxSubmit({
 
                 url:"${flowExecutionUrl}&_eventId_deletedKey&ajaxSource=true",
@@ -31,12 +31,12 @@
                     console.log(error)
                 }
             })
-        })
-    });
+        }
 
-    $(function(){
-        $(".list").on("click", function(){
-            $("#Key").attr("value",this.name)
+
+    function  delByWord(el){
+
+            $("#Key").attr("value",el.name)
             $("#forma1").ajaxSubmit({
 
                 url:"${flowExecutionUrl}&_eventId_deletedWord&ajaxSource=true",
@@ -47,15 +47,15 @@
                     console.log(error)
                 }
             })
-        })
-    });
+        }
 
-    function  add(input) {
-            $("#"+input.name).attr("value",prompt('введите слово'));
+
+    function  add(el) {
+            $("#"+el.name).attr("value",prompt('введите слово'));
 
         $("#forma1").ajaxSubmit({
 
-            url:"${flowExecutionUrl}&_eventId_Search"+input.name+"&ajaxSource=true",
+            url:"${flowExecutionUrl}&_eventId_Search"+el.name+"&ajaxSource=true",
             success:function (html) {
                 $("#list").html($(html).filter("#list"));
             },
@@ -65,8 +65,38 @@
         })
     }
 
-    function  edit(input) {
-        $('.editText').toggle();
+    function  edit(el) {
+            var name = "." + el.name;
+            $(name).toggle();
+
+    }
+
+    function  editKey(el) {
+        $("#editKey").attr("value",el.name);
+        $("#forma1").ajaxSubmit({
+
+            url:"${flowExecutionUrl}&_eventId_editKey&ajaxSource=true",
+            success:function (html) {
+                $("#list").html($(html).filter("#list"));
+            },
+            error:function (error) {
+                console.log(error)
+            }
+        })
+    }
+    function  editWord(el) {
+        $("#editWord").attr("value",el.name)
+        $("#forma1").ajaxSubmit({
+
+            url:"${flowExecutionUrl}&_eventId_editWord&ajaxSource=true",
+            success:function (html) {
+                $("#list").html($(html).filter("#list"));
+            },
+            error:function (error) {
+                console.log(error)
+            }
+        })
+
     }
 
 </script>
@@ -75,6 +105,8 @@
 <form id="forma1"  method="post">
 <input id="Key"  type="hidden" name="delKey" value=""/>
 <input id="Word"  type="hidden" name="delWord" value=""/>
+    <input id="editKey"  type="hidden" name="editKey" value=""/>
+    <input id="editWord"  type="hidden" name="editWord" value=""/>
     <input type="hidden" name="_flowExecutionKey"/>
     <tiles:insertAttribute name="list"/>
     <br>

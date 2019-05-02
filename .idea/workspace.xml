@@ -7,23 +7,30 @@
   </component>
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/voc.jsp" line="31" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/editVocAddManyWordsFragment.jsp" line="7" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/editVocAddManyWordsFragment.jsp" line="4" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="29b68cff-29ee-46bc-9eb4-5853ff76a8e4" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/mmtr/flow/Type.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/buttonView.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/editVoc.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/editVocAddManyWordsFragment.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/editVocDelFragment.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/list.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a5ace7a3-6d73-438e-affb-2ebd5c4967c5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a5ace7a3-6d73-438e-affb-2ebd5c4967c5.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/mmtr/vocabulary/ChangeOps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/mmtr/vocabulary/ChangeOps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/mmtr/dao/KeysDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/mmtr/dao/KeysDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/mmtr/dao/KeysDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/mmtr/dao/KeysDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/mmtr/entity/Keys.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/mmtr/entity/Keys.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/mmtr/entity/Type.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/mmtr/entity/Type.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/mmtr/entity/Words.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/mmtr/entity/Words.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/mmtr/vocabulary/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/mmtr/vocabulary/Library.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/mmtr/vocabulary/ListOfVocabulary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/mmtr/vocabulary/ListOfVocabulary.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/mmtr/vocabulary/ServiceWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/mmtr/vocabulary/ServiceWorker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/buttonView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/buttonView.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/flows/main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/flows/main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/editVoc.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/editVoc.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/editVocAddManyWordsFragment.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/editVocAddManyWordsFragment.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/list.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/viewVoc.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/viewVoc.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/voc.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/voc.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tiles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tiles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -100,29 +107,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ChangeOps.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ru/mmtr/vocabulary/ChangeOps.java">
+      <file leaf-file-name="Library.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/mmtr/vocabulary/Library.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="46" selection-start-line="46" selection-end-line="46" />
+            <state relative-caret-position="362">
+              <caret line="186" column="61" selection-start-line="186" selection-start-column="61" selection-end-line="186" selection-end-column="61" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tiles.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/tiles.xml">
+      <file leaf-file-name="editVoc.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/editVoc.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="63" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/flows/main.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="36" column="69" lean-forward="true" selection-start-line="36" selection-start-column="69" selection-end-line="36" selection-end-column="69" />
+            <state relative-caret-position="113">
+              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
             </state>
           </provider>
         </entry>
@@ -130,17 +128,17 @@
       <file leaf-file-name="editVocAddManyWordsFragment.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/editVocAddManyWordsFragment.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+            <state relative-caret-position="153">
+              <caret line="9" column="109" selection-start-line="9" selection-start-column="109" selection-end-line="9" selection-end-column="109" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="voc.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/voc.jsp">
+      <file leaf-file-name="main.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/main.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="37" lean-forward="true" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
+            <state relative-caret-position="136">
+              <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -148,26 +146,53 @@
       <file leaf-file-name="list.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/list.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="87" selection-start-line="21" selection-start-column="87" selection-end-line="21" selection-end-column="87" />
+            <state relative-caret-position="408">
+              <caret line="24" column="27" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="viewVoc.jsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="voc.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/voc.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="49" column="72" lean-forward="true" selection-start-line="49" selection-start-column="72" selection-end-line="49" selection-end-column="72" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tiles.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/tiles.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="28" column="56" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/flows/main.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="215">
+              <caret line="58" column="58" selection-start-line="58" selection-start-column="58" selection-end-line="58" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="viewVoc.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/viewVoc.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="18" column="55" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
+            <state relative-caret-position="-459">
+              <caret line="21" column="27" lean-forward="true" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="search.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search.jsp">
+      <file leaf-file-name="ServiceWorker.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ru/mmtr/vocabulary/ServiceWorker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="51" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
+            <state relative-caret-position="634">
+              <caret line="73" column="17" lean-forward="true" selection-start-line="73" selection-start-column="17" selection-end-line="73" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -205,7 +230,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/index.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/flows/bin-dec.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/view1.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/rus-lat.jsp" />
@@ -218,7 +242,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/flows/main.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/config/dispatcher-servlet.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/config/webflow.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/java/ru/mmtr/entity/typeOfVocabulary.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/mmtr/entity/ЕypeOfVocabulary.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/mmtr/entity/TypeOfVocabulary.java" />
@@ -232,30 +255,32 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/set.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/styleMain.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/styleVoc.css" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/mmtr/dao/KeysDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/mmtr/flow/Out.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/mmtr/entity/Keys.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/mmtr/entity/Type.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/mmtr/entity/Words.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/mmtr/dto/WordsDTO.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/buttonView.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/editVocDelFragment.xhtml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/editVocAddManyWords.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/editVocDelFragment.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/mmtr/vocabulary/ServiceWorker.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/mmtr/vocabulary/Library.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ru/mmtr/dao/KeysDaoImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/editVoc.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/editVocAddManyWordsFragment.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/ru/mmtr/vocabulary/ChangeOps.java" />
         <option value="$PROJECT_DIR$/src/main/java/ru/mmtr/flow/Type.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Add.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/buttonView.css" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/viewVoc.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/mmtr/entity/Words.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/mmtr/entity/Type.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/mmtr/entity/Keys.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/list.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/mmtr/dao/KeysDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/mmtr/dao/KeysDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/mmtr/vocabulary/ListOfVocabulary.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/mmtr/vocabulary/ServiceWorker.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ru/mmtr/vocabulary/Library.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/voc.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/tiles.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/flows/main.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/search.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/list.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/viewVoc.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/editVocAddManyWordsFragment.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/editVoc.jsp" />
       </list>
     </option>
   </component>
@@ -305,10 +330,10 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="2576" />
-    <option name="height" value="1056" />
+    <option name="x" value="501" />
+    <option name="y" value="117" />
+    <option name="width" value="993" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -316,9 +341,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -512,6 +534,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -599,7 +624,7 @@
       <listeners />
     </configuration>
     <configuration name="Unnamed" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.37" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="BROWSER_ID" value="16bf23d4-93e0-4ffc-bfd6-cb13575177b0" />
+      <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="fgfg:war exploded">
@@ -770,7 +795,13 @@
       <workItem from="1556011546618" duration="12046000" />
       <workItem from="1556266012942" duration="612000" />
       <workItem from="1556284772319" duration="4809000" />
-      <workItem from="1556464731931" duration="20061000" />
+      <workItem from="1556464731931" duration="20111000" />
+      <workItem from="1556558018094" duration="12448000" />
+      <workItem from="1556634005975" duration="167000" />
+      <workItem from="1556635747899" duration="2489000" />
+      <workItem from="1556640810804" duration="867000" />
+      <workItem from="1556705514060" duration="711000" />
+      <workItem from="1556787888490" duration="15242000" />
     </task>
     <task id="LOCAL-00001" summary="webflowProject">
       <created>1554756512089</created>
@@ -912,20 +943,27 @@
       <option name="project" value="LOCAL" />
       <updated>1556029464642</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="webflowProject jsp 28.04.2018">
+      <created>1556490082988</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1556490082988</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="180037000" />
+    <option name="totallyTimeSpent" value="212011000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.19609375" side_tool="true" visible="true" weight="0.34213305" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.19648437" side_tool="true" weight="0.34213305" />
       <window_info anchor="bottom" id="Application Servers" order="0" weight="0.32942432" />
-      <window_info anchor="right" id="Maven Projects" order="0" visible="true" weight="0.1671875" />
+      <window_info anchor="right" id="Maven Projects" order="0" visible="true" weight="0.21979167" />
       <window_info anchor="bottom" id="Database Changes" order="5" show_stripe_button="false" />
       <window_info id="Capture Tool" order="8" />
       <window_info id="Designer" order="1" />
@@ -936,16 +974,16 @@
       <window_info id="UI Designer" order="3" />
       <window_info anchor="bottom" id="Debug" order="11" sideWeight="0.4910156" weight="0.40549102" />
       <window_info anchor="bottom" id="TODO" order="14" />
-      <window_info anchor="bottom" id="Messages" order="3" weight="0.13326226" />
+      <window_info anchor="bottom" id="Messages" order="3" weight="0.13305174" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Java Enterprise" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="bottom" id="Version Control" order="6" />
-      <window_info active="true" anchor="bottom" id="Run" order="9" sideWeight="0.80390626" visible="true" weight="0.34213305" />
+      <window_info active="true" anchor="bottom" id="Run" order="9" sideWeight="0.8035156" visible="true" weight="0.34213305" />
       <window_info anchor="bottom" id="Spring" order="1" />
       <window_info anchor="bottom" id="Terminal" order="2" />
-      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.11210938" />
+      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.20416667" />
       <window_info id="Web" order="5" side_tool="true" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info id="Favorites" order="4" side_tool="true" />
@@ -982,64 +1020,15 @@
     <MESSAGE value="webflowProject jsp 23.04.2018 10:34" />
     <MESSAGE value="webflowProject jsp 23.04.2018 10:47" />
     <MESSAGE value="webflowProject jsp 23.04.2018 17:24" />
-    <option name="LAST_COMMIT_MESSAGE" value="webflowProject jsp 23.04.2018 17:24" />
+    <MESSAGE value="webflowProject jsp 28.04.2018" />
+    <option name="LAST_COMMIT_MESSAGE" value="webflowProject jsp 28.04.2018" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ru/mmtr/vocabulary/ChangeOps.java</url>
-          <line>46</line>
-          <properties />
-          <option name="timeStamp" value="61" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="62" />
+      <option name="time" value="63" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/mmtr/vocabulary/Console.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/mmtr/dao/KeysDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="19" column="53" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-expression/4.1.5.RELEASE/spring-expression-4.1.5.RELEASE.jar!/org/springframework/expression/spel/ast/CompoundExpression.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="63" selection-start-line="63" selection-end-line="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-expression/4.1.5.RELEASE/spring-expression-4.1.5.RELEASE.jar!/org/springframework/expression/spel/ast/SpelNodeImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="102" selection-start-line="102" selection-end-line="102" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-expression/4.1.5.RELEASE/spring-expression-4.1.5.RELEASE.jar!/org/springframework/expression/spel/standard/SpelExpression.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="210" selection-start-line="210" selection-end-line="210" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/webflow/spring-binding/2.4.1.RELEASE/spring-binding-2.4.1.RELEASE.jar!/org/springframework/binding/expression/spel/SpringELExpression.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/webflow/spring-webflow/2.4.1.RELEASE/spring-webflow-2.4.1.RELEASE.jar!/org/springframework/webflow/action/EvaluateAction.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -1131,34 +1120,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/mmtr/entity/Type.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/mmtr/entity/Words.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://a5ace7a3-6d73-438e-affb-2ebd5c4967c5/database/Vocalubrary/schema/public/table/words">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/mmtr/entity/Keys.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="41" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -1168,13 +1133,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/hello.jsp">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/main.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/css/styleVoc.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1182,56 +1140,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/css/buttonView.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/mmtr/vocabulary/ListOfVocabulary.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/mmtr/dao/KeysDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="42" column="43" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/mmtr/vocabulary/ServiceWorker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="57" column="80" selection-start-line="57" selection-start-column="80" selection-end-line="57" selection-end-column="80" />
-          <folding>
-            <element signature="e#2691#2692#0" expanded="true" />
-            <element signature="e#2736#2737#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/mmtr/vocabulary/Library.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="162" column="47" selection-start-line="162" selection-start-column="47" selection-end-line="162" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/setVoc.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="16" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/editVoc.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="30" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -1270,20 +1182,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ru/mmtr/vocabulary/ChangeOps.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="46" selection-start-line="46" selection-end-line="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/tiles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="63" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ru/mmtr/flow/Out.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1295,40 +1193,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
-          <folding>
-            <element signature="e#106#107#0" expanded="true" />
-            <element signature="e#138#139#0" expanded="true" />
-            <element signature="e#169#170#0" expanded="true" />
-            <element signature="e#196#197#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/flows/main.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/css/buttonView.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="36" column="69" lean-forward="true" selection-start-line="36" selection-start-column="69" selection-end-line="36" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/editVocAddManyWordsFragment.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="87" selection-start-line="21" selection-start-column="87" selection-end-line="21" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/voc.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="37" lean-forward="true" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
@@ -1339,10 +1210,145 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/mmtr/entity/Words.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/config/applicationContext.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/config/dispatcher-servlet.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/config/hibernate.cgh.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="37" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/mmtr/entity/Type.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="15" column="106" selection-start-line="15" selection-start-column="101" selection-end-line="15" selection-end-column="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="487">
+          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/config/webflow.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/mmtr/vocabulary/ChangeOps.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/mmtr/entity/Keys.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="16" column="105" selection-start-line="16" selection-start-column="105" selection-end-line="16" selection-end-column="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/mmtr/dao/KeysDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="42" column="42" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/mmtr/dao/KeysDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/mmtr/vocabulary/ListOfVocabulary.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="14" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/mmtr/vocabulary/ServiceWorker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="634">
+          <caret line="73" column="17" lean-forward="true" selection-start-line="73" selection-start-column="17" selection-end-line="73" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/voc.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="49" column="72" lean-forward="true" selection-start-line="49" selection-start-column="72" selection-end-line="49" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/flows/main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="58" column="58" selection-start-line="58" selection-start-column="58" selection-end-line="58" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/tiles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="56" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/viewVoc.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="18" column="55" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
+        <state relative-caret-position="-459">
+          <caret line="21" column="27" lean-forward="true" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/main.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="27" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ru/mmtr/vocabulary/Library.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="186" column="61" selection-start-line="186" selection-start-column="61" selection-end-line="186" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/editVocAddManyWordsFragment.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="109" selection-start-line="9" selection-start-column="109" selection-end-line="9" selection-end-column="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/editVoc.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
         </state>
       </provider>
     </entry>

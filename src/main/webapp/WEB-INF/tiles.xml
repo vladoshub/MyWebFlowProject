@@ -24,6 +24,12 @@
     </definition>
 
 
+    <definition name="addMany"
+                template="/WEB-INF/jsp/editVoc.jsp">
+        <put-attribute name="editVocAddManyWordsFragment" value="/WEB-INF/jsp/editVocAddManyWordsFragment.jsp"/>
+    </definition>
+
+
 
 
 </tiles-definitions>

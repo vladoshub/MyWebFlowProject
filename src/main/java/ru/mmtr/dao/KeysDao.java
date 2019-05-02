@@ -13,11 +13,9 @@ public interface KeysDao {
 
     public void deleteByObj(Object K);
     public void deleteByKey(String keys);
-    public void AddKey(String Key, String... words);
-    public void update(String keys,List<Words>words,Type type);
-    public void update(String keys,List<Words>words,String newKeys);
-    public void update(String keys,String newKeys);
-    public void update(String keys,List<Words>words);
+    public void AddKey(String Key, int type,String... words);
+    public void updateByKey(String keys,String newKeys,int type);
+    public void updateByWord(String Words,String newWords,int type);
 
     public Words findWordsById(long id);
 
