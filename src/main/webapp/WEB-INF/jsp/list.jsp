@@ -10,7 +10,7 @@
 <ul id="list">
     <c:if test="${not empty out.keys}">
         <c:forEach items="${out.keys}" var="items">
-            <li value="${items.id}">key: <b>${items.key}</b><button  type="button "  onclick="delByKey(this)" class="button" name="${items.key}">Удалить</button>
+            <li value="${items.id}">key: <b>${items.key}</b><button  type="button"  onclick="delByKey(this)" class="button" name="${items.key}">Удалить</button>
                 <button type="button" class="editbutKey" name="${items.key}" value="edit" onclick="edit(this)">Редактировать</button><div hidden="false" class="${items.key}"><input type="text"  value="${items.key}"/></div>
                 <c:choose><c:when test="${items.words.size()==1}"><b>${items.words.get(0).word}</b>
                     <button  type="button"  class="list" onclick="delByWord(this)" name="${items.words.get(0).word}">Удалить</button>

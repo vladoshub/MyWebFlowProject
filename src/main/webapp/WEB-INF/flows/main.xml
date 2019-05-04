@@ -55,7 +55,9 @@
     </view-state>
 
     <view-state id="addMany" view="addMany">
-        <transition on="addMany" >
+        <transition on="addWords" >
+            <evaluate result="out" expression=
+                    "ChangeOps.addFromWeb(requestParameters.inputNameKey,requestParameters.inputNameWord,type.type)"/>
             <render fragments="editVocAddManyWordsFragment"/>
         </transition>
 
@@ -95,6 +97,8 @@
                     "ChangeOps.printKeys(type.type)" />
         </transition>
         <transition on="addMany" to="addMany">
+            <evaluate result="out" expression=
+                    "ChangeOps.createOut()" />
         </transition>
     </view-state>
 </flow>

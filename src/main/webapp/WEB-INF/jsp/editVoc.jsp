@@ -8,9 +8,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
+<head>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/form/jquery.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/form/jquery.form.js"></script>
 <script type="application/javascript">
+
 
     function  getList() {
         $('#hidden').toggle();
@@ -26,14 +28,14 @@
     }
 
 
-    function readAll(){
+    function readAllWords(){
         var values2=$('body').find('#input2');
         var values=$('body').find('#input');
 
             var Key="";
             Key = Key + values2[0].value;
         if(!(Key==""||Key==null)) {
-            $('#Keyhidden').attr("inputNameKey",Key);
+            $('#Keyhidden').attr("value",Key);
             var all = "";
             if (values.length >= 1) {
                 for (var i = 0; i < values.length; ++i) {
@@ -41,7 +43,19 @@
                     all = all + values[i].value + "%_%";
                 }
                 if(!(all==""||all==null))
-                $('#allWord').attr("inputNameWord", all);
+                $('#allWord').attr("value", all),
+                    $('body').find('#input2').attr("value",""),
+                $('body').find('#input').attr("value",""),
+                $("#forma2").ajaxSubmit({
+
+                    url:"${flowExecutionUrl}&_eventId_addWords&ajaxSource=true",
+                    success:function (html) {
+                        $("#editVocAddManyWordsFragment").html($(html).filter("#editVocAddManyWordsFragment")),
+                    },
+                    error:function (error) {
+                        console.log(error)
+                    }
+                });
                 else {
                     alert("введите слово");
                 }
@@ -53,14 +67,14 @@
         else {
             alert("введите ключ");
         }
-        $('body').find('#input2').attr("value","");
-        $('body').find('#input').attr("value","");
-
     }
 
 </script>
+</head>
 <html>
 <body>
+<form id="forma2"  method="post">
 <tiles:insertAttribute name="editVocAddManyWordsFragment"/>
+</form>
 </body>
 </html>

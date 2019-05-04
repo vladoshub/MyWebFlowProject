@@ -42,6 +42,11 @@ public class ChangeOps {
         Out out = new Out(input);
         return out;
     }
+
+    public Out createOut(){
+        Out out = new Out();
+        return out;
+    }
     public Out del(String key,int typeOfVoc) throws IOException
     {
     serviceWorker.del(library,key);
@@ -73,6 +78,19 @@ public class ChangeOps {
             vocabulary = ListOfVocabulary.Number;
         }
         return createOut(serviceWorker.add(library,vocabulary,key,word));
+    }
+    public Out addFromWeb(String key,String word,String voc) throws IOException
+    {
+        int num = Integer.parseInt(voc);
+        if (num == 1) {
+            vocabulary = ListOfVocabulary.Latins_Rus;
+
+        } else if (num == 2) {
+            vocabulary = ListOfVocabulary.Number;
+        }
+        String[] words = word.split("%_%");
+
+        return createOut(serviceWorker.add(library,vocabulary,key,words));
     }
     public Out print(int typeOfVoc) throws IOException
     {
