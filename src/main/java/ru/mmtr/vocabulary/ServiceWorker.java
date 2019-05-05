@@ -3,6 +3,7 @@ package ru.mmtr.vocabulary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.mmtr.entity.Keys;
+import ru.mmtr.entity.Words;
 
 import java.io.IOException;
 import java.util.List;
@@ -25,26 +26,32 @@ public class ServiceWorker {
     public void del(Library Library) throws IOException {//метод для работы с методом удаление клаасс аLibrary
         System.out.println("введите ключ:");
         String key = Input.input();
-        Library.deleteFromTxt(key);
+        Library.deleteByKey(key);
     }
-    public String del(Library Library,String key) throws IOException {//метод для работы с методом удаление клаасс аLibrary
-        return Library.deleteFromTxt(key);
+    public String delByKey(Library Library,String key) throws IOException {//метод для работы с методом удаление клаасс аLibrary
+        return Library.deleteByKey(key);
+    }
+    public String delByWord(Library Library,String id) throws IOException {//метод для работы с методом удаление клаасс аLibrary
+        return Library.deleteByWord(id);
     }
     public List<String> seacrh(Library Library,int type) throws IOException {//метод для работы с методом поиска по ключу клаасса Library
         System.out.println("введите ключ:");
         String key = Input.input();
        return Library.readFromTxt(key,type);
     }
-    public List<String> seacrh(Library Library,String key,int type) throws IOException {//метод для работы с методом поиска по ключу клаасса Library
-        return Library.readFromTxt(key,type);
+    public List<Keys> seacrhByKey(Library Library,String key,int type) throws IOException {//метод для работы с методом поиска по ключу клаасса Library
+        return Library.searchByKey(key,type);
+    }
+    public List<Words> seacrhByWord(Library Library, String word, int type) throws IOException {//метод для работы с методом поиска по ключу клаасса Library
+        return Library.searchByWord(word,type);
     }
 
-    public String updateByKey(Library Library,String key,String newKey,int type) throws IOException {//метод для работы с методом поиска по ключу клаасса Library
-        return Library.updateByKey(key,newKey,type);
+    public String updateByKey(Library Library,String id,String newKey,int type) throws IOException {//метод для работы с методом поиска по ключу клаасса Library
+        return Library.updateByKey(id,newKey,type);
     }
 
-    public String updateByWord(Library Library,String word,String newWord,int type) throws IOException {//метод для работы с методом поиска по ключу клаасса Library
-        return Library.updateByWord(word,newWord,type);
+    public String updateByWord(Library Library,String id,String newWord,int type) throws IOException {//метод для работы с методом поиска по ключу клаасса Library
+        return Library.updateByWord(id,newWord,type);
     }
 
     public void add(Library Library, ListOfVocabulary type) throws IOException {//метод для работы с методом добавление клаасса Library

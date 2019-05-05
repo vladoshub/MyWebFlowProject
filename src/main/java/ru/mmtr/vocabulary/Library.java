@@ -109,8 +109,45 @@ public class Library {
                 print.add(0,"Operation is Ok");
             return print;
         } catch (Exception e) {
-            print.add(0,"Operation is denied");
-            return print;
+            return null;
+        }
+
+
+    }
+
+    public List<Keys> searchByKey(String key, int type) {//-	поиск записи по ключу
+
+        List<String> readFromTxt = new ArrayList<String>();
+     /*   try {
+            Console.outConsole(key, states.get(key));
+        } catch (Exception e) {
+            Console.outError(e);
+        }
+        */
+
+        try {
+            return  keysDao.findByKey(key);
+        } catch (Exception e) {
+            return null;
+        }
+
+
+    }
+
+    public List<Words> searchByWord(String key, int type) {//-	поиск записи по ключу
+
+        List<String> readFromTxt = new ArrayList<String>();
+     /*   try {
+            Console.outConsole(key, states.get(key));
+        } catch (Exception e) {
+            Console.outError(e);
+        }
+        */
+
+        try {
+            return  keysDao.getWordsByKey(key,type);
+        } catch (Exception e) {
+            return null;
         }
 
 
@@ -126,7 +163,7 @@ public class Library {
 
     }
 
-    public String deleteFromTxt(String key) {//-	удаление записи по ключу
+    public String deleteByKey(String key) {//-	удаление записи по ключу
        /* for (Iterator<Map.Entry<String, String>> it = states.entrySet().iterator(); it.hasNext(); ) {
             Map.Entry<String, String> entry = it.next();
             if (entry.getKey().equals(key)) {
@@ -146,6 +183,26 @@ public class Library {
 
     }
 
+    public String deleteByWord(String id) {//-	удаление записи по ключу
+       /* for (Iterator<Map.Entry<String, String>> it = states.entrySet().iterator(); it.hasNext(); ) {
+            Map.Entry<String, String> entry = it.next();
+            if (entry.getKey().equals(key)) {
+                it.remove();
+            }
+        }
+        saveToTxt();
+        */
+        try {
+            keysDao.deleteByWord(id);
+            return "Word is deleted";
+        }
+        catch (Exception e){
+            return "error in datebase";
+        }
+
+
+    }
+
     public String addToTxt(String key, String value,int type) {//--	добавление записей
         // states.put(key, value);
         //saveToTxt();
@@ -158,11 +215,11 @@ public class Library {
         }
         //readAllFromTxt();
     }
-    public String updateByKey(String key,String newKey,int type) {//--	добавление записей
+    public String updateByKey(String id,String newKey,int type) {//--	добавление записей
         // states.put(key, value);
         //saveToTxt();
         try {
-            keysDao.updateByKey(key, newKey,type);
+            keysDao.updateByKey(id, newKey,type);
             return "Key is edit";
         }
         catch (Exception e) {
@@ -170,11 +227,11 @@ public class Library {
         }
         //readAllFromTxt();
     }
-    public String updateByWord(String word,String newWord,int type) {//--	добавление записей
+    public String updateByWord(String id,String newWord,int type) {//--	добавление записей
         // states.put(key, value);
         //saveToTxt();
         try {
-            keysDao.updateByWord(word, newWord,type);
+            keysDao.updateByWord(id, newWord,type);
             return "Word is edit";
         }
         catch (Exception e) {

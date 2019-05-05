@@ -29,6 +29,10 @@
         <put-attribute name="editVocAddManyWordsFragment" value="/WEB-INF/jsp/editVocAddManyWordsFragment.jsp"/>
     </definition>
 
+    <definition name="search"
+                template="/WEB-INF/jsp/search.jsp">
+    </definition>
+
 
 
 

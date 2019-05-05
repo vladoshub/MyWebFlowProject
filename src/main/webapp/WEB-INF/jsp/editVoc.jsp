@@ -18,7 +18,7 @@
         $('#hidden').toggle();
     }
 
-    function  addWord() {
+    function func1() {
         var element = document.createElement('input');
         var element2 = document.createElement('br');
         element.innerHTML = element.type="text";
@@ -50,7 +50,7 @@
 
                     url:"${flowExecutionUrl}&_eventId_addWords&ajaxSource=true",
                     success:function (html) {
-                        $("#editVocAddManyWordsFragment").html($(html).filter("#editVocAddManyWordsFragment")),
+                        $("#editVocAddManyWordsFragment").html($(html).filter("#editVocAddManyWordsFragment"));
                     },
                     error:function (error) {
                         console.log(error)

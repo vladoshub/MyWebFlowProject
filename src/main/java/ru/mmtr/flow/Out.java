@@ -2,6 +2,7 @@ package ru.mmtr.flow;
 
 import ru.mmtr.dao.KeysDaoImpl;
 import ru.mmtr.entity.Keys;
+import ru.mmtr.entity.Words;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,6 +14,7 @@ public  class Out implements Serializable {
     private int voc;
     private String inp;
     private List<Keys> keys;
+    private List<Words> words;
 
 
     public Out() {
@@ -70,5 +72,13 @@ public  class Out implements Serializable {
     public List<Keys> getKeys() {
 
         return keys;
+    }
+
+    public List<Words> getWords() {
+        return words;
+    }
+
+    public void setWords(List<Words> words) {
+        this.words = words;
     }
 }

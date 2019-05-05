@@ -12,6 +12,6 @@
 <input type="text" value="" id="input2">
 <p>Введите слово</p>
 <input type="text" value="" id="input">
-<button id="addWord" onclick="addWord()" type="button" class="button">добавить еще слово</button>
+<button id="addWord" onclick="func1()" type="button" class="button">добавить еще слово</button>
 <button id="readAll" onclick="readAllWords()" type="button" class="button" name="_eventId_addWords">добавить в словарь</button>
 </ul>

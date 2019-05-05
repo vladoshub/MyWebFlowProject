@@ -20,7 +20,7 @@
         $(name).toggle();
     }
     function  delByKey(el){
-            $("#Key").attr("value",el.name)
+            $("#Key").attr("value",el.value)
             $("#forma1").ajaxSubmit({
 
                 url:"${flowExecutionUrl}&_eventId_deletedKey&ajaxSource=true",
@@ -36,7 +36,7 @@
 
     function  delByWord(el){
 
-            $("#Key").attr("value",el.name)
+            $("#Key").attr("value",el.value)
             $("#forma1").ajaxSubmit({
 
                 url:"${flowExecutionUrl}&_eventId_deletedWord&ajaxSource=true",
@@ -50,29 +50,21 @@
         }
 
 
-    function  add(el) {
-            $("#"+el.name).attr("value",prompt('введите слово'));
-
-        $("#forma1").ajaxSubmit({
-
-            url:"${flowExecutionUrl}&_eventId_Search"+el.name+"&ajaxSource=true",
-            success:function (html) {
-                $("#list").html($(html).filter("#list"));
-            },
-            error:function (error) {
-                console.log(error)
-            }
-        })
-    }
 
     function  edit(el) {
-            var name = "." + el.name;
-            $(name).toggle();
+        var name = "." + el.value;
+        $(name).toggle();
 
     }
 
     function  editKey(el) {
-        $("#editKey").attr("value",el.name);
+        var name = "#" + el.value;
+        $(name).toggle();
+
+    }
+
+    function  editKey(el) {
+        $("#editKey").attr("value",el.value);
         $("#forma1").ajaxSubmit({
 
             url:"${flowExecutionUrl}&_eventId_editKey&ajaxSource=true",
@@ -85,7 +77,7 @@
         })
     }
     function  editWord(el) {
-        $("#editWord").attr("value",el.name)
+        $("#editWord").attr("value",el.value)
         $("#forma1").ajaxSubmit({
 
             url:"${flowExecutionUrl}&_eventId_editWord&ajaxSource=true",

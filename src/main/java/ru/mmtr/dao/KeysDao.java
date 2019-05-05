@@ -16,6 +16,7 @@ public interface KeysDao {
     public void AddKey(String Key, int type,String... words);
     public void updateByKey(String keys,String newKeys,int type);
     public void updateByWord(String Words,String newWords,int type);
+    public void deleteByWord(String id);
 
     public Words findWordsById(long id);
 

@@ -55,6 +55,8 @@ public class KeysDaoImpl implements KeysDao {
         keys.setWords(wordList);
         keys.setKey(Key);
         Session session = this.sessionFactory.openSession();
+            List<Type> ux = session.createQuery("From Type where id="+type+"").list();
+            keys.setType(ux.get(0));
 
             Transaction tx = session.beginTransaction();
             session.persist(keys);
@@ -118,35 +120,32 @@ public class KeysDaoImpl implements KeysDao {
         tx1.commit();
         session.close();
     }
-
-    public void deleteByWord(String word) { //удаление по слову
+    @Override
+    public void deleteByWord(String id) { //удаление по слову
         Session session = this.sessionFactory.openSession();
         Transaction tx1 = session.beginTransaction();
-        Criteria criteria = session.createCriteria(Words.class);
-        List<Words> ux = criteria.add(Restrictions.eq("word", word)).list();
+        List<Words> ux = session.createQuery("From Words where id="+id+"").list();
         session.delete(ux.get(0));
         tx1.commit();
         session.close();
     }
     @Override
-    public void updateByKey(String keys,String newKeys,int type) { //Обновление по ключу
+    public void updateByKey(String id,String newKeys,int type) { //Обновление по ключу
         Session session = this.sessionFactory.openSession();
         Transaction tx1 = session.beginTransaction();
-        Criteria criteria = session.createCriteria(Keys.class);
-        Keys key = (Keys)criteria.add(Restrictions.eq("key", keys)).list().get(0);
-        key.setKey(newKeys);
-        session.update(key);
+        List<Keys> ux = session.createQuery("From Keys where id="+id+" and type_id="+type+"").list();
+        ux.get(0).setKey(newKeys);
+        session.update(ux.get(0));
         tx1.commit();
         session.close();
     }
     @Override
-    public void updateByWord(String word,String newWords,int type) { //Обновление по словам
+    public void updateByWord(String id,String newWords,int type) { //Обновление по словам
         Session session = this.sessionFactory.openSession();
         Transaction tx1 = session.beginTransaction();
-        Criteria criteria = session.createCriteria(Keys.class);
-        Words words = (Words) criteria.add(Restrictions.eq("word", word)).list().get(0);
-        words.setWord(newWords);
-        session.update(words);
+        List<Words> ux = session.createQuery("From Words where id="+id+" and type_id="+type+"").list();
+        ux.get(0).setWord(newWords);
+        session.update(ux.get(0));
         tx1.commit();
         session.close();
     }

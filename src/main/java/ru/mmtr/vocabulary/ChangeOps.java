@@ -3,6 +3,7 @@ package ru.mmtr.vocabulary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.mmtr.entity.Keys;
+import ru.mmtr.entity.Words;
 import ru.mmtr.flow.Out;
 
 import java.io.IOException;
@@ -33,13 +34,29 @@ public class ChangeOps {
         Out out = new Out(input);
         return out;
     }
-    private Out createOutKeys(List<Keys> input){
-        Out out = new Out();
-        out.setKeys(input);
+
+    private Out createOut(String input){
+         Out out = new Out(input);
         return out;
     }
-    private Out createOut(String input){
-        Out out = new Out(input);
+
+    private Out createOutKeys(List <Keys> keys){
+        Out out = new Out();
+        if(keys!=null) {
+           out.setKeys(keys);
+        }
+        else
+            out.setOutMess("no match");
+        return out;
+    }
+
+    private Out createOutWords(List <Words> words){
+        Out out = new Out();
+        if(words!=null) {
+            out.setWords(words);
+        }
+        else
+            out.setOutMess("no match");
         return out;
     }
 
@@ -47,37 +64,36 @@ public class ChangeOps {
         Out out = new Out();
         return out;
     }
-    public Out del(String key,int typeOfVoc) throws IOException
+    public Out delFromWebByKey(String key, int typeOfVoc) throws IOException
     {
-    serviceWorker.del(library,key);
+    serviceWorker.delByKey(library,key);
     return this.printKeys(typeOfVoc);
     }
-    public  Out search(String key,int typeOfVoc) throws IOException
-    {
-        return createOut(serviceWorker.seacrh(library,key,typeOfVoc));
-    }
-    public Out add(String key,String word,String voc,int typeOfVoc) throws IOException
-    {
-        int num = Integer.parseInt(voc);
-        if (num == 1) {
-            vocabulary = ListOfVocabulary.Latins_Rus;
 
-        } else if (num == 2) {
-            vocabulary = ListOfVocabulary.Number;
-        }
-        return createOut(serviceWorker.add(library,vocabulary,key,word));
+    public Out delFromWebByWord(String id,int typeOfVoc) throws IOException
+    {
+        serviceWorker.delByWord(library,id);
+        return this.printKeys(typeOfVoc);
     }
 
-    public Out add(String key,String[] word,String voc,int typeOfVoc) throws IOException
+    public Out updateByKeyFromWeb(String id, String newKey,int typeOfVoc) throws IOException
     {
-        int num = Integer.parseInt(voc);
-        if (num == 1) {
-            vocabulary = ListOfVocabulary.Latins_Rus;
+        serviceWorker.updateByKey(library,id,newKey,typeOfVoc);
+        return this.printKeys(typeOfVoc);
+    }
 
-        } else if (num == 2) {
-            vocabulary = ListOfVocabulary.Number;
-        }
-        return createOut(serviceWorker.add(library,vocabulary,key,word));
+    public Out updateByWordFromWeb(String id, String newWord,int typeOfVoc) throws IOException
+    {
+        serviceWorker.updateByKey(library,id,newWord,typeOfVoc);
+        return this.printKeys(typeOfVoc);
+    }
+    public  Out searchFromWebByKey(String key, int typeOfVoc) throws IOException
+    {
+        return createOutKeys(serviceWorker.seacrhByKey(library,key,typeOfVoc));
+    }
+    public  Out searchFromWebByWords(String word, int typeOfVoc) throws IOException
+    {
+        return createOutWords(serviceWorker.seacrhByWord(library,word,typeOfVoc));
     }
     public Out addFromWeb(String key,String word,String voc) throws IOException
     {
@@ -127,7 +143,7 @@ public class ChangeOps {
             Change = Input.input();
             switch (Change) {
                 case "1":
-                    serviceWorker.del(library);
+                    serviceWorker.delFromWebByKey(library);
                     break;
                 case "2":
                     serviceWorker.seacrh(library);
