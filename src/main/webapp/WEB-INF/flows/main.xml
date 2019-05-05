@@ -55,11 +55,11 @@
 
 
     <view-state id="search" view="search">
-        <transition on="SearchKey" >
+        <transition on="SearchKey" to="search">
             <evaluate result="out" expression=
                     "ChangeOps.searchFromWebByKey(requestParameters.Key,type.type)"/>
         </transition>
-        <transition on="SearchWord" >
+        <transition on="SearchWord" to="search" >
             <evaluate result="out" expression=
                     "ChangeOps.searchFromWebByWords(requestParameters.Word,type.type)"/>
         </transition>

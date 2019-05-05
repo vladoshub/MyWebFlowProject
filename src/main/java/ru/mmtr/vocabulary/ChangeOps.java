@@ -42,7 +42,7 @@ public class ChangeOps {
 
     private Out createOutKeys(List <Keys> keys){
         Out out = new Out();
-        if(keys!=null) {
+        if(keys!=null&&keys.size()!=0) {
            out.setKeys(keys);
         }
         else
@@ -52,7 +52,7 @@ public class ChangeOps {
 
     private Out createOutWords(List <Words> words){
         Out out = new Out();
-        if(words!=null) {
+        if(words!=null&&words.size()!=0) {
             out.setWords(words);
         }
         else

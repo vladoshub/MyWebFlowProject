@@ -11,7 +11,6 @@ import ru.mmtr.entity.Words;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -100,7 +99,7 @@ public class Library {
 
         if (print != null) print.clear();
         try {
-            for (Words w : keysDao.getWordsByKey(key,type)) {
+            for (Words w : keysDao.findByWord(key,type)) {
                 print.add("key: " + key + " - " + "word: " + w.getWord()+" ");
             }
             if (print == null)
@@ -134,7 +133,7 @@ public class Library {
 
     }
 
-    public List<Words> searchByWord(String key, int type) {//-	поиск записи по ключу
+    public List<Words> searchByWord(String word, int type) {//-	поиск записи по ключу
 
         List<String> readFromTxt = new ArrayList<String>();
      /*   try {
@@ -145,7 +144,7 @@ public class Library {
         */
 
         try {
-            return  keysDao.getWordsByKey(key,type);
+            return  keysDao.findByWord(word,type);
         } catch (Exception e) {
             return null;
         }

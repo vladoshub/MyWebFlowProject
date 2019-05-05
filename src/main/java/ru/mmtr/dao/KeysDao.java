@@ -21,7 +21,7 @@ public interface KeysDao {
     public Words findWordsById(long id);
 
     public List<Keys> findByKey(String key);
-    public List<Words> getWordsByKey(String key,int type);
+    public List<Words> findByWord(String key, int type);
 
     public List<Keys> getKeysList(int type);
 

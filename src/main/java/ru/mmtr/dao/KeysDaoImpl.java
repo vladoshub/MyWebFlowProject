@@ -79,17 +79,17 @@ public class KeysDaoImpl implements KeysDao {
         return ux;
     }
 
-    public List<Words> getWordsByKey(String key,int type) { // возврат слов по ключю(key-ключ,type-тип словаря)
+    public List<Words> findByWord(String word, int type) { // возврат слов по ключю(key-ключ,type-тип словаря)
         Session session = this.sessionFactory.openSession();
        /* List ux = session.createQuery("SELECT id FROM Keys where key='"+key+"'").list();
         Words  w = findWordsById((int)ux.get(1));*/
-        List<Keys> ux = session.createQuery("From Keys where key='"+key+"' and type_id='"+type+"'").list();
+        List<Words> ux = session.createQuery("From Words where word='"+word+"'").list();
       //  Criteria criteria = session.createCriteria(Keys.class) //-не рабочий
              //   .add(Restrictions.eq("key", key))
              //   .add(Restrictions.eq("type_id", type));
        // List<Keys> ux = criteria.list();
         session.close();
-        return ux.get(0).getWords();
+        return ux;
     }
 
     @Override

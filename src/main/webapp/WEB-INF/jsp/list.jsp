@@ -19,7 +19,7 @@
                     <button class="list" type="button" name="${items.id}" onclick="getList(this)">несколько значений</button>
                     <div id="hidden" class="${items.id}" hidden="false"><ul><c:forEach items="${items.words}" var="words"><li><b>${words.word}</b>
                         <button type="button" class="list" onclick="delByWord(this)" name="_eventId_deletedWord" value="${words.id}" >Удалить</button>
-                        <button type="button" class="editbutWord" name="_eventId_editWord" value="${words.id}"  onclick="edit(this)">Редактировать</button><div hidden="false" class="${words.id}"><input type="text"  value="${words.word}"/></div>
+                        <button type="button" class="close" name="_eventId_editWord" value="${words.id}"  onclick="edit(this)">Редактировать</button><div hidden="false" class="${words.id}"><input type="text"  value="${words.word}"/></div>
                     </li></c:forEach></li></ul></div></c:when></c:choose></li>
         </c:forEach>
         ${out.outList=null}

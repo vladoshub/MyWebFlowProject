@@ -52,9 +52,14 @@
 
 
     function  edit(el) {
-        var name = "." + el.value;
-        $(name).toggle();
-
+        if(el.className=="close"){
+            var name = "." + el.value;
+            $(name).toggle();
+            el.className="open";
+        }
+        if(el.className=="open"){
+            el.className="close";
+        }
     }
 
     function  editKey(el) {
@@ -101,8 +106,6 @@
     <input id="editWord"  type="hidden" name="editWord" value=""/>
     <input type="hidden" name="_flowExecutionKey"/>
     <tiles:insertAttribute name="list"/>
-    <br>
-    <tiles:insertAttribute name="search"/>
 </form>
 </body>
 </html>
