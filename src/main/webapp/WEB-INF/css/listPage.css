@@ -1,0 +1,13 @@
+img{
+    height: 15px;
+    width: 15px;
+}
+button{
+    height: 40px;
+    width: 100px;
+}
+body{
+    background: url(/images/MainBack.jpg);
+    background-size: 100%;
+    color:gray;
+}

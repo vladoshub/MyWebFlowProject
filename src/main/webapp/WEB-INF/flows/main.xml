@@ -74,26 +74,6 @@
             <set  name = "out.voc"  value = "1"/>
         </transition>
         <transition on="next" to="main"/>
-        <transition on="nextAdd">
-            <evaluate result="out" expression=
-                    "ChangeOps.addFromWeb(requestParameters.inputNameRus,requestParameters.inputNameRusc,out.voc)"/>
-            <render fragments="requestFromServer,messageFromServer"/>
-        </transition>
-        <transition on="nextDel" >
-            <evaluate result="out" expression=
-                    "ChangeOps.Del(requestParameters.inputNameRus,out.voc)"/>
-            <render fragments="requestFromServer,messageFromServer"/>
-        </transition>
-        <transition on="nextSearch">
-            <evaluate result="out" expression=
-                    "ChangeOps.searchFromWebByKey(requestParameters.inputNameRus,out.voc)" />
-            <render fragments="requestFromServer,messageFromServer"/>
-        </transition>
-        <transition on="nextPrint">
-            <evaluate result="out" expression=
-                    "ChangeOps.print(out.voc)" />
-            <render fragments="requestFromServer,messageFromServer"/>
-        </transition>
         <transition on="view" to="view">
             <evaluate result="out" expression=
                     "ChangeOps.printKeys(type.type)" />

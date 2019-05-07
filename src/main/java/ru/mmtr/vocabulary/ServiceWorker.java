@@ -47,7 +47,15 @@ public class ServiceWorker {
     }
 
     public String updateByKey(Library Library,String id,String newKey,int type) throws IOException {//метод для работы с методом поиска по ключу клаасса Library
-        return Library.updateByKey(id,newKey,type);
+        ListOfVocabulary list=null;
+        if(type==1){
+             list = ListOfVocabulary.Latins_Rus;
+        }
+        else
+             list = ListOfVocabulary.Number;
+        if (searchFromVocabulary(newKey,list))
+            return Library.updateByKey(id,newKey,type);
+        else return "несоответсвие правилам словаря ";
     }
 
     public String updateByWord(Library Library,String id,String newWord,int type) throws IOException {//метод для работы с методом поиска по ключу клаасса Library

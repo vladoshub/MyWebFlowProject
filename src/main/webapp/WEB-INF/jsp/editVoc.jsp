@@ -9,6 +9,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <head>
+    <style><%@include file="/WEB-INF/css/addPage.css"%></style>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/form/jquery.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/form/jquery.form.js"></script>
 <script type="application/javascript">
@@ -74,6 +75,7 @@
 <html>
 <body>
 <form id="forma2"  method="post">
+    <input type="hidden" name="_flowExecutionKey"/>
 <tiles:insertAttribute name="editVocAddManyWordsFragment"/>
 </form>
 </body>

@@ -7,9 +7,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<style><%@include file="/WEB-INF/css/searchPage.css"%></style>
 <form method="post">
 <body id="main">
-<input type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}"/>
+<input type="hidden" name="_flowExecutionKey"/>
 
 <button type="submit" class="button" name="_eventId_SearchKey" >поиск по ключу</button>
 <input type="text"  value="" name="Key">
