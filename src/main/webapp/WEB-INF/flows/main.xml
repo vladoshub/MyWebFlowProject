@@ -24,23 +24,23 @@
     <view-state id="view" view="view">
         <transition on="editWord" >
             <evaluate result="out" expression=
-                    "ChangeOps.delFromWebByKey(requestParameters.editWord,type.type)"/>
+                    "ChangeOps.updateByWordFromWeb(requestParameters.ids,requestParameters.editWord,type.type)"/>
             <render fragments="list,search"/>
         </transition>
         <transition on="editKey" >
             <evaluate result="out" expression=
-                    "ChangeOps.delFromWebByKey(requestParameters.editKey,type.type)"/>
-            <render fragments="list,search"/>
+                    "ChangeOps.updateByKeyFromWeb(requestParameters.ids,requestParameters.editWord,type.type)"/>
+            <render fragments="list"/>
         </transition>
         <transition on="deletedWord" >
             <evaluate result="out" expression=
                     "ChangeOps.delFromWebByKey(requestParameters.delWord,type.type)"/>
-            <render fragments="list,search"/>
+            <render fragments="list"/>
         </transition>
         <transition on="deletedKey" >
             <evaluate result="out" expression=
                     "ChangeOps.delFromWebByKey(requestParameters.delKey,type.type)"/>
-            <render fragments="list,search"/>
+            <render fragments="list"/>
         </transition>
     </view-state>
 

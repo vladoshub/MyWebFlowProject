@@ -16,7 +16,7 @@
 <script type="application/javascript">
 
     function  getList(el) {
-        var name = "."+el.name;
+        var name = "#"+el.name+"List";
         $(name).toggle();
     }
     function  delByKey(el){
@@ -51,57 +51,67 @@
 
 
 
-    function  edit(el) {
-        if(el.className=="close"){
-            var name = "." + el.value;
+    function  editWords(el) {
+
+        var name = "#" + el.value+"WordDiv";
+        if(el.id[el.id.length-1]=="C"){
+            el.id=el.id.slice(0, -1) + 'O';
+            el.innerText="ok";
             $(name).toggle();
-            el.className="open";
         }
-        if(el.className=="open"){
-            el.className="close";
+        else{
+           el.id=el.id.slice(0, -1) + 'C';
+            el.innerText="Редактировать";
+            $("#editWord").attr("value",$(name).children('input').attr("value"));
+            $("#ids").attr("value",el.value);
+            $(name).toggle();
+            $("#forma1").ajaxSubmit({
+
+                url:"${flowExecutionUrl}&_eventId_editWord&ajaxSource=true",
+                success:function (html) {
+                    $("#list").html($(html).filter("#list"));
+                },
+                error:function (error) {
+                    console.log(error)
+                }
+            });
         }
     }
 
-    function  editKey(el) {
-        var name = "#" + el.value;
-        $(name).toggle();
+    function  editKeys(el) {
 
+        var name = "#" + el.value+"KeyDiv";
+        if(el.id[el.id.length-1]=="C"){
+            el.id=el.id.slice(0, -1) + 'O';
+            el.innerText="ok";
+            $(name).toggle();
+        }
+        else{
+            el.id=el.id.slice(0, -1) + 'C';
+            el.innerText="Редактировать";
+            $("#editKey").attr("value",$(name).children('input').attr("value"));
+            $("#ids").attr("value",el.value);
+            $(name).toggle();
+            $("#forma1").ajaxSubmit({
+
+                url:"${flowExecutionUrl}&_eventId_editKey&ajaxSource=true",
+                success:function (html) {
+                    $("#list").html($(html).filter("#list"));
+                },
+                error:function (error) {
+                    console.log(error)
+                }
+            });
+        }
     }
 
-    function  editKey(el) {
-        $("#editKey").attr("value",el.value);
-        $("#forma1").ajaxSubmit({
 
-            url:"${flowExecutionUrl}&_eventId_editKey&ajaxSource=true",
-            success:function (html) {
-                $("#list").html($(html).filter("#list"));
-            },
-            error:function (error) {
-                console.log(error)
-            }
-        })
-    }
-    function  editWord(el) {
-        $("#editWord").attr("value",el.value)
-        $("#forma1").ajaxSubmit({
-
-            url:"${flowExecutionUrl}&_eventId_editWord&ajaxSource=true",
-            success:function (html) {
-                $("#list").html($(html).filter("#list"));
-            },
-            error:function (error) {
-                console.log(error)
-            }
-        })
-
-    }
 
 </script>
 </head>
 <body>
 <form id="forma1"  method="post">
-<input id="Key"  type="hidden" name="delKey" value=""/>
-<input id="Word"  type="hidden" name="delWord" value=""/>
+    <input id="ids"  type="hidden" name="ids" value=""/>
     <input id="editKey"  type="hidden" name="editKey" value=""/>
     <input id="editWord"  type="hidden" name="editWord" value=""/>
     <input type="hidden" name="_flowExecutionKey"/>

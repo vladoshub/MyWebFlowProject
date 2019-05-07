@@ -143,7 +143,7 @@ public class KeysDaoImpl implements KeysDao {
     public void updateByWord(String id,String newWords,int type) { //Обновление по словам
         Session session = this.sessionFactory.openSession();
         Transaction tx1 = session.beginTransaction();
-        List<Words> ux = session.createQuery("From Words where id="+id+" and type_id="+type+"").list();
+        List<Words> ux = session.createQuery("From Words where id="+id+"").list();
         ux.get(0).setWord(newWords);
         session.update(ux.get(0));
         tx1.commit();

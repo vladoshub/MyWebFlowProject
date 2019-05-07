@@ -84,7 +84,7 @@ public class ChangeOps {
 
     public Out updateByWordFromWeb(String id, String newWord,int typeOfVoc) throws IOException
     {
-        serviceWorker.updateByKey(library,id,newWord,typeOfVoc);
+        serviceWorker.updateByWord(library,id,newWord,typeOfVoc);
         return this.printKeys(typeOfVoc);
     }
     public  Out searchFromWebByKey(String key, int typeOfVoc) throws IOException
