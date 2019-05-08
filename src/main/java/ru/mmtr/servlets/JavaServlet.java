@@ -3,7 +3,6 @@ package ru.mmtr.servlets;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import ru.mmtr.vocabulary.Library;
-import ru.mmtr.vocabulary.ListOfVocabulary;
 import ru.mmtr.vocabulary.ServiceWorker;
 
 import javax.servlet.RequestDispatcher;
@@ -19,7 +18,6 @@ import java.util.List;
 public class JavaServlet extends HttpServlet {
     private String name;
     private Library library;
-    private ListOfVocabulary vocabulary;
     private ServiceWorker serviceWorker;
     String nameVoc;
     List<String> list;
@@ -37,12 +35,10 @@ public class JavaServlet extends HttpServlet {
     public void initVoc(HttpServletRequest req) throws ServletException {
 
         if("1".equals(req.getParameter("param"))) {
-            vocabulary = ListOfVocabulary.Latins_Rus;
             nameVoc="voc.jsp";
 
         }
         else {
-            vocabulary = ListOfVocabulary.Number;
             nameVoc="voc.jsp";
         }
        String s = req.getParameter("param");
@@ -73,7 +69,7 @@ public class JavaServlet extends HttpServlet {
                     req.setAttribute("req", "List is null");
                 break;
             case "3":
-                serviceWorker.add(library, vocabulary);
+                serviceWorker.add(library, 1);
                 req.setAttribute("req0", "added is ok");
                 break;
             case "4":

@@ -10,110 +10,83 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <html>
 <head>
-    <style><%@include file="/WEB-INF/css/listPage.css"%></style>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/form/jquery.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/form/jquery.form.js"></script>
-<script type="application/javascript">
+    <style>
+        <%@include file="/WEB-INF/css/listPage.css" %>
+    </style>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/form/jquery.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/form/jquery.form.js"></script>
+    <script type="application/javascript">
 
-    function  getList(el) {
-        var name = "#"+el.name+"List";
-        $(name).toggle();
-    }
-    function  delByKey(el){
-            $("#Key").attr("value",el.value)
+        function getList(el) {
+            var name = "#" + el.name + "List";
+            $(name).toggle();
+        }
+
+        function del(el) {
+
+            $("#edit").attr("value", el.value)
             $("#forma1").ajaxSubmit({
 
-                url:"${flowExecutionUrl}&_eventId_deletedKey&ajaxSource=true",
-                success:function (html) {
+                url: "${flowExecutionUrl}&" + el.name + "&ajaxSource=true",
+                success: function (html) {
                     $("#list").html($(html).filter("#list"));
                 },
-                error:function (error) {
+                error: function (error) {
                     console.log(error)
                 }
             })
         }
 
+        function closeBut(el, type) {
 
-    function  delByWord(el){
+            var id = el.id+"";
+            var name ="#"+el.value + type;
+            $("#"+id + "O").attr("id", id + "C");
+            document.getElementById(id + "C").innerText="Редактировать";
+            $(name).toggle();
 
-            $("#Key").attr("value",el.value)
-            $("#forma1").ajaxSubmit({
+        }
 
-                url:"${flowExecutionUrl}&_eventId_deletedWord&ajaxSource=true",
-                success:function (html) {
-                    $("#list").html($(html).filter("#list"));
-                },
-                error:function (error) {
-                    console.log(error)
+
+        function ed(el, word) {
+
+            var name = "#" + el.value + word;
+            if (el.id[el.id.length - 1] == "C") {
+                el.id = el.id.slice(0, -1) + 'O';
+                el.innerText = "ok";
+                $(name).toggle();
+            }
+            else {
+                if ($(name).children('input').attr("value").length >= 1) {
+                    el.id = el.id.slice(0, -1) + 'C';
+                    el.innerText = "Редактировать";
+                    $("#edit").attr("value", $(name).children('input').attr("value"));
+                    $("#ids").attr("value", el.value);
+                    $(name).toggle();
+                    $("#forma1").ajaxSubmit({
+
+                        url: "${flowExecutionUrl}&" + el.name + "&ajaxSource=true",
+                        success: function (html) {
+                            $("#list").html($(html).filter("#list"));
+                        },
+                        error: function (error) {
+                            console.log(error)
+                        }
+                    });
                 }
-            })
-        }
-
-
-
-    function  editWords(el) {
-
-        var name = "#" + el.value+"WordDiv";
-        if(el.id[el.id.length-1]=="C"){
-            el.id=el.id.slice(0, -1) + 'O';
-            el.innerText="ok";
-            $(name).toggle();
-        }
-        else{
-           el.id=el.id.slice(0, -1) + 'C';
-            el.innerText="Редактировать";
-            $("#editWord").attr("value",$(name).children('input').attr("value"));
-            $("#ids").attr("value",el.value);
-            $(name).toggle();
-            $("#forma1").ajaxSubmit({
-
-                url:"${flowExecutionUrl}&_eventId_editWord&ajaxSource=true",
-                success:function (html) {
-                    $("#list").html($(html).filter("#list"));
-                },
-                error:function (error) {
-                    console.log(error)
+                else {
+                    alert("введите ключ");
                 }
-            });
+            }
         }
-    }
-
-    function  editKeys(el) {
-
-        var name = "#" + el.value+"KeyDiv";
-        if(el.id[el.id.length-1]=="C"){
-            el.id=el.id.slice(0, -1) + 'O';
-            el.innerText="ok";
-            $(name).toggle();
-        }
-        else{
-            el.id=el.id.slice(0, -1) + 'C';
-            el.innerText="Редактировать";
-            $("#editKey").attr("value",$(name).children('input').attr("value"));
-            $("#ids").attr("value",el.value);
-            $(name).toggle();
-            $("#forma1").ajaxSubmit({
-
-                url:"${flowExecutionUrl}&_eventId_editKey&ajaxSource=true",
-                success:function (html) {
-                    $("#list").html($(html).filter("#list"));
-                },
-                error:function (error) {
-                    console.log(error)
-                }
-            });
-        }
-    }
 
 
-
-</script>
+    </script>
 </head>
 <body>
-<form id="forma1"  method="post">
-    <input id="ids"  type="hidden" name="ids" value=""/>
-    <input id="editKey"  type="hidden" name="editKey" value=""/>
-    <input id="editWord"  type="hidden" name="editWord" value=""/>
+<form id="forma1" method="post">
+    <input id="ids" type="hidden" name="ids" value=""/>
+    <input id="edit" type="hidden" name="edit" value=""/>
     <input type="hidden" name="_flowExecutionKey"/>
     <tiles:insertAttribute name="list"/>
 </form>

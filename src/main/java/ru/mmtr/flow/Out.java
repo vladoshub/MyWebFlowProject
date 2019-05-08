@@ -38,6 +38,7 @@ public  class Out implements Serializable {
     }
 
     public String getOutMess() {
+
         return outMess;
     }
 
@@ -46,6 +47,9 @@ public  class Out implements Serializable {
     }
 
     public void setOutMess(String outMess) {
+        if(outMess==null)
+            this.outMess="error in server";
+        else
         this.outMess = outMess;
     }
 

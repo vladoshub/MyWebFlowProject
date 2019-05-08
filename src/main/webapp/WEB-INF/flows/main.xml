@@ -7,7 +7,7 @@
     <var name="out"
          class="ru.mmtr.flow.Out"/>
     <var name="type"
-         class="ru.mmtr.flow.Type"/>
+         class="ru.mmtr.flow.TypeVoc"/>
 
     <view-state id="main" view="main">
         <transition on="nextRus" to="temp">
@@ -24,22 +24,22 @@
     <view-state id="view" view="view">
         <transition on="editWord" >
             <evaluate result="out" expression=
-                    "ChangeOps.updateByWordFromWeb(requestParameters.ids,requestParameters.editWord,type.type)"/>
+                    "ChangeOps.updateByWordFromWeb(requestParameters.ids,requestParameters.edit,type.type)"/>
             <render fragments="list,search"/>
         </transition>
         <transition on="editKey" >
             <evaluate result="out" expression=
-                    "ChangeOps.updateByKeyFromWeb(requestParameters.ids,requestParameters.editWord,type.type)"/>
+                    "ChangeOps.updateByKeyFromWeb(requestParameters.ids,requestParameters.edit,type.type)"/>
             <render fragments="list"/>
         </transition>
         <transition on="deletedWord" >
             <evaluate result="out" expression=
-                    "ChangeOps.delFromWebByKey(requestParameters.delWord,type.type)"/>
+                    "ChangeOps.delFromWebByKey(requestParameters.edit,type.type)"/>
             <render fragments="list"/>
         </transition>
         <transition on="deletedKey" >
             <evaluate result="out" expression=
-                    "ChangeOps.delFromWebByKey(requestParameters.delKey,type.type)"/>
+                    "ChangeOps.delFromWebByKey(requestParameters.edit,type.type)"/>
             <render fragments="list"/>
         </transition>
     </view-state>
@@ -83,6 +83,8 @@
                     "ChangeOps.createOut()" />
         </transition>
         <transition on="search" to="search">
+            <evaluate result="out" expression=
+                    "ChangeOps.createOut()" />
         </transition>
     </view-state>
 </flow>

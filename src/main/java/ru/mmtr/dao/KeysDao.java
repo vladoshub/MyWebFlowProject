@@ -12,11 +12,11 @@ public interface KeysDao {
     public void update(Keys K);
 
     public void deleteByObj(Object K);
-    public void deleteByKey(String keys);
-    public void AddKey(String Key, int type,String... words);
-    public void updateByKey(String keys,String newKeys,int type);
-    public void updateByWord(String Words,String newWords,int type);
-    public void deleteByWord(String id);
+    public String deleteByKey(String keys);
+    public String AddKey(String Key, int type,String... words);
+    public String updateByKey(String keys,String newKeys,int type);
+    public String updateByWord(String Words,String newWords,int type);
+    public String deleteByWord(String id);
 
     public Words findWordsById(long id);
 

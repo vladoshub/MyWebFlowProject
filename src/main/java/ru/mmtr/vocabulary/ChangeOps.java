@@ -18,106 +18,82 @@ public class ChangeOps {
     private Library library;
     private ServiceWorker serviceWorker;
     private static String message;
-    ListOfVocabulary vocabulary = null;
     Out out;
-
 
 
     @Autowired
     public ChangeOps(Library library, ServiceWorker serviceWorker) {
         this.library = library;
         this.serviceWorker = serviceWorker;
-        out=new Out();
+        out = new Out();
     }
 
-    private Out createOut(List<String> input){
+
+    private Out createOut(String input) {
         Out out = new Out(input);
         return out;
     }
 
-    private Out createOut(String input){
-         Out out = new Out(input);
-        return out;
-    }
-
-    private Out createOutKeys(List <Keys> keys){
+    private Out createOutKeys(List<Keys> keys) {
         Out out = new Out();
-        if(keys!=null&&keys.size()!=0) {
-           out.setKeys(keys);
-        }
-        else
+        if (keys != null && keys.size() != 0) {
+            out.setKeys(keys);
+        } else
             out.setOutMess("no match");
         return out;
     }
 
-    private Out createOutWords(List <Words> words){
+    private Out createOutWords(List<Words> words) {
         Out out = new Out();
-        if(words!=null&&words.size()!=0) {
+        if (words != null && words.size() != 0) {
             out.setWords(words);
-        }
-        else
+        } else
             out.setOutMess("no match");
         return out;
     }
 
-    public Out createOut(){
+    public Out createOut() {
         Out out = new Out();
         return out;
     }
-    public Out delFromWebByKey(String key, int typeOfVoc) throws IOException
-    {
-    serviceWorker.delByKey(library,key);
-    return this.printKeys(typeOfVoc);
-    }
 
-    public Out delFromWebByWord(String id,int typeOfVoc) throws IOException
-    {
-        serviceWorker.delByWord(library,id);
+    public Out delFromWebByKey(String key, int typeOfVoc) throws IOException {
+        out.setOutMess(serviceWorker.delByKey(library, key));
         return this.printKeys(typeOfVoc);
     }
 
-    public Out updateByKeyFromWeb(String id, String newKey,int typeOfVoc) throws IOException
-    {
-        serviceWorker.updateByKey(library,id,newKey,typeOfVoc);
+    public Out delFromWebByWord(String id, int typeOfVoc) throws IOException {
+        out.setOutMess(serviceWorker.delByWord(library, id));
         return this.printKeys(typeOfVoc);
     }
 
-    public Out updateByWordFromWeb(String id, String newWord,int typeOfVoc) throws IOException
-    {
-        serviceWorker.updateByWord(library,id,newWord,typeOfVoc);
+    public Out updateByKeyFromWeb(String id, String newKey, int typeOfVoc) throws IOException {
+        out.setOutMess(serviceWorker.updateByKey(library, id, newKey, typeOfVoc));
         return this.printKeys(typeOfVoc);
     }
-    public  Out searchFromWebByKey(String key, int typeOfVoc) throws IOException
-    {
-        return createOutKeys(serviceWorker.seacrhByKey(library,key,typeOfVoc));
-    }
-    public  Out searchFromWebByWords(String word, int typeOfVoc) throws IOException
-    {
-        return createOutWords(serviceWorker.seacrhByWord(library,word,typeOfVoc));
-    }
-    public Out addFromWeb(String key,String word,String voc) throws IOException
-    {
-        int num = Integer.parseInt(voc);
-        if (num == 1) {
-            vocabulary = ListOfVocabulary.Latins_Rus;
 
-        } else if (num == 2) {
-            vocabulary = ListOfVocabulary.Number;
-        }
+    public Out updateByWordFromWeb(String id, String newWord, int typeOfVoc) throws IOException {
+        out.setOutMess(serviceWorker.updateByWord(library, id, newWord, typeOfVoc));
+        return this.printKeys(typeOfVoc);
+    }
+
+    public Out searchFromWebByKey(String key, int typeOfVoc) throws IOException {
+        return createOutKeys(serviceWorker.seacrhByKey(library, key, typeOfVoc));
+    }
+
+    public Out searchFromWebByWords(String word, int typeOfVoc) throws IOException {
+        return createOutWords(serviceWorker.seacrhByWord(library, word, typeOfVoc));
+    }
+
+    public Out addFromWeb(String key, String word, int voc) throws IOException {
         String[] words = word.split("%_%");
 
-        return createOut(serviceWorker.add(library,vocabulary,key,words));
-    }
-    public Out print(int typeOfVoc) throws IOException
-    {
-
-        return createOut(serviceWorker.printAll(library,typeOfVoc));
+        return createOut(serviceWorker.add(library, voc, key, words));
     }
 
-    public Out printKeys(int typeOfVoc) throws IOException
-    {
-       out.setKeys(serviceWorker.printKeys(library,typeOfVoc));
-       return out;
+    public Out printKeys(int typeOfVoc) throws IOException {
+        out.setKeys(serviceWorker.printKeys(library, typeOfVoc));
+        return out;
     }
 
     /*public void enterPoint() throws IOException { //для ком.строки

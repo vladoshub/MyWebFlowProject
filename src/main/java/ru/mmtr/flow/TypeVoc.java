@@ -2,7 +2,7 @@ package ru.mmtr.flow;
 
 import java.io.Serializable;
 
-public class Type implements Serializable {
+public class TypeVoc implements Serializable {
     private String type;
 
     public void setType(String type) {

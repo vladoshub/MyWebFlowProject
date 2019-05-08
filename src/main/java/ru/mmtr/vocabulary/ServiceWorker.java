@@ -47,22 +47,16 @@ public class ServiceWorker {
     }
 
     public String updateByKey(Library Library,String id,String newKey,int type) throws IOException {//метод для работы с методом поиска по ключу клаасса Library
-        ListOfVocabulary list=null;
-        if(type==1){
-             list = ListOfVocabulary.Latins_Rus;
-        }
-        else
-             list = ListOfVocabulary.Number;
-        if (searchFromVocabulary(newKey,list))
             return Library.updateByKey(id,newKey,type);
-        else return "несоответсвие правилам словаря ";
     }
 
     public String updateByWord(Library Library,String id,String newWord,int type) throws IOException {//метод для работы с методом поиска по ключу клаасса Library
+        if (searchFromVocabulary(newWord,type))
         return Library.updateByWord(id,newWord,type);
+        else return "несоответсвие правилам словаря ";
     }
 
-    public void add(Library Library, ListOfVocabulary type) throws IOException {//метод для работы с методом добавление клаасса Library
+    public void add(Library Library, int type) throws IOException {//метод для работы с методом добавление клаасса Library
         System.out.println("введите ключ:");
         String key = Input.input();
         System.out.println("введите слово:");
@@ -72,25 +66,14 @@ public class ServiceWorker {
         else System.out.println("несоответсвие правилам словаря ");
     }
 
-    public String add(Library Library, ListOfVocabulary type,String key,String word) throws IOException {//метод для работы с методом добавление клаасса Library
-        int k;
-        if(type.name().equals("Latins_Rus"))
-            k=1;
-        else k=2;
-        if (searchFromVocabulary(key, type))
-           return Library.addToTxt(key, word,k);
-        else return "несоответсвие правилам словаря ";
+    public String add(Library Library, int type,String key,String... word) throws IOException {//метод для работы с методом добавление клаасса Library
+        for(String s:word) {
+            if (searchFromVocabulary(s, type)==false)
+                return "несоответсвие правилам словаря ";
+        }
+           return Library.addToTxt(key, word,type);
     }
 
-    public String add(Library Library, ListOfVocabulary type,String key,String[] word) throws IOException {//метод для работы с методом добавление клаасса Library
-        int k;
-        if(type.name().equals("Latins_Rus"))
-            k=1;
-        else k=2;
-        if (searchFromVocabulary(key, type))
-            return Library.addToTxt(key, word,k);
-        else return "несоответсвие правилам словаря ";
-    }
 
     public List<String> printAll(Library Library,int type) {//метод для работы с методом печать всего словаря клаасса Library
         return  Library.printAll(type);
@@ -99,19 +82,18 @@ public class ServiceWorker {
         return  Library.getKeys(type);
     }
 
-    public boolean searchFromVocabulary(String word, ListOfVocabulary num) {//поставить регулярку
-        if (num == ListOfVocabulary.Latins_Rus) {
+    public boolean searchFromVocabulary(String word, int num) {//поставить регулярку
+        if ("Latins_Rus" == getTypeOfVoc.getVocByInt(num-1)) {
             if (word.matches(firstVoc))
                 return true;
             return false;
         }
-        if (num == ListOfVocabulary.Number) {
+        else  {
 
             if (word.matches(secondVoc))
                 return true;
             return false;
         }
-        return false;
     }
 
 

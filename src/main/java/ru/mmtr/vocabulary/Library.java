@@ -172,11 +172,11 @@ public class Library {
         saveToTxt();
         */
        try {
-           keysDao.deleteByKey(key);
-           return "Word is deleted";
+           return keysDao.deleteByKey(key);
        }
        catch (Exception e){
-           return "error in datebase";
+           System.out.println(e.getMessage());
+           return null;
        }
 
 
@@ -192,11 +192,11 @@ public class Library {
         saveToTxt();
         */
         try {
-            keysDao.deleteByWord(id);
-            return "Word is deleted";
+            return keysDao.deleteByWord(id);
         }
         catch (Exception e){
-            return "error in datebase";
+            System.out.println(e.getMessage());
+            return null;
         }
 
 
@@ -206,11 +206,11 @@ public class Library {
         // states.put(key, value);
         //saveToTxt();
         try {
-            keysDao.AddKey(key,type,value);
-            return "Word is added";
+            return keysDao.AddKey(key,type,value);
         }
         catch (Exception e) {
-            return "error in datebase";
+            System.out.println(e.getMessage());
+            return null;
         }
         //readAllFromTxt();
     }
@@ -218,11 +218,11 @@ public class Library {
         // states.put(key, value);
         //saveToTxt();
         try {
-            keysDao.updateByKey(id, newKey,type);
-            return "Key is edit";
+            return keysDao.updateByKey(id, newKey,type);
         }
         catch (Exception e) {
-            return "error in datebase";
+            System.out.println(e.getMessage());
+            return null;
         }
         //readAllFromTxt();
     }
@@ -230,11 +230,11 @@ public class Library {
         // states.put(key, value);
         //saveToTxt();
         try {
-            keysDao.updateByWord(id, newWord,type);
-            return "Word is edit";
+            return keysDao.updateByWord(id, newWord,type);
         }
         catch (Exception e) {
-            return "error";
+            System.out.println(e.getMessage());
+            return null;
         }
         //readAllFromTxt();
     }
@@ -244,11 +244,12 @@ public class Library {
         // states.put(key, value);
         //saveToTxt();
         try {
-            keysDao.AddKey(key, type,value);
-            return "Word is added";
+            return keysDao.AddKey(key, type,value);
+
         }
         catch (Exception e) {
-            return "error in datebase";
+            System.out.println(e.getMessage());
+            return null;
         }
         //readAllFromTxt();
     }
