@@ -9,74 +9,79 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <head>
-    <style><%@include file="/WEB-INF/css/addPage.css"%></style>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/form/jquery.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/form/jquery.form.js"></script>
-<script type="application/javascript">
+    <style>
+        <%@include file="/WEB-INF/css/addPage.css" %>
+    </style>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/form/jquery.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/form/jquery.form.js"></script>
+    <script type="application/javascript">
 
 
-    function  getList() {
-        $('#hidden').toggle();
-    }
+        function getList() {
+            $('#hidden').toggle();
+        }
 
-    function func1() {
-        var element = document.createElement('input');
-        var element2 = document.createElement('br');
-        element.innerHTML = element.type="text";
-        element.innerHTML = element.id="input";
-        document.body.appendChild(element2);
-        document.body.appendChild(element);
-    }
+        function func1() {
+            var element = document.createElement('input');
+            var element2 = document.createElement('br');
+            element.innerHTML = element.type = "text";
+            element.innerHTML = element.id = "input";
+            document.body.appendChild(element2);
+            document.body.appendChild(element);
+        }
 
 
-    function readAllWords(){
-        var values2=$('body').find('#input2');
-        var values=$('body').find('#input');
+        function readAllWords() {
+            var values2 = $('body').find('#input2');
+            var values = $('body').find('#input');
 
-            var Key="";
+            var Key = "";
             Key = Key + values2[0].value;
-        if(!(Key==""||Key==null)) {
-            $('#Keyhidden').attr("value",Key);
-            var all = "";
-            if (values.length >= 1) {
-                for (var i = 0; i < values.length; ++i) {
-                    if (!values[i].value=='')
-                    all = all + values[i].value + "%_%";
-                }
-                if(!(all==""||all==null))
-                $('#allWord').attr("value", all),
-                    $('body').find('#input2').attr("value",""),
-                $('body').find('#input').attr("value",""),
-                $("#forma2").ajaxSubmit({
-
-                    url:"${flowExecutionUrl}&_eventId_addWords&ajaxSource=true",
-                    success:function (html) {
-                        $("#editVocAddManyWordsFragment").html($(html).filter("#editVocAddManyWordsFragment"));
-                    },
-                    error:function (error) {
-                        console.log(error)
+            if (!(Key == "" || Key == null)) {
+                $('#Keyhidden').attr("value", Key);
+                var all = "";
+                if (values.length >= 1) {
+                    for (var i = 0; i < values.length; ++i) {
+                        if (!values[i].value == '')
+                            all = all + values[i].value + "%_%";
                     }
-                });
+                    if (!(all == "" || all == null))
+                        $('#allWord').attr("value", all),
+                            $('body').find('#input2').attr("value", ""),
+                            $('body').find('#input').attr("value", ""),
+                            $("#forma2").ajaxSubmit({
+
+                                url: "${flowExecutionUrl}&_eventId_addWords&ajaxSource=true",
+                                success: function (html) {
+                                    $("#editVocAddManyWordsFragment").html($(html).filter("#editVocAddManyWordsFragment")),
+                                        $("#answer").html($(html).filter("#answer"));
+                                },
+                                error: function (error) {
+                                    console.log(error)
+                                }
+                            });
+                    else {
+                        alert("введите слово");
+                    }
+                }
                 else {
                     alert("введите слово");
                 }
             }
             else {
-                alert("введите слово");
+                alert("введите ключ");
             }
         }
-        else {
-            alert("введите ключ");
-        }
-    }
 
-</script>
+    </script>
 </head>
 <html>
 <body>
-<form id="forma2"  method="post">
+<form id="forma2" method="post">
     <input type="hidden" name="_flowExecutionKey"/>
-<tiles:insertAttribute name="editVocAddManyWordsFragment"/>
+    <tiles:insertAttribute name="answer"/>
+    <br>
+    <tiles:insertAttribute name="editVocAddManyWordsFragment"/>
 </form>
 </body>
 </html>

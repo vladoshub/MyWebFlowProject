@@ -12,17 +12,16 @@ import java.util.List;
 
 @Component("ChangeOps")
 
-public class ChangeOps {
+public class Choice {
 
 
     private Library library;
     private ServiceWorker serviceWorker;
-    private static String message;
-    Out out;
+    public Out out;
 
 
     @Autowired
-    public ChangeOps(Library library, ServiceWorker serviceWorker) {
+    public Choice(Library library, ServiceWorker serviceWorker) {
         this.library = library;
         this.serviceWorker = serviceWorker;
         out = new Out();
@@ -30,7 +29,7 @@ public class ChangeOps {
 
 
     private Out createOut(String input) {
-        Out out = new Out(input);
+        out.setOutMess(input);
         return out;
     }
 
@@ -53,28 +52,23 @@ public class ChangeOps {
     }
 
     public Out createOut() {
-        Out out = new Out();
         return out;
     }
 
     public Out delFromWebByKey(String key, int typeOfVoc) throws IOException {
-        out.setOutMess(serviceWorker.delByKey(library, key));
-        return this.printKeys(typeOfVoc);
+        return this.printKeys(typeOfVoc,serviceWorker.delByKey(library, key));
     }
 
     public Out delFromWebByWord(String id, int typeOfVoc) throws IOException {
-        out.setOutMess(serviceWorker.delByWord(library, id));
-        return this.printKeys(typeOfVoc);
+        return this.printKeys(typeOfVoc,serviceWorker.delByWord(library, id));
     }
 
     public Out updateByKeyFromWeb(String id, String newKey, int typeOfVoc) throws IOException {
-        out.setOutMess(serviceWorker.updateByKey(library, id, newKey, typeOfVoc));
-        return this.printKeys(typeOfVoc);
+        return this.printKeys(typeOfVoc,serviceWorker.updateByKey(library, id, newKey, typeOfVoc));
     }
 
     public Out updateByWordFromWeb(String id, String newWord, int typeOfVoc) throws IOException {
-        out.setOutMess(serviceWorker.updateByWord(library, id, newWord, typeOfVoc));
-        return this.printKeys(typeOfVoc);
+        return this.printKeys(typeOfVoc,serviceWorker.updateByWord(library, id, newWord, typeOfVoc));
     }
 
     public Out searchFromWebByKey(String key, int typeOfVoc) throws IOException {
@@ -92,7 +86,13 @@ public class ChangeOps {
     }
 
     public Out printKeys(int typeOfVoc) throws IOException {
+        out.setOutMess("");
         out.setKeys(serviceWorker.printKeys(library, typeOfVoc));
+        return out;
+    }
+    public Out printKeys(int typeOfVoc,String inPut) throws IOException {
+        out.setKeys(serviceWorker.printKeys(library, typeOfVoc));
+        out.setOutMess(inPut);
         return out;
     }
 

@@ -6,6 +6,6 @@
             <li value="${items.id}">key: <b>${items.key}</b> <c:choose><c:when test="${items.words.size()==1}"><b>${items.words.get(0).word}</b><button>Удалить</button></c:when><c:when test="${items.words.size()>1}"><button onclick="getList()">несколько значений</button>
                 <div id="hidden" hidden="false"><ul><c:forEach items="${items.words}" var="words"><li><b>${words.word}</b><button>Удалить</button></li></c:forEach></li></ul></div></c:when></c:choose></li>
         </c:forEach>
-        ${out.outList=null}
+        ${out.keys=null}
     </c:if>
 </ul>

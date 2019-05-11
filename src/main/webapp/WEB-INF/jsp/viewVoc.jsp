@@ -29,7 +29,8 @@
 
                 url: "${flowExecutionUrl}&" + el.name + "&ajaxSource=true",
                 success: function (html) {
-                    $("#list").html($(html).filter("#list"));
+                    $("#list").html($(html).filter("#list")),
+                        $("#answer").html($(html).filter("#answer"));
                 },
                 error: function (error) {
                     console.log(error)
@@ -39,27 +40,24 @@
 
         function closeBut(el, type) {
 
-            var id = el.id+"";
-            var name ="#"+el.value + type;
-            $("#"+id + "O").attr("id", id + "C");
-            document.getElementById(id + "C").innerText="Редактировать";
+            var id = el.id + "";
+            var name = "#" + el.value + type;
+            $("#" + id + "O").attr("id", id + "C");
             $(name).toggle();
 
         }
 
 
-        function ed(el, word) {
+        function ed(el, word, check) {
 
             var name = "#" + el.value + word;
             if (el.id[el.id.length - 1] == "C") {
                 el.id = el.id.slice(0, -1) + 'O';
-                el.innerText = "ok";
                 $(name).toggle();
             }
             else {
-                if ($(name).children('input').attr("value").length >= 1) {
+                if ($(name).children('input').attr("value").length >= 1 && $(name).children('input').attr("value") != check) {
                     el.id = el.id.slice(0, -1) + 'C';
-                    el.innerText = "Редактировать";
                     $("#edit").attr("value", $(name).children('input').attr("value"));
                     $("#ids").attr("value", el.value);
                     $(name).toggle();
@@ -67,7 +65,8 @@
 
                         url: "${flowExecutionUrl}&" + el.name + "&ajaxSource=true",
                         success: function (html) {
-                            $("#list").html($(html).filter("#list"));
+                            $("#list").html($(html).filter("#list")),
+                                $("#answer").html($(html).filter("#answer"));
                         },
                         error: function (error) {
                             console.log(error)
@@ -75,7 +74,7 @@
                     });
                 }
                 else {
-                    alert("введите ключ");
+                    alert("введите измененное слово");
                 }
             }
         }
@@ -88,6 +87,8 @@
     <input id="ids" type="hidden" name="ids" value=""/>
     <input id="edit" type="hidden" name="edit" value=""/>
     <input type="hidden" name="_flowExecutionKey"/>
+    <tiles:insertAttribute name="answer"/>
+    <br>
     <tiles:insertAttribute name="list"/>
 </form>
 </body>

@@ -3,7 +3,7 @@ package ru.mmtr.vocabulary;
 import java.util.Arrays;
 import java.util.List;
 
-public  class getTypeOfVoc {
+public  class GetTypeOfVoc {
     private static List<String> Vocs=Arrays.asList("Latins_Rus", "Number");
     public static void addVoc(String voc){
         Vocs.add(voc);

@@ -83,7 +83,7 @@ public class ServiceWorker {
     }
 
     public boolean searchFromVocabulary(String word, int num) {//поставить регулярку
-        if ("Latins_Rus" == getTypeOfVoc.getVocByInt(num-1)) {
+        if ("Latins_Rus" == GetTypeOfVoc.getVocByInt(num-1)) {
             if (word.matches(firstVoc))
                 return true;
             return false;

@@ -6,7 +6,7 @@
 
     <!-- Base Definition -->
     <definition name="temp"
-                template="/WEB-INF/jsp/voc.jsp">
+                template="/WEB-INF/jsp/choiceVoc.jsp">
         <put-attribute name="title" value=""/>
     </definition>
 
@@ -16,18 +16,19 @@
 
     <definition name="view"
                 template="/WEB-INF/jsp/viewVoc.jsp">
-        <put-attribute name="list" value="/WEB-INF/jsp/list.jsp"/>
-        <put-attribute name="search" value="/WEB-INF/jsp/search.jsp"/>
+        <put-attribute name="list" value="/WEB-INF/jsp/listFragment.jsp"/>
+        <put-attribute name="answer" value="/WEB-INF/jsp/answerFragment.jsp"/>
     </definition>
 
 
     <definition name="addMany"
                 template="/WEB-INF/jsp/editVoc.jsp">
         <put-attribute name="editVocAddManyWordsFragment" value="/WEB-INF/jsp/editVocAddManyWordsFragment.jsp"/>
+        <put-attribute name="answer" value="/WEB-INF/jsp/answerFragment.jsp"/>
     </definition>
 
     <definition name="search"
-                template="/WEB-INF/jsp/search.jsp">
+                template="/WEB-INF/jsp/searchVoc.jsp">
     </definition>
 
 

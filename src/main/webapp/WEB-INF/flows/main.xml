@@ -11,11 +11,9 @@
 
     <view-state id="main" view="main">
         <transition on="nextRus" to="temp">
-            <set  name = "out.voc"  value = "1"/>
             <set  name = "type.type"  value = "1"/>
         </transition>
         <transition on="nextBin" to="temp">
-        <set  name = "out.voc"  value = "2"/>
             <set  name = "type.type"  value = "2"/>
         </transition>
     </view-state>
@@ -25,22 +23,22 @@
         <transition on="editWord" >
             <evaluate result="out" expression=
                     "ChangeOps.updateByWordFromWeb(requestParameters.ids,requestParameters.edit,type.type)"/>
-            <render fragments="list,search"/>
+            <render fragments="list,answer"/>
         </transition>
         <transition on="editKey" >
             <evaluate result="out" expression=
                     "ChangeOps.updateByKeyFromWeb(requestParameters.ids,requestParameters.edit,type.type)"/>
-            <render fragments="list"/>
+            <render fragments="list,answer"/>
         </transition>
         <transition on="deletedWord" >
             <evaluate result="out" expression=
                     "ChangeOps.delFromWebByKey(requestParameters.edit,type.type)"/>
-            <render fragments="list"/>
+            <render fragments="list,answer"/>
         </transition>
         <transition on="deletedKey" >
             <evaluate result="out" expression=
                     "ChangeOps.delFromWebByKey(requestParameters.edit,type.type)"/>
-            <render fragments="list"/>
+            <render fragments="list,answer"/>
         </transition>
     </view-state>
 
@@ -48,7 +46,7 @@
         <transition on="addWords" >
             <evaluate result="out" expression=
                     "ChangeOps.addFromWeb(requestParameters.inputNameKey,requestParameters.inputNameWord,type.type)"/>
-            <render fragments="editVocAddManyWordsFragment"/>
+            <render fragments="editVocAddManyWordsFragment,answer"/>
         </transition>
 
     </view-state>
@@ -68,10 +66,10 @@
 
     <view-state id="temp" view="temp" model="ChangeOps">
         <transition on="nextBin" to="temp">
-            <set  name = "out.voc"  value = "2"/>
+            <set  name = "type.type"  value = "2"/>
         </transition>
         <transition on="nextRus" to="temp">
-            <set  name = "out.voc"  value = "1"/>
+            <set  name = "type.type"  value = "1"/>
         </transition>
         <transition on="next" to="main"/>
         <transition on="view" to="view">
