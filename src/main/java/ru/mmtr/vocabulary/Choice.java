@@ -52,7 +52,7 @@ public class Choice {
     }
 
     public Out createOut() {
-        return out;
+        return new Out();
     }
 
     public Out delFromWebByKey(String key, int typeOfVoc) throws IOException {

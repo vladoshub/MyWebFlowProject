@@ -5,10 +5,6 @@
 <input type="hidden" name="_flowExecutionKey"/>
 <input type="hidden"  value="" name="inputNameKey" id="Keyhidden">
 <input type="hidden"  value="" name="inputNameWord" id="allWord">
-    <c:if test="${not empty out.outMess}">
-     <b>${out.outMess}</b>
-    </c:if>
-<br>
 <p>Введите ключ</p>
 <input type="text" value="" id="input2">
 <p>Введите слово</p>
