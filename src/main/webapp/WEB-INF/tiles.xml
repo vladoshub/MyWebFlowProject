@@ -27,6 +27,10 @@
         <put-attribute name="answer" value="/WEB-INF/jsp/answerFragment.jsp"/>
     </definition>
 
+    <definition name="voc"
+                template="/WEB-INF/jsp/Vocabulary.jsp">
+    </definition>
+
     <definition name="search"
                 template="/WEB-INF/jsp/searchVoc.jsp">
     </definition>

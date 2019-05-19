@@ -130,8 +130,7 @@ public class KeysDaoImpl implements KeysDao {
         try {
             Session session = this.sessionFactory.openSession();
             Transaction tx1 = session.beginTransaction();
-            Criteria criteria = session.createCriteria(Keys.class);
-            List<Keys> ux = criteria.add(Restrictions.eq("key", keys)).list();
+            List<Keys> ux = session.createQuery("From Keys where id=" + keys + "").list();
             session.delete(ux.get(0));
             tx1.commit();
             session.close();

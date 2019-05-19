@@ -13,7 +13,7 @@ public class Words implements Serializable {
     private long id;
     @Column(name = "word")
     private String word;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="key_id")
     private Keys key;
 

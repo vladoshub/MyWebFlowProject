@@ -18,6 +18,7 @@
     <button id="knopka2"  type="submit" class="button" name="_eventId_view"><img class="voc" src="${pageContext.request.contextPath}/images/print.png"/>Вывод Всего</button>
     <button id="knopka3"  type="submit" class="button" name="_eventId_addMany"><img class="voc" src="${pageContext.request.contextPath}/images/add.jpg"/>Добавление значений</button>
     <button id="knopka4"  type="submit" class="button" name="_eventId_search"><img class="voc" src="${pageContext.request.contextPath}/images/search.png"/>Поиск</button>
+    <button id="knopka8"  type="submit" class="button" name="_eventId_voc">Словарь</button>
 </form>
 </body>
 </html>

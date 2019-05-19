@@ -32,7 +32,7 @@
         </transition>
         <transition on="deletedWord" >
             <evaluate result="out" expression=
-                    "ChangeOps.delFromWebByKey(requestParameters.edit,type.type)"/>
+                    "ChangeOps.delFromWebByWord(requestParameters.edit,type.type)"/>
             <render fragments="list,answer"/>
         </transition>
         <transition on="deletedKey" >
@@ -51,6 +51,8 @@
 
     </view-state>
 
+    <view-state id="voc" view="voc">
+    </view-state>
 
     <view-state id="search" view="search">
         <transition on="SearchKey" to="search">
@@ -83,6 +85,10 @@
         <transition on="search" to="search">
             <evaluate result="out" expression=
                     "ChangeOps.createOut()" />
+        </transition>
+        <transition on="voc" to="voc">
+            <evaluate result="out" expression=
+                    "ChangeOps.printKeys(type.type)" />
         </transition>
     </view-state>
 </flow>

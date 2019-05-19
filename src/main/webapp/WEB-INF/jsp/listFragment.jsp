@@ -34,7 +34,7 @@
                                 src="${pageContext.request.contextPath}/images/edit.svg"/></button>
                         <div class="inp" hidden="false" id="${items.words.get(0).id}WordDiv"><input type="text"
                                                                                                     value="${items.words.get(0).word}"/>
-                            <button type="button" onclick="closeBut(this,'WordDiv')" class="list"
+
                                     id="${items.words.get(0).id}" value="${items.words.get(0).id}"><img
                                     src="${pageContext.request.contextPath}/images/undo.png"/></button>
                         </div>
