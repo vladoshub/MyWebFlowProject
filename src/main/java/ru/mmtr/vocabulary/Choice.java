@@ -76,15 +76,19 @@ public class Choice {
     }
 
     public Out searchFromWebByWords(String word, int typeOfVoc) throws IOException {
-        return createOutWords(serviceWorker.seacrhByWord(library, word, typeOfVoc));
+        return createOutKeys(serviceWorker.seacrhByWord(library, word, typeOfVoc));
     }
 
     public Out addFromWeb(String key, String word, int voc) throws IOException {
-        String[] words = word.split("%_%");
+        //String[] words = word.split("%_%");
 
-        return createOut(serviceWorker.add(library, voc, key, words));
+        return createOut(serviceWorker.add(library, voc, key, word));
     }
+    public Out addFromWebtoKey(String id, String word, int voc) throws IOException {
+        //String[] words = word.split("%_%");
 
+        return createOut(serviceWorker.addToKey(library, voc, id, word));
+    }
     public Out printKeys(int typeOfVoc) throws IOException {
         out.setOutMess("");
         out.setKeys(serviceWorker.printKeys(library, typeOfVoc));

@@ -52,7 +52,50 @@
     </view-state>
 
     <view-state id="voc" view="voc">
+        <transition on="SearchKeys" to="voc">
+            <evaluate result="out" expression=
+                    "ChangeOps.searchFromWebByKey(requestParameters.searchkey,type.type)"/>
+        </transition>
+
+        <transition on="SearchWords" to="voc">
+            <evaluate result="out" expression=
+                    "ChangeOps.searchFromWebByWords(requestParameters.searchword,type.type)"/>
+        </transition>
+
+        <transition on="addWordss">
+            <evaluate result="out" expression=
+                    "ChangeOps.addFromWeb(requestParameters.key,requestParameters.word,type.type)"/>
+            <render fragments="answer"/>
+        </transition>
+
+        <transition on="addWordsss">
+            <evaluate result="out" expression=
+                    "ChangeOps.addFromWeb(requestParameters.key,requestParameters.word,type.type)"/>
+            <render fragments="answer"/>
+        </transition>
+
+        <transition on="editWord" >
+            <evaluate result="out" expression=
+                    "ChangeOps.updateByWordFromWeb(requestParameters.ID,requestParameters.word,type.type)"/>
+            <render fragments="voc,answer"/>
+        </transition>
+        <transition on="editKey" >
+            <evaluate result="out" expression=
+                    "ChangeOps.updateByKeyFromWeb(requestParameters.ID,requestParameters.key,type.type)"/>
+            <render fragments="voc,answer"/>
+        </transition>
+        <transition on="deletedWord" >
+            <evaluate result="out" expression=
+                    "ChangeOps.delFromWebByWord(requestParameters.word,type.type)"/>
+            <render fragments="voc,answer"/>
+        </transition>
+        <transition on="deletedKey" >
+            <evaluate result="out" expression=
+                    "ChangeOps.delFromWebByKey(requestParameters.word,type.type)"/>
+            <render fragments="voc,answer"/>
+        </transition>
     </view-state>
+
 
     <view-state id="search" view="search">
         <transition on="SearchKey" to="search">

@@ -42,7 +42,7 @@ public class ServiceWorker {
     public List<Keys> seacrhByKey(Library Library,String key,int type) throws IOException {//метод для работы с методом поиска по ключу клаасса Library
         return Library.searchByKey(key,type);
     }
-    public List<Words> seacrhByWord(Library Library, String word, int type) throws IOException {//метод для работы с методом поиска по ключу клаасса Library
+    public List<Keys> seacrhByWord(Library Library, String word, int type) throws IOException {//метод для работы с методом поиска по ключу клаасса Library
         return Library.searchByWord(word,type);
     }
 
@@ -74,6 +74,12 @@ public class ServiceWorker {
            return Library.addToTxt(key, word,type);
     }
 
+    public String addToKey(Library Library, int type,String id,String word) throws IOException {//метод для работы с методом добавление клаасса Library
+            if (searchFromVocabulary(word, type)==false)
+                return "несоответсвие правилам словаря ";
+
+        return Library.addToKey(id, word,type);
+    }
 
     public List<String> printAll(Library Library,int type) {//метод для работы с методом печать всего словаря клаасса Library
         return  Library.printAll(type);

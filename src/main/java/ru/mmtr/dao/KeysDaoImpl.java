@@ -41,6 +41,8 @@ public class KeysDaoImpl implements KeysDao {
         }
     }
 
+
+
     @Override
     public String AddKey(String Key, int type, String... words) {//добавление новой записи
         List<Words> wordList = new ArrayList<>();
@@ -70,7 +72,26 @@ public class KeysDaoImpl implements KeysDao {
             return null;
         }
     }
-
+    @Override
+   public String AddWordtoKey(String id, int type,String words){
+        try {
+            Words word = new Words();
+            Session session = this.sessionFactory.openSession();
+            Transaction tx1 = session.beginTransaction();
+            List<Keys> ux = session.createQuery("From Keys where id=" + id + " and type_id=" + type + "").list();
+            word.setWord(words);
+            word.setKey(ux.get(0));
+            session.persist(word);
+            ux.get(0).setWords(word);
+            session.update(ux.get(0));
+            tx1.commit();
+            session.close();
+            return "Ok";
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+   }
 
     @Override
     public List<Keys> findByKey(String key) { // возврат листы  ключа
@@ -78,8 +99,7 @@ public class KeysDaoImpl implements KeysDao {
             Session session = this.sessionFactory.openSession();
        /* List ux = session.createQuery("SELECT id FROM Keys where key='"+key+"'").list();
         Words  w = findWordsById((int)ux.get(1));*/
-            Criteria criteria = session.createCriteria(Keys.class);
-            List<Keys> ux = criteria.add(Restrictions.eq("key", key)).list();
+            List<Keys> ux = session.createQuery("From Keys where key='" + key + "'").list();
             session.close();
             return ux;
         } catch (Exception e) {
@@ -88,18 +108,28 @@ public class KeysDaoImpl implements KeysDao {
         }
     }
 
-    public List<Words> findByWord(String word, int type) { // возврат слов по ключю(key-ключ,type-тип словаря)
+    public List<Keys> findByWord(String word, int type) { // возврат слов по ключю(key-ключ,type-тип словаря)
         try {
+            List<Keys> ux2 = new ArrayList<Keys>();
+            int count=0;
             Session session = this.sessionFactory.openSession();
        /* List ux = session.createQuery("SELECT id FROM Keys where key='"+key+"'").list();
         Words  w = findWordsById((int)ux.get(1));*/
             List<Words> ux = session.createQuery("From Words where word='" + word + "'").list();
+            for(Words w:ux){
+                Keys keys = new Keys();
+                keys.setType(w.getKey().getType());
+                keys.setWords(w.getKey().getWords());
+                keys.setKey(w.getKey().getKey());
+                keys.setId(w.getKey().getId());
+                ux2.add(keys);
+            }
             //  Criteria criteria = session.createCriteria(Keys.class) //-не рабочий
             //   .add(Restrictions.eq("key", key))
             //   .add(Restrictions.eq("type_id", type));
             // List<Keys> ux = criteria.list();
             session.close();
-            return ux;
+            return ux2;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;

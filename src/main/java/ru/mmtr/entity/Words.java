@@ -21,6 +21,7 @@ public class Words implements Serializable {
         this.key = key;
     }
 
+
     public Keys getKey() {
         return key;
     }
