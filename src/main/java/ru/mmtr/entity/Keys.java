@@ -2,6 +2,7 @@ package ru.mmtr.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -65,12 +66,16 @@ public class Keys implements Serializable {
 
     public void setWords(List<Words> words) {
 
+
         this.words = words;
     }
 
     public void setWords(Words words) {
 
+        if(words!=null)
         this.words.add(words);
+        else
+            this.words=new ArrayList<Words>();
     }
 
     @Override

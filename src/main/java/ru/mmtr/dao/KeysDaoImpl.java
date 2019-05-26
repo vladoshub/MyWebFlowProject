@@ -45,26 +45,16 @@ public class KeysDaoImpl implements KeysDao {
 
     @Override
     public String AddKey(String Key, int type, String... words) {
-        List<Words> wordList = new ArrayList<>();
         try {
             Session session = this.sessionFactory.openSession();
             Transaction tx1 = session.beginTransaction();
-            int k = 0;
-            Words word = new Words();
             Keys keys = new Keys();
-            //keys.setWords(wordList);
             keys.setKey(Key);
             for (int i = 0; i < words.length; i++) {
-                word.setWord(words[k]);
-                k++;
-                word.setKey(keys);
-                wordList.add(word);
-                keys.setWords(wordList);
-                session.save(word);
-
+                Words word = new Words();
+                word.setWord(words[i]);
+                keys.setWords(word);
             }
-
-
             List<Type> ux = session.createQuery("From Type where id=" + type + "").list();
             ux.get(0).setKeys(keys);
             session.update(ux.get(0));
@@ -85,11 +75,8 @@ public class KeysDaoImpl implements KeysDao {
             Transaction tx1 = session.beginTransaction();
             List<Keys> ux = session.createQuery("From Keys where id=" + id + " and type_id=" + type + "").list();
             word.setWord(words);
-            word.setKey(ux.get(0));
-            word.setId(1);
-            //ux.get(0).setWords(word);
-            session.save(word);
-            // session.update(ux.get(0));
+            ux.get(0).setWords(word);
+            session.update(ux.get(0));
             tx1.commit();
             session.close();
             return "Ok";
