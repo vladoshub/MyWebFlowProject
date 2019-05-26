@@ -22,6 +22,7 @@ public class KeysDaoImpl implements KeysDao {
     }
 
     private SessionFactory sessionFactory;
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(KeysDaoImpl.class);
 
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
@@ -42,38 +43,42 @@ public class KeysDaoImpl implements KeysDao {
     }
 
 
-
     @Override
-    public String AddKey(String Key, int type, String... words) {//добавление новой записи
+    public String AddKey(String Key, int type, String... words) {
         List<Words> wordList = new ArrayList<>();
         try {
+            Session session = this.sessionFactory.openSession();
+            Transaction tx1 = session.beginTransaction();
             int k = 0;
+            Words word = new Words();
             Keys keys = new Keys();
+            //keys.setWords(wordList);
+            keys.setKey(Key);
             for (int i = 0; i < words.length; i++) {
-                Words word = new Words();
-                word.setKey(keys);
                 word.setWord(words[k]);
                 k++;
+                word.setKey(keys);
                 wordList.add(word);
-            }
-            keys.setWords(wordList);
-            keys.setKey(Key);
-            Session session = this.sessionFactory.openSession();
-            List<Type> ux = session.createQuery("From TypeVoc where id=" + type + "").list();
-            keys.setType(ux.get(0));
+                keys.setWords(wordList);
+                session.save(word);
 
-            Transaction tx = session.beginTransaction();
-            session.persist(keys);
-            tx.commit();
+            }
+
+
+            List<Type> ux = session.createQuery("From Type where id=" + type + "").list();
+            ux.get(0).setKeys(keys);
+            session.update(ux.get(0));
+            tx1.commit();
             session.close();
             return "Ok";
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            log.error(e.getMessage(), e);
             return null;
         }
     }
+
     @Override
-   public String AddWordtoKey(String id, int type,String words){
+    public String AddWordtoKey(String id, int type, String words) {
         try {
             Words word = new Words();
             Session session = this.sessionFactory.openSession();
@@ -81,17 +86,18 @@ public class KeysDaoImpl implements KeysDao {
             List<Keys> ux = session.createQuery("From Keys where id=" + id + " and type_id=" + type + "").list();
             word.setWord(words);
             word.setKey(ux.get(0));
-            session.persist(word);
-            ux.get(0).setWords(word);
-            session.update(ux.get(0));
+            word.setId(1);
+            //ux.get(0).setWords(word);
+            session.save(word);
+            // session.update(ux.get(0));
             tx1.commit();
             session.close();
             return "Ok";
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            log.error(e.getMessage(), e);
             return null;
         }
-   }
+    }
 
     @Override
     public List<Keys> findByKey(String key) { // возврат листы  ключа
@@ -103,20 +109,18 @@ public class KeysDaoImpl implements KeysDao {
             session.close();
             return ux;
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            log.error(e.getMessage(), e);
             return null;
         }
     }
 
-    public List<Keys> findByWord(String word, int type) { // возврат слов по ключю(key-ключ,type-тип словаря)
+    public List<Keys> findByWord(String word, int type) {
         try {
             List<Keys> ux2 = new ArrayList<Keys>();
-            int count=0;
+            int count = 0;
             Session session = this.sessionFactory.openSession();
-       /* List ux = session.createQuery("SELECT id FROM Keys where key='"+key+"'").list();
-        Words  w = findWordsById((int)ux.get(1));*/
             List<Words> ux = session.createQuery("From Words where word='" + word + "'").list();
-            for(Words w:ux){
+            for (Words w : ux) {
                 Keys keys = new Keys();
                 keys.setType(w.getKey().getType());
                 keys.setWords(w.getKey().getWords());
@@ -124,14 +128,10 @@ public class KeysDaoImpl implements KeysDao {
                 keys.setId(w.getKey().getId());
                 ux2.add(keys);
             }
-            //  Criteria criteria = session.createCriteria(Keys.class) //-не рабочий
-            //   .add(Restrictions.eq("key", key))
-            //   .add(Restrictions.eq("type_id", type));
-            // List<Keys> ux = criteria.list();
             session.close();
             return ux2;
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            log.error(e.getMessage(), e);
             return null;
         }
     }
@@ -166,7 +166,7 @@ public class KeysDaoImpl implements KeysDao {
             session.close();
             return "Ok";
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            log.error(e.getMessage(), e);
             return null;
         }
     }
@@ -182,7 +182,7 @@ public class KeysDaoImpl implements KeysDao {
             session.close();
             return "Ok";
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            log.error(e.getMessage(), e);
             return null;
         }
     }
@@ -199,7 +199,7 @@ public class KeysDaoImpl implements KeysDao {
             session.close();
             return "Ok";
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            log.error(e.getMessage(), e);
             return null;
         }
     }
@@ -216,7 +216,7 @@ public class KeysDaoImpl implements KeysDao {
             session.close();
             return "Ok";
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            log.error(e.getMessage(), e);
             return null;
         }
     }

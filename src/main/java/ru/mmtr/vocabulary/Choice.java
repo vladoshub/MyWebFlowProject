@@ -28,11 +28,6 @@ public class Choice {
     }
 
 
-    private Out createOut(String input) {
-        out.setOutMess(input);
-        return out;
-    }
-
     private Out createOutKeys(List<Keys> keys) {
         Out out = new Out();
         if (keys != null && keys.size() != 0) {
@@ -56,19 +51,19 @@ public class Choice {
     }
 
     public Out delFromWebByKey(String key, int typeOfVoc) throws IOException {
-        return this.printKeys(typeOfVoc,serviceWorker.delByKey(library, key));
+        return printKeys(typeOfVoc, serviceWorker.delByKey(library, key));
     }
 
     public Out delFromWebByWord(String id, int typeOfVoc) throws IOException {
-        return this.printKeys(typeOfVoc,serviceWorker.delByWord(library, id));
+        return printKeys(typeOfVoc, serviceWorker.delByWord(library, id));
     }
 
     public Out updateByKeyFromWeb(String id, String newKey, int typeOfVoc) throws IOException {
-        return this.printKeys(typeOfVoc,serviceWorker.updateByKey(library, id, newKey, typeOfVoc));
+        return printKeys(typeOfVoc, serviceWorker.updateByKey(library, id, newKey, typeOfVoc));
     }
 
     public Out updateByWordFromWeb(String id, String newWord, int typeOfVoc) throws IOException {
-        return this.printKeys(typeOfVoc,serviceWorker.updateByWord(library, id, newWord, typeOfVoc));
+        return printKeys(typeOfVoc, serviceWorker.updateByWord(library, id, newWord, typeOfVoc));
     }
 
     public Out searchFromWebByKey(String key, int typeOfVoc) throws IOException {
@@ -80,21 +75,24 @@ public class Choice {
     }
 
     public Out addFromWeb(String key, String word, int voc) throws IOException {
-        //String[] words = word.split("%_%");
 
-        return createOut(serviceWorker.add(library, voc, key, word));
+
+        return printKeys(voc, serviceWorker.add(library, voc, key, word));
+
     }
+
     public Out addFromWebtoKey(String id, String word, int voc) throws IOException {
-        //String[] words = word.split("%_%");
+        return printKeys(voc, serviceWorker.addToKey(library, voc, id, word));
 
-        return createOut(serviceWorker.addToKey(library, voc, id, word));
     }
+
     public Out printKeys(int typeOfVoc) throws IOException {
         out.setOutMess("");
         out.setKeys(serviceWorker.printKeys(library, typeOfVoc));
         return out;
     }
-    public Out printKeys(int typeOfVoc,String inPut) throws IOException {
+
+    public Out printKeys(int typeOfVoc, String inPut) throws IOException {
         out.setKeys(serviceWorker.printKeys(library, typeOfVoc));
         out.setOutMess(inPut);
         return out;

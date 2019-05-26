@@ -4,7 +4,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+
 @Entity
 @Table(name = "types")
 public class Type implements Serializable {
@@ -23,6 +25,11 @@ public class Type implements Serializable {
     public Type(String type, List<Keys> keys) {
         this.type = type;
         this.keys = keys;
+    }
+
+    public Type(String type, Keys keys) {
+        this.type = type;
+        this.keys.add(keys);
     }
 
 
@@ -46,14 +53,15 @@ public class Type implements Serializable {
         return keys;
     }
 
+
+    public void setKeys(List<Keys> keys) {
+
+        this.keys = keys;
+    }
+
     public void setKeys(Keys keys) {
 
         this.keys.add(keys);
-    }
-
-    public void setWords(List<Keys> keys) {
-
-        this.keys=keys;
     }
 
     @Override

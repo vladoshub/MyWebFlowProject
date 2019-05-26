@@ -3,7 +3,6 @@ package ru.mmtr.vocabulary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.mmtr.entity.Keys;
-import ru.mmtr.entity.Words;
 
 import java.io.IOException;
 import java.util.List;
@@ -20,81 +19,85 @@ public class ServiceWorker {
 
     private String firstVoc;
     private String secondVoc;
-    //  private char[] Latinsk = {'A', 'B', 'C', 'D', 'E', 'F', 'Z', 'H', 'I', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'V', 'X'};
-    // private char[] Number = {'1', '2', '3', '4', '5', '6', '7', '8', '9', '0'};
 
-    public void del(Library Library) throws IOException {//метод для работы с методом удаление клаасс аLibrary
+
+    public void del(Library Library) throws IOException {
         System.out.println("введите ключ:");
         String key = Input.input();
         Library.deleteByKey(key);
     }
-    public String delByKey(Library Library,String key) throws IOException {//метод для работы с методом удаление клаасс аLibrary
+
+    public String delByKey(Library Library, String key) throws IOException {
         return Library.deleteByKey(key);
     }
-    public String delByWord(Library Library,String id) throws IOException {//метод для работы с методом удаление клаасс аLibrary
+
+    public String delByWord(Library Library, String id) throws IOException {
         return Library.deleteByWord(id);
     }
-    public List<String> seacrh(Library Library,int type) throws IOException {//метод для работы с методом поиска по ключу клаасса Library
+
+    public List<String> seacrh(Library Library, int type) throws IOException {
         System.out.println("введите ключ:");
         String key = Input.input();
-       return Library.readFromTxt(key,type);
-    }
-    public List<Keys> seacrhByKey(Library Library,String key,int type) throws IOException {//метод для работы с методом поиска по ключу клаасса Library
-        return Library.searchByKey(key,type);
-    }
-    public List<Keys> seacrhByWord(Library Library, String word, int type) throws IOException {//метод для работы с методом поиска по ключу клаасса Library
-        return Library.searchByWord(word,type);
+        return Library.readFromTxt(key, type);
     }
 
-    public String updateByKey(Library Library,String id,String newKey,int type) throws IOException {//метод для работы с методом поиска по ключу клаасса Library
-            return Library.updateByKey(id,newKey,type);
+    public List<Keys> seacrhByKey(Library Library, String key, int type) throws IOException {
+        return Library.searchByKey(key, type);
     }
 
-    public String updateByWord(Library Library,String id,String newWord,int type) throws IOException {//метод для работы с методом поиска по ключу клаасса Library
-        if (searchFromVocabulary(newWord,type))
-        return Library.updateByWord(id,newWord,type);
+    public List<Keys> seacrhByWord(Library Library, String word, int type) throws IOException {
+        return Library.searchByWord(word, type);
+    }
+
+    public String updateByKey(Library Library, String id, String newKey, int type) throws IOException {
+        return Library.updateByKey(id, newKey, type);
+    }
+
+    public String updateByWord(Library Library, String id, String newWord, int type) throws IOException {
+        if (searchFromVocabulary(newWord, type))
+            return Library.updateByWord(id, newWord, type);
         else return "несоответсвие правилам словаря ";
     }
 
-    public void add(Library Library, int type) throws IOException {//метод для работы с методом добавление клаасса Library
+    public void add(Library Library, int type) throws IOException {
         System.out.println("введите ключ:");
         String key = Input.input();
         System.out.println("введите слово:");
         String word = Input.input();
         if (searchFromVocabulary(key, type))
-            Library.addToTxt(key, word,1);
+            Library.addToTxt(key, word, 1);
         else System.out.println("несоответсвие правилам словаря ");
     }
 
-    public String add(Library Library, int type,String key,String... word) throws IOException {//метод для работы с методом добавление клаасса Library
-        for(String s:word) {
-            if (searchFromVocabulary(s, type)==false)
+    public String add(Library Library, int type, String key, String... word) throws IOException {
+        for (String s : word) {
+            if (searchFromVocabulary(s, type) == false)
                 return "несоответсвие правилам словаря ";
         }
-           return Library.addToTxt(key, word,type);
+        return Library.addToTxt(key, word, type);
     }
 
-    public String addToKey(Library Library, int type,String id,String word) throws IOException {//метод для работы с методом добавление клаасса Library
-            if (searchFromVocabulary(word, type)==false)
-                return "несоответсвие правилам словаря ";
+    public String addToKey(Library Library, int type, String id, String word) throws IOException {
+        if (searchFromVocabulary(word, type) == false)
+            return "несоответсвие правилам словаря ";
 
-        return Library.addToKey(id, word,type);
+        return Library.addToKey(id, word, type);
     }
 
-    public List<String> printAll(Library Library,int type) {//метод для работы с методом печать всего словаря клаасса Library
-        return  Library.printAll(type);
-    }//метод для работы с методом печать всего словаря клаасса Library
+    public List<String> printAll(Library Library, int type) {
+        return Library.printAll(type);
+    }
+
     public List<Keys> printKeys(Library Library, int type) {
-        return  Library.getKeys(type);
+        return Library.getKeys(type);
     }
 
-    public boolean searchFromVocabulary(String word, int num) {//поставить регулярку
-        if ("Latins_Rus" == GetTypeOfVoc.getVocByInt(num-1)) {
+    public boolean searchFromVocabulary(String word, int num) {
+        if ("Latins_Rus" == GetTypeOfVoc.getVocByInt(num - 1)) {
             if (word.matches(firstVoc))
                 return true;
             return false;
-        }
-        else  {
+        } else {
 
             if (word.matches(secondVoc))
                 return true;

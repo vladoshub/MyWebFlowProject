@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @SuppressWarnings("flow")
-public  class Out implements Serializable {
+public class Out implements Serializable {
     private String outMess;
     private List<Keys> keys;
     private List<Words> words;
@@ -28,10 +28,10 @@ public  class Out implements Serializable {
     }
 
     public void setOutMess(String outMess) {
-        if(outMess==null)
-            this.outMess ="server error";
+        if (outMess == null)
+            this.outMess = "server error";
         else
-        this.outMess = outMess;
+            this.outMess = outMess;
     }
 
     public void setKeys(List<Keys> keys) {

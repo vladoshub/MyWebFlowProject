@@ -52,26 +52,26 @@
     </view-state>
 
     <view-state id="voc" view="voc">
-        <transition on="SearchKeys" to="voc">
+        <transition on="SearchKeys" >
             <evaluate result="out" expression=
                     "ChangeOps.searchFromWebByKey(requestParameters.searchkey,type.type)"/>
         </transition>
 
-        <transition on="SearchWords" to="voc">
+        <transition on="SearchWords" >
             <evaluate result="out" expression=
                     "ChangeOps.searchFromWebByWords(requestParameters.searchword,type.type)"/>
         </transition>
 
-        <transition on="addWordss">
+        <transition on="addWordss" >
             <evaluate result="out" expression=
                     "ChangeOps.addFromWeb(requestParameters.key,requestParameters.word,type.type)"/>
-            <render fragments="answer"/>
+            <render fragments="voc,answer"/>
         </transition>
 
-        <transition on="addWordsss">
+        <transition on="addWordsss" >
             <evaluate result="out" expression=
-                    "ChangeOps.addFromWeb(requestParameters.key,requestParameters.word,type.type)"/>
-            <render fragments="answer"/>
+                    "ChangeOps.addFromWebtoKey(requestParameters.ID,requestParameters.word,type.type)"/>
+            <render fragments="voc,answer"/>
         </transition>
 
         <transition on="editWord" >
@@ -86,12 +86,12 @@
         </transition>
         <transition on="deletedWord" >
             <evaluate result="out" expression=
-                    "ChangeOps.delFromWebByWord(requestParameters.word,type.type)"/>
+                    "ChangeOps.delFromWebByWord(requestParameters.ID,type.type)"/>
             <render fragments="voc,answer"/>
         </transition>
         <transition on="deletedKey" >
             <evaluate result="out" expression=
-                    "ChangeOps.delFromWebByKey(requestParameters.word,type.type)"/>
+                    "ChangeOps.delFromWebByKey(requestParameters.ID,type.type)"/>
             <render fragments="voc,answer"/>
         </transition>
     </view-state>

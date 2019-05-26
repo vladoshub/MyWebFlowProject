@@ -1,10 +1,9 @@
 package ru.mmtr.entity;
 
-import org.springframework.transaction.annotation.Transactional;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+
 @Entity
 @Table(name = "keys")
 public class Keys implements Serializable {
@@ -14,25 +13,25 @@ public class Keys implements Serializable {
     private long id;
     @Column(name = "key")
     private String key;
-    @OneToMany(mappedBy = "key", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "key", cascade = CascadeType.REMOVE, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Words> words;
     @ManyToOne
-    @JoinColumn(name="type_id")
+    @JoinColumn(name = "type_id")
     private Type type;
 
     public Keys() {
         super();
     }
 
-    public Keys(String key, List<Words> words,Type type) {
+    public Keys(String key, List<Words> words, Type type) {
         this.key = key;
         this.words = words;
-        this.type=type;
+        this.type = type;
     }
 
-    public Keys(String key,Type type) {
+    public Keys(String key, Type type) {
         this.key = key;
-        this.type=type;
+        this.type = type;
     }
 
     public Type getType() {
@@ -63,14 +62,15 @@ public class Keys implements Serializable {
         return words;
     }
 
-    public void setWords(Words words) {
-
-        this.words.add(words);
-    }
 
     public void setWords(List<Words> words) {
 
-        this.words=words;
+        this.words = words;
+    }
+
+    public void setWords(Words words) {
+
+        this.words.add(words);
     }
 
     @Override

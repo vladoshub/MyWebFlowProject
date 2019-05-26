@@ -8,15 +8,15 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div id="voc">
-    <table border="0"  width="100%" cellpadding="5">
+    <table border="0"  width="100%" cellpadding="5" class="one">
         <tr>
             <td><input id="searchkey" name="searchkey"  type="text" value=""><button type="submit" name="_eventId_SearchKeys">ПоискПоКлючу</button></td>
             <td><input id="searchwrod" name="searchword" type="text" value=""><button type="submit" name="_eventId_SearchWords">ПоискПоЗначению</button></td>
-            <td><button type="button" onclick="addRow('table')">добавить</button></td>
+            <td><button type="button" onclick="addKey('table')">добавить</button></td>
         </tr>
     </table>
     <br>
-    <table border="1" width="100%" cellpadding="5" id="table">
+    <table border="1" width="100%" cellpadding="5" id="table" class="two">
         <tr>
             <th>Ключ</th>
             <th>Значения</th>
@@ -28,15 +28,15 @@
                     <td><input value="${items.key.key}" id="${items.key.id}inpK"></td>
                     <td><input value="${items.word}" readonly="readonly" id="${items.id}inpW"><button onclick="hiddRow('${items.id}WW')">Изменить</button></td>
                     <td>
-                        <button type="button" name="_eventId_editKey" onclick="edit('${items.key.id}inpK','key')">edit</button>
-                        <button type="button" name="_eventId_deletedKey" onclick="del('${items.key.id}inpK','key')">del</button></td>
+                        <button type="button" name="_eventId_editKey" onclick="edit('${items.key.id}inpK','key')">Редактировать</button>
+                        <button type="button" name="_eventId_deletedKey" onclick="del('${items.key.id}inpK','key')">Удалить</button></td>
                 </tr>
                 <tr class="${items.id}WW" style="display: none;">
                     <td></td>
                     <td><input id="${items.id}inp" type="text"  value="${items.word}"/></td>
                     <td>
-                        <button type="button" name="_eventId_editWord" onclick="edit('${items.id}inpW','word')">edit</button>
-                        <button type="button" name="_eventId_deletedWord" onclick="del('${items.id}inpW','word')">del</button>
+                        <button type="button" name="_eventId_editWord" onclick="edit('${items.id}inpW','word')">Редактировать</button>
+                        <button type="button" name="_eventId_deletedWord" onclick="del('${items.id}inpW','word')">Удалить</button>
                     </td>
                 </tr>
             </c:forEach>
@@ -50,19 +50,19 @@
                             test="${items.words.size()==1}">
                         <td>
                             <input type="text"  value="${items.words.get(0).word}" id="${items.id}inpOO"/>
-                            <button type="button" onclick="hiddRow('${items.id}O')">показать</button>
+                            <button type="button" onclick="hiddRow('${items.id}O')"><></button>
                         </td>
                     </c:when><c:when test="${items.words.size()>1}">
                         <td>
                             <input type="text" value="${items.words.get(0).word}..." readonly="readonly"/>
-                            <button type="button" onclick="hiddRow('${items.id}M')">показать</button>
+                            <button type="button" onclick="hiddRow('${items.id}M')"><></button>
                         </td>
 
                     </c:when></c:choose>
                     <td>
-                        <button type="button" name="_eventId_editKey" onclick="edit('${items.id}inpK','key')">edit</button>
-                        <button type="button" name="_eventId_deletedKey" onclick="del('${items.id}inpK','key')">del</button>
-                        <button type="button" onclick="addKey('${items.id}t2',${items.id})">добавить</button>
+                        <button type="button" name="_eventId_editKey" onclick="edit('${items.id}inpK','key')">Редактировать</button>
+                        <button type="button" name="_eventId_deletedKey" onclick="del('${items.id}inpK','key')">Удалить</button>
+                        <button type="button" onclick="addWord('${items.id}t2',${items.id})">Добавить</button>
                     </td>
                 </tr>
                 <tbody id="${items.id}t2">
@@ -70,10 +70,10 @@
                 <c:if test="${items.words.size()==1}">
                     <tr class="${items.id}O" style="display: none;">
                         <td></td>
-                        <td><input id="${items.words.get(0).id}inpO" type="text"  value="${items.words.get(0).id}"/></td>
+                        <td><input id="${items.words.get(0).id}inpO" type="text" name="${items.words.get(0).id}"  value="${items.words.get(0).word}"/></td>
                         <td>
-                            <button type="button" name="_eventId_editWord" onclick="edit('${items.words.get(0).id}inpO','word')">edit</button>
-                            <button type="button"  name="_eventId_deletedWord" onclick="del('${items.words.get(0).id}inpO','word')">del</button>
+                            <button type="button" name="_eventId_editWord" onclick="edit('${items.words.get(0).id}inpO','word')">Редактировать</button>
+                            <button type="button"  name="_eventId_deletedWord" onclick="del('${items.words.get(0).id}inpO','word')">Удалить</button>
                         </td>
                     </tr>
                 </c:if>
@@ -81,10 +81,10 @@
                     <c:forEach items="${items.words}" var="words">
                         <tr class="${items.id}M" style="display: none;">
                             <td></td>
-                            <td><input id="${words.id}inpM" type="text"  value="${words.word}"/></td>
+                            <td><input id="${words.id}inpM" type="text" name="${words.id}"  value="${words.word}"/></td>
                             <td>
-                                <button type="button" name="_eventId_editWord" onclick="edit('${words.id}inpM','word')">edit</button>
-                                <button type="button" name="_eventId_deletedWord" onclick="del('${words.id}inpM','word')">del</button>
+                                <button type="button" name="_eventId_editWord" onclick="edit('${words.id}inpM','word')">Редактировать</button>
+                                <button type="button" name="_eventId_deletedWord" onclick="del('${words.id}inpM','word')">Удалить</button>
                             </td>
                         </tr>
                     </c:forEach>

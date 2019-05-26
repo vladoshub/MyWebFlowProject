@@ -14,7 +14,7 @@ public interface KeysDao {
     public void deleteByObj(Object K);
     public String deleteByKey(String keys);
     public String AddKey(String Key, int type,String... words);
-    public String AddWordtoKey(String id, int type,String words);
+    public String AddWordtoKey(String id, int type, String words);
     public String updateByKey(String keys,String newKeys,int type);
     public String updateByWord(String Words,String newWords,int type);
     public String deleteByWord(String id);

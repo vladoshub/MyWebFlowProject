@@ -11,6 +11,9 @@
 <html>
 <head>
     <title>Словарь</title>
+    <style>
+        <%@include file="/WEB-INF/css/table.css"%>
+    </style>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/form/jquery.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/form/jquery.form.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/form/jquery.simplePagination.js"></script>
@@ -40,7 +43,7 @@
 
                     url: "${flowExecutionUrl}&_eventId_editKey&ajaxSource=true",
                     success: function (html) {
-                        $("#list").html($(html).filter("#list")),
+                        $("#voc").html($(html).filter("#voc")),
                             $("#answer").html($(html).filter("#answer"));
                     },
                     error: function (error) {
@@ -55,7 +58,7 @@
 
                     url: "${flowExecutionUrl}&_eventId_editWord&ajaxSource=true",
                     success: function (html) {
-                        $("#list").html($(html).filter("#list")),
+                        $("#voc").html($(html).filter("#voc")),
                             $("#answer").html($(html).filter("#answer"));
                     },
                     error: function (error) {
@@ -68,14 +71,14 @@
         }
         function del(id,op) {
             if((op+'')=='key'){
-                document.getElementById("key").value = document.getElementById(id).value;
                 document.getElementById("ID").value = document.getElementById(id).name;
                 $("#forma1").ajaxSubmit({
 
                     url: "${flowExecutionUrl}&_eventId_deletedKey&ajaxSource=true",
                     success: function (html) {
-                        $("#list").html($(html).filter("#list")),
+                        $("#voc").html($(html).filter("#voc")),
                             $("#answer").html($(html).filter("#answer"));
+
                     },
                     error: function (error) {
                         console.log(error)
@@ -83,13 +86,12 @@
                 });
             }
             else {
-                document.getElementById("word").value = document.getElementById(id).value;
                 document.getElementById("ID").value = document.getElementById(id).name;
                 $("#forma1").ajaxSubmit({
 
                     url: "${flowExecutionUrl}&_eventId_deletedWord&ajaxSource=true",
                     success: function (html) {
-                        $("#list").html($(html).filter("#list")),
+                        $("#voc").html($(html).filter("#voc")),
                             $("#answer").html($(html).filter("#answer"));
                     },
                     error: function (error) {
@@ -99,7 +101,7 @@
             }
 
         }
-        function addKey(id,idKey) {
+        function addWord(id,idKey) {
             var a = Math.random() * (10000) + 2;
           var tbody = document.getElementById(id);
             var row = document.createElement("TR");
@@ -112,10 +114,10 @@
             inp.id=a+"input";
             inp.name=idKey+'';
             row.id=a+"R";
-            butSave.textContent="save";
+            butSave.textContent="Сохранить";
             butSave.type="submit";
             butSave.name="_eventId_addWordsss"
-            butDel.textContent="del";
+            butDel.textContent="Удалить";
             butDel.onclick = function () {
                 var id=a+"R";
                 document.getElementById(id).remove();
@@ -127,7 +129,17 @@
                 var text2 = document.getElementById(id).name;
                 document.getElementById("word").value=text;
                 document.getElementById("ID").value=text2;
-                document.getElementById(id2).remove();
+                $("#forma1").ajaxSubmit({
+
+                    url: "${flowExecutionUrl}&_eventId_addWordsss&ajaxSource=true",
+                    success: function (html) {
+                        $("#voc").html($(html).filter("#voc")),
+                            $("#answer").html($(html).filter("#answer"));
+                    },
+                    error: function (error) {
+                        console.log(error)
+                    }
+                });
             }
 
             td2.appendChild(inp);
@@ -139,7 +151,7 @@
           tbody.appendChild(row);
         }
 
-        function addRow(id) {
+        function addKey(id) {
             var a = Math.random() * (10000) + 2;
             var table = document.getElementById(id);
             var row = document.createElement("TR");
@@ -153,10 +165,10 @@
             inp.id=a+"inputWord";
             inp2.id=a+"inputKey";
             row.id=a+"R";
-            butSave.textContent="save";
+            butSave.textContent="Сохранить";
             butSave.type="submit";
             butSave.name="_eventId_addWordss"
-            butDel.textContent="del";
+            butDel.textContent="Удалить";
             butDel.onclick = function () {
                 var id=a+"R";
                 document.getElementById(id).remove();
@@ -169,7 +181,17 @@
                 var key2 = document.getElementById(key).value;
                 document.getElementById("word").value=word2;
                 document.getElementById("key").value=key2;
-                document.getElementById(id2).remove();
+                $("#forma1").ajaxSubmit({
+
+                    url: "${flowExecutionUrl}&_eventId_addWordss&ajaxSource=true",
+                    success: function (html) {
+                        $("#voc").html($(html).filter("#voc")),
+                            $("#answer").html($(html).filter("#answer"));
+                    },
+                    error: function (error) {
+                        console.log(error)
+                    }
+                });
             }
 
             td1.appendChild(inp2)
