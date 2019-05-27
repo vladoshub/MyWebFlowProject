@@ -10,7 +10,7 @@ public class Words implements Serializable {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Column(name = "word")
     private String word;
     @ManyToOne(fetch = FetchType.LAZY)
@@ -38,7 +38,7 @@ public class Words implements Serializable {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

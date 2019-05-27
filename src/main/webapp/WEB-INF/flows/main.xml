@@ -70,7 +70,7 @@
 
         <transition on="addWordsss" >
             <evaluate result="out" expression=
-                    "ChangeOps.addFromWebtoKey(requestParameters.ID,requestParameters.word,type.type)"/>
+                    "ChangeOps.addFromWebToKey(requestParameters.ID,requestParameters.word,type.type)"/>
             <render fragments="voc,answer"/>
         </transition>
 

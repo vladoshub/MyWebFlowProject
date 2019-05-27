@@ -115,7 +115,7 @@
             inp.name=idKey+'';
             row.id=a+"R";
             butSave.textContent="Сохранить";
-            butSave.type="submit";
+            butSave.type="button";
             butSave.name="_eventId_addWordsss"
             butDel.textContent="Удалить";
             butDel.onclick = function () {
@@ -166,7 +166,7 @@
             inp2.id=a+"inputKey";
             row.id=a+"R";
             butSave.textContent="Сохранить";
-            butSave.type="submit";
+            butSave.type="button";
             butSave.name="_eventId_addWordss"
             butDel.textContent="Удалить";
             butDel.onclick = function () {

@@ -11,10 +11,10 @@ public class Keys implements Serializable {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Column(name = "key")
     private String key;
-    @OneToMany(mappedBy = "key", cascade = CascadeType.REMOVE, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "key", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Words> words;
     @ManyToOne
     @JoinColumn(name = "type_id")
@@ -47,7 +47,7 @@ public class Keys implements Serializable {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -72,10 +72,11 @@ public class Keys implements Serializable {
 
     public void setWords(Words words) {
 
-        if(words!=null)
+        if(this.words!=null)
         this.words.add(words);
-        else
+        else{
             this.words=new ArrayList<Words>();
+            this.words.add(words);}
     }
 
     @Override

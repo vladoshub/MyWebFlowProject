@@ -50,49 +50,49 @@ public class Choice {
         return new Out();
     }
 
-    public Out delFromWebByKey(String key, int typeOfVoc) throws IOException {
-        return printKeys(typeOfVoc, serviceWorker.delByKey(library, key));
+    public Out delFromWebByKey(Long id, Long typeOfVoc) throws IOException {
+        return printKeys(typeOfVoc, serviceWorker.delByKey(library, id));
     }
 
-    public Out delFromWebByWord(String id, int typeOfVoc) throws IOException {
+    public Out delFromWebByWord(Long id, Long typeOfVoc) throws IOException {
         return printKeys(typeOfVoc, serviceWorker.delByWord(library, id));
     }
 
-    public Out updateByKeyFromWeb(String id, String newKey, int typeOfVoc) throws IOException {
+    public Out updateByKeyFromWeb(Long id, String newKey, Long typeOfVoc) throws IOException {
         return printKeys(typeOfVoc, serviceWorker.updateByKey(library, id, newKey, typeOfVoc));
     }
 
-    public Out updateByWordFromWeb(String id, String newWord, int typeOfVoc) throws IOException {
+    public Out updateByWordFromWeb(Long id, String newWord, Long typeOfVoc) throws IOException {
         return printKeys(typeOfVoc, serviceWorker.updateByWord(library, id, newWord, typeOfVoc));
     }
 
-    public Out searchFromWebByKey(String key, int typeOfVoc) throws IOException {
+    public Out searchFromWebByKey(String key, Long typeOfVoc) throws IOException {
         return createOutKeys(serviceWorker.seacrhByKey(library, key, typeOfVoc));
     }
 
-    public Out searchFromWebByWords(String word, int typeOfVoc) throws IOException {
+    public Out searchFromWebByWords(String word, Long typeOfVoc) throws IOException {
         return createOutKeys(serviceWorker.seacrhByWord(library, word, typeOfVoc));
     }
 
-    public Out addFromWeb(String key, String word, int voc) throws IOException {
+    public Out addFromWeb(String key, String word, Long voc) throws IOException {
 
 
         return printKeys(voc, serviceWorker.add(library, voc, key, word));
 
     }
 
-    public Out addFromWebtoKey(String id, String word, int voc) throws IOException {
+    public Out addFromWebToKey(Long id, String word, Long voc) throws IOException {
         return printKeys(voc, serviceWorker.addToKey(library, voc, id, word));
 
     }
 
-    public Out printKeys(int typeOfVoc) throws IOException {
+    public Out printKeys(Long typeOfVoc) throws IOException {
         out.setOutMess("");
         out.setKeys(serviceWorker.printKeys(library, typeOfVoc));
         return out;
     }
 
-    public Out printKeys(int typeOfVoc, String inPut) throws IOException {
+    public Out printKeys(Long typeOfVoc, String inPut) throws IOException {
         out.setKeys(serviceWorker.printKeys(library, typeOfVoc));
         out.setOutMess(inPut);
         return out;

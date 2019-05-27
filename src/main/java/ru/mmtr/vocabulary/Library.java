@@ -38,7 +38,7 @@ public class Library {
     }
 
 
-    public List<String> printAll(int type) {
+    public List<String> printAll(Long type) {
 
         try {
             print.clear();
@@ -59,7 +59,7 @@ public class Library {
         }
     }
 
-    public List<String> readFromTxt(String key, int type) {
+    public List<String> readFromTxt(String key, Long type) {
 
 
         if (print != null) print.clear();
@@ -80,7 +80,7 @@ public class Library {
 
     }
 
-    public List<Keys> searchByKey(String key, int type) {//-	поиск записи по ключу
+    public List<Keys> searchByKey(String key, Long type) {//-	поиск записи по ключу
 
         try {
             return keysDao.findByKey(key);
@@ -92,7 +92,7 @@ public class Library {
 
     }
 
-    public List<Keys> searchByWord(String word, int type) {//-	поиск записи по ключу
+    public List<Keys> searchByWord(String word, Long type) {//-	поиск записи по ключу
 
         try {
             return keysDao.findByWord(word, type);
@@ -103,7 +103,7 @@ public class Library {
 
     }
 
-    public List<Keys> getKeys(int type) {//-	поиск записи по ключу
+    public List<Keys> getKeys(Long type) {//-	поиск записи по ключу
         try {
             return keysDao.getKeysList(type);
         } catch (Exception e) {
@@ -114,7 +114,7 @@ public class Library {
 
     }
 
-    public String deleteByKey(String key) {
+    public String deleteByKey(Long key) {
 
         try {
             return keysDao.deleteByKey(key);
@@ -126,7 +126,7 @@ public class Library {
 
     }
 
-    public String deleteByWord(String id) {
+    public String deleteByWord(Long id) {
         try {
             return keysDao.deleteByWord(id);
         } catch (Exception e) {
@@ -137,9 +137,9 @@ public class Library {
 
     }
 
-    public String addToTxt(String key, String value, int type) {
+    public String addToTxt(String key, String value, Long type) {
         try {
-            return keysDao.AddKey(key, type, value);
+            return keysDao.addKey(key, type, value);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
             return null;
@@ -147,9 +147,9 @@ public class Library {
 
     }
 
-    public String addToKey(String id, String value, int type) {
+    public String addToKey(Long id, String value, Long type) {
         try {
-            return keysDao.AddWordtoKey(id, type, value);
+            return keysDao.addWordToKey(id, type, value);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
             return null;
@@ -157,7 +157,7 @@ public class Library {
 
     }
 
-    public String updateByKey(String id, String newKey, int type) {//--	добавление записей
+    public String updateByKey(Long id, String newKey, Long type) {//--	добавление записей
 
         try {
             return keysDao.updateByKey(id, newKey, type);
@@ -168,7 +168,7 @@ public class Library {
 
     }
 
-    public String updateByWord(String id, String newWord, int type) {//--	добавление записей
+    public String updateByWord(Long id, String newWord, Long type) {//--	добавление записей
 
         try {
             return keysDao.updateByWord(id, newWord, type);
@@ -180,10 +180,10 @@ public class Library {
     }
 
 
-    public String addToTxt(String key, String[] value, int type) {
+    public String addToTxt(String key, String[] value, Long type) {
 
         try {
-            return keysDao.AddKey(key, type, value);
+            return keysDao.addKey(key, type, value);
 
         } catch (Exception e) {
             log.error(e.getMessage(), e);

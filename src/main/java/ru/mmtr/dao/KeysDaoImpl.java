@@ -1,10 +1,8 @@
 package ru.mmtr.dao;
 
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.mmtr.entity.Keys;
@@ -44,7 +42,7 @@ public class KeysDaoImpl implements KeysDao {
 
 
     @Override
-    public String AddKey(String Key, int type, String... words) {
+    public String addKey(String Key, Long type, String... words) {
         try {
             Session session = this.sessionFactory.openSession();
             Transaction tx1 = session.beginTransaction();
@@ -54,10 +52,12 @@ public class KeysDaoImpl implements KeysDao {
                 Words word = new Words();
                 word.setWord(words[i]);
                 keys.setWords(word);
+                word.setKey(keys);
             }
-            List<Type> ux = session.createQuery("From Type where id=" + type + "").list();
-            ux.get(0).setKeys(keys);
-            session.update(ux.get(0));
+            Type typeL = new Type();
+            typeL.setId(type);
+            keys.setType(typeL);
+            session.saveOrUpdate(keys);
             tx1.commit();
             session.close();
             return "Ok";
@@ -68,15 +68,16 @@ public class KeysDaoImpl implements KeysDao {
     }
 
     @Override
-    public String AddWordtoKey(String id, int type, String words) {
+    public String addWordToKey(Long id, Long type, String words) {
         try {
-            Words word = new Words();
             Session session = this.sessionFactory.openSession();
             Transaction tx1 = session.beginTransaction();
-            List<Keys> ux = session.createQuery("From Keys where id=" + id + " and type_id=" + type + "").list();
+            Words word = new Words();
+            Keys keys = new Keys();
+            keys.setId(id);
             word.setWord(words);
-            ux.get(0).setWords(word);
-            session.update(ux.get(0));
+            word.setKey(keys);
+            session.saveOrUpdate(word);
             tx1.commit();
             session.close();
             return "Ok";
@@ -90,8 +91,6 @@ public class KeysDaoImpl implements KeysDao {
     public List<Keys> findByKey(String key) { // возврат листы  ключа
         try {
             Session session = this.sessionFactory.openSession();
-       /* List ux = session.createQuery("SELECT id FROM Keys where key='"+key+"'").list();
-        Words  w = findWordsById((int)ux.get(1));*/
             List<Keys> ux = session.createQuery("From Keys where key='" + key + "'").list();
             session.close();
             return ux;
@@ -101,7 +100,7 @@ public class KeysDaoImpl implements KeysDao {
         }
     }
 
-    public List<Keys> findByWord(String word, int type) {
+    public List<Keys> findByWord(String word, Long type) {
         try {
             List<Keys> ux2 = new ArrayList<Keys>();
             int count = 0;
@@ -143,11 +142,11 @@ public class KeysDaoImpl implements KeysDao {
     }
 
     @Override
-    public String deleteByKey(String keys) { //удаление по ключу
+    public String deleteByKey(Long id) { //удаление по ключу
         try {
             Session session = this.sessionFactory.openSession();
             Transaction tx1 = session.beginTransaction();
-            List<Keys> ux = session.createQuery("From Keys where id=" + keys + "").list();
+            List<Keys> ux = session.createQuery("From Keys where id=" + id + "").list();
             session.delete(ux.get(0));
             tx1.commit();
             session.close();
@@ -159,7 +158,7 @@ public class KeysDaoImpl implements KeysDao {
     }
 
     @Override
-    public String deleteByWord(String id) { //удаление по слову
+    public String deleteByWord(Long id) { //удаление по слову
         try {
             Session session = this.sessionFactory.openSession();
             Transaction tx1 = session.beginTransaction();
@@ -175,7 +174,7 @@ public class KeysDaoImpl implements KeysDao {
     }
 
     @Override
-    public String updateByKey(String id, String newKeys, int type) { //Обновление по ключу
+    public String updateByKey(Long id, String newKeys, Long type) { //Обновление по ключу
         try {
             Session session = this.sessionFactory.openSession();
             Transaction tx1 = session.beginTransaction();
@@ -192,7 +191,7 @@ public class KeysDaoImpl implements KeysDao {
     }
 
     @Override
-    public String updateByWord(String id, String newWords, int type) { //Обновление по словам
+    public String updateByWord(Long id, String newWords, Long type) { //Обновление по словам
         try {
             Session session = this.sessionFactory.openSession();
             Transaction tx1 = session.beginTransaction();
@@ -209,13 +208,13 @@ public class KeysDaoImpl implements KeysDao {
     }
 
     @Override
-    public Words findWordsById(long id) {
+    public Words findWordsById(Long id) {
 
         return (Words) this.sessionFactory.openSession().get(Words.class, id);
     }
 
     @Override
-    public List<Keys> getKeysList(int type) {
+    public List<Keys> getKeysList(Long type) {
         try {
             Session session = this.sessionFactory.openSession();
             String hql = "FROM Keys WHERE type_id=" + type + " ORDER BY key ASC";
