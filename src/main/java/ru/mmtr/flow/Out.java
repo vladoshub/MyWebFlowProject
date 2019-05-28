@@ -2,6 +2,8 @@ package ru.mmtr.flow;
 
 import ru.mmtr.entity.Keys;
 import ru.mmtr.entity.Words;
+import ru.mmtr.web.dto.KeysDto;
+import ru.mmtr.web.dto.WordsDto;
 
 import java.io.Serializable;
 import java.util.List;
@@ -11,7 +13,24 @@ public class Out implements Serializable {
     private String outMess;
     private List<Keys> keys;
     private List<Words> words;
+    private KeysDto keysDto;
+    private WordsDto wordsDto;
 
+    public KeysDto getKeysDtos() {
+        return keysDto;
+    }
+
+    public WordsDto getWordsDtos() {
+        return wordsDto;
+    }
+
+    public void setKeysDtos(KeysDto keysDtos) {
+        this.keysDto = keysDtos;
+    }
+
+    public void setWordsDtos(WordsDto wordsDtos) {
+        this.wordsDto = wordsDtos;
+    }
 
     public Out() {
 

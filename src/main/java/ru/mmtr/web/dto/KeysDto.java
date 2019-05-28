@@ -1,17 +1,17 @@
 package ru.mmtr.web.dto;
 
-import ru.mmtr.entity.Keys;
 import ru.mmtr.entity.Words;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class KeysDto {
+public class KeysDto implements Serializable {
     private Long id;
     private String key;
     private List<Words> words;
     private boolean validate;
 
-    public KeysDto(){
+    public KeysDto() {
 
     }
 

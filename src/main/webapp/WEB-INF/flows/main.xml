@@ -76,7 +76,7 @@
 
         <transition on="editWord" >
             <evaluate result="out" expression=
-                    "ChangeOps.updateByWordFromWeb(requestParameters.ID,requestParameters.word,type.type)"/>
+                    "ChangeOps.updateByWordFromWeb(requestParameters.ID,requestParameters.word,type.type,requestParameters.IDKey)"/>
             <render fragments="voc,answer"/>
         </transition>
         <transition on="editKey" >

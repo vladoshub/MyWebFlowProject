@@ -5,6 +5,8 @@ import org.springframework.stereotype.Component;
 import ru.mmtr.entity.Keys;
 import ru.mmtr.entity.Words;
 import ru.mmtr.flow.Out;
+import ru.mmtr.web.converter.ConverterKeys;
+import ru.mmtr.web.converter.ConverterWords;
 
 import java.io.IOException;
 import java.util.List;
@@ -51,19 +53,19 @@ public class Choice {
     }
 
     public Out delFromWebByKey(Long id, Long typeOfVoc) throws IOException {
-        return printKeys(typeOfVoc, serviceWorker.delByKey(library, id));
+        return printKeys(typeOfVoc, serviceWorker.delByKey(library, id), id, true);
     }
 
     public Out delFromWebByWord(Long id, Long typeOfVoc) throws IOException {
-        return printKeys(typeOfVoc, serviceWorker.delByWord(library, id));
+        return printKeys(typeOfVoc, serviceWorker.delByWord(library, id), id, false);
     }
 
     public Out updateByKeyFromWeb(Long id, String newKey, Long typeOfVoc) throws IOException {
-        return printKeys(typeOfVoc, serviceWorker.updateByKey(library, id, newKey, typeOfVoc));
+        return printKeys(typeOfVoc, serviceWorker.updateByKey(library, id, newKey, typeOfVoc), id, true);
     }
 
-    public Out updateByWordFromWeb(Long id, String newWord, Long typeOfVoc) throws IOException {
-        return printKeys(typeOfVoc, serviceWorker.updateByWord(library, id, newWord, typeOfVoc));
+    public Out updateByWordFromWeb(Long id, String newWord, Long typeOfVoc, Long idKey) throws IOException {
+        return printKeys(typeOfVoc, serviceWorker.updateByWord(library, id, newWord, typeOfVoc), id, idKey);
     }
 
     public Out searchFromWebByKey(String key, Long typeOfVoc) throws IOException {
@@ -82,7 +84,7 @@ public class Choice {
     }
 
     public Out addFromWebToKey(Long id, String word, Long voc) throws IOException {
-        return printKeys(voc, serviceWorker.addToKey(library, voc, id, word));
+        return printKeys(voc, serviceWorker.addToKey(library, voc, id, word), id, true);
 
     }
 
@@ -92,9 +94,34 @@ public class Choice {
         return out;
     }
 
-    public Out printKeys(Long typeOfVoc, String inPut) throws IOException {
+    public Out printKeys(Long typeOfVoc, String inPut, Long id, boolean isKey) throws IOException {
+
+        out = new Out();
+
         out.setKeys(serviceWorker.printKeys(library, typeOfVoc));
         out.setOutMess(inPut);
+        if (isKey)
+            out.setKeysDtos(ConverterKeys.convertToDto(id));
+        else
+            out.setWordsDtos(ConverterWords.convertToDto(id));
+        return out;
+    }
+
+    public Out printKeys(Long typeOfVoc, String inPut) throws IOException {
+        out = new Out();
+        out.setKeys(serviceWorker.printKeys(library, typeOfVoc));
+        out.setOutMess(inPut);
+        return out;
+    }
+
+    public Out printKeys(Long typeOfVoc, String inPut, Long id, Long idKey) throws IOException {
+
+        out = new Out();
+
+        out.setKeys(serviceWorker.printKeys(library, typeOfVoc));
+        out.setOutMess(inPut);
+        out.setKeysDtos(ConverterKeys.convertToDto(id));
+        out.setWordsDtos(ConverterWords.convertToDto(id));
         return out;
     }
 
