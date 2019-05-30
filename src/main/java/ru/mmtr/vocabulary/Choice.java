@@ -56,8 +56,8 @@ public class Choice {
         return printKeys(typeOfVoc, serviceWorker.delByKey(library, id), id, true);
     }
 
-    public Out delFromWebByWord(Long id, Long typeOfVoc) throws IOException {
-        return printKeys(typeOfVoc, serviceWorker.delByWord(library, id), id, false);
+    public Out delFromWebByWord(Long id, Long typeOfVoc,Long idKey) throws IOException {
+        return printKeys(typeOfVoc, serviceWorker.delByWord(library, id), id, idKey);
     }
 
     public Out updateByKeyFromWeb(Long id, String newKey, Long typeOfVoc) throws IOException {
@@ -118,10 +118,15 @@ public class Choice {
 
         out = new Out();
 
-        out.setKeys(serviceWorker.printKeys(library, typeOfVoc));
+            out.setKeys(serviceWorker.printKeys(library, typeOfVoc));
+
         out.setOutMess(inPut);
-        out.setKeysDtos(ConverterKeys.convertToDto(id));
-        out.setWordsDtos(ConverterWords.convertToDto(id));
+        if(idKey!=null) {
+            out.setKeysDtos(ConverterKeys.convertToDto(idKey));
+        }
+            if(id!=null) {
+                out.setWordsDtos(ConverterWords.convertToDto(id));
+            }
         return out;
     }
 

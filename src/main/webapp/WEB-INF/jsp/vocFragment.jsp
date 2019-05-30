@@ -46,7 +46,7 @@
 
                 <tr id="${items.id}">
                     <td><input type="text" name="${items.id}"  value="${items.key}" id="${items.id}inpK"/><span style="color: red">
-                        <c:if test="${items.id == out.keysDtos.id}">${out.outMess}</c:if>
+                        <c:if test="${items.id == out.keysDtos.id and out.wordsDtos==null}">${out.outMess}</c:if>
                     </span></td>
                     <c:choose><c:when
                             test="${items.words.size()==1}">
@@ -59,7 +59,7 @@
                     </c:when><c:when test="${items.words.size()>1}">
                         <td>
                             <input type="text" value="${items.words.get(0).word}..." readonly="readonly"/><span  style="color: red">
-                        <c:if test="${items.id == out.keysDtos.id}">${out.outMess}</c:if>
+                        <c:if test="${items.id == out.keysDtos.id and out.wordsDtos!=null}">${out.outMess}</c:if>
                     </span>
                             <button type="button" onclick="hiddRow('${items.id}M')"><></button>
                         </td>
@@ -97,8 +97,8 @@
                     </span>
                             </td>
                             <td>
-                                <button type="button" name="_eventId_editWord" onclick="edit('${words.id}inpM','${items.id}')">Редактировать</button>
-                                <button type="button" name="_eventId_deletedWord" onclick="del('${words.id}inpM','word')">Удалить</button>
+                                <button type="button" name="_eventId_editWord" onclick="edit2('${words.id}inpM','${items.id}')">Редактировать</button>
+                                <button type="button" name="_eventId_deletedWord" onclick="del2('${words.id}inpM','${items.id}')">Удалить</button>
                             </td>
                         </tr>
                     </c:forEach>

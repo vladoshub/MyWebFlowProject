@@ -211,6 +211,52 @@
                 row.appendChild(td3);
                 table.appendChild(row);
             }
+
+
+        function edit2(id,id2)
+            {
+                document.getElementById("word").value = document.getElementById(id).value;
+                document.getElementById("ID").value = document.getElementById(id).name;
+                var ids="";
+                ids=ids+id2;
+                document.getElementById("kID").value = ids;
+                $("#forma1").ajaxSubmit({
+
+                    url: "${flowExecutionUrl}&_eventId_editWord&ajaxSource=true",
+                    success: function (html) {
+                        $("#voc").html($(html).filter("#voc")),
+                            $("#answer").html($(html).filter("#answer"));
+                    },
+                    error: function (error) {
+                        console.log(error)
+                    }
+                });
+            }
+
+        function del2(id,id2) {
+                document.getElementById("ID").value = document.getElementById(id).name;
+            var ids="";
+            ids=ids+id2;
+            document.getElementById("kID").value = ids;
+                $("#forma1").ajaxSubmit({
+
+                    url: "${flowExecutionUrl}&_eventId_deletedWord&ajaxSource=true",
+                    success: function (html) {
+                        $("#voc").html($(html).filter("#voc")),
+                            $("#answer").html($(html).filter("#answer"));
+
+                    },
+                    error: function (error) {
+                        console.log(error)
+                    }
+                });
+
+        }
+
+
+
+
+
     </script>
 </head>
 <body>
@@ -218,7 +264,7 @@
     <input id="key" name="key" type="hidden" value="">
     <input id="word" name="word" type="hidden" value="">
     <input id="ID" name="ID" type="hidden" value="">
-    <input id="IDKey" name="IDKey" type="hidden" value="">
+    <input id="kID" name="kID" type="hidden" value="">
     <tiles:insertAttribute name="voc"/>
 </form>
 </body>

@@ -76,9 +76,10 @@
 
         <transition on="editWord" >
             <evaluate result="out" expression=
-                    "ChangeOps.updateByWordFromWeb(requestParameters.ID,requestParameters.word,type.type,requestParameters.IDKey)"/>
+                    "ChangeOps.updateByWordFromWeb(requestParameters.ID,requestParameters.word,type.type,requestParameters.kID)"/>
             <render fragments="voc,answer"/>
         </transition>
+
         <transition on="editKey" >
             <evaluate result="out" expression=
                     "ChangeOps.updateByKeyFromWeb(requestParameters.ID,requestParameters.key,type.type)"/>
@@ -86,7 +87,7 @@
         </transition>
         <transition on="deletedWord" >
             <evaluate result="out" expression=
-                    "ChangeOps.delFromWebByWord(requestParameters.ID,type.type)"/>
+                    "ChangeOps.delFromWebByWord(requestParameters.ID,type.type,requestParameters.kID)"/>
             <render fragments="voc,answer"/>
         </transition>
         <transition on="deletedKey" >
