@@ -31,13 +31,8 @@
             });
 
         });
-
-        function hiddRow(id) {
-            $('.' + id).toggle();
-        }
-
-
-        function edit(id, op) {
+        function edit(id, op)
+        {
             if ((op + '') == 'key') {
                 document.getElementById("key").value = document.getElementById(id).value;
                 document.getElementById("ID").value = document.getElementById(id).name;
@@ -68,58 +63,17 @@
                     }
                 });
             }
+        }
 
 
-            function edit(id, op) {
-                if ((op + '') == 'key') {
-                    document.getElementById("key").value = document.getElementById(id).value;
-                    document.getElementById("ID").value = document.getElementById(id).name;
-                    $("#forma1").ajaxSubmit({
+        function hiddRow(id) {
+            $('.' + id).toggle();
+        }
 
-                        url: "${flowExecutionUrl}&_eventId_editKey&ajaxSource=true",
-                        success: function (html) {
-                            $("#voc").html($(html).filter("#voc")),
-                                $("#answer").html($(html).filter("#answer"));
-                        },
-                        error: function (error) {
-                            console.log(error)
-                        }
-                    });
-                }
-                else {
-                    document.getElementById("word").value = document.getElementById(id).value;
-                    document.getElementById("ID").value = document.getElementById(id).name;
-                    $("#forma1").ajaxSubmit({
 
-                        url: "${flowExecutionUrl}&_eventId_editWord&ajaxSource=true",
-                        success: function (html) {
-                            $("#voc").html($(html).filter("#voc")),
-                                $("#answer").html($(html).filter("#answer"));
-                        },
-                        error: function (error) {
-                            console.log(error)
-                        }
-                    });
-                }
-            }
 
-            function edit2(id,id2) {
-                document.getElementById("word").value = document.getElementById(id).value;
-                document.getElementById("ID").value = document.getElementById(id).name;
-                document.getElementById("IDKey").value = document.getElementById(id2).name;
-                $("#forma1").ajaxSubmit({
 
-                    url: "${flowExecutionUrl}&_eventId_editWord&ajaxSource=true",
-                    success: function (html) {
-                        $("#voc").html($(html).filter("#voc")),
-                            $("#answer").html($(html).filter("#answer"));
-                    },
-                    error: function (error) {
-                        console.log(error)
-                    }
-                });
 
-            }
 
             function del(id, op) {
                 if ((op + '') == 'key') {
@@ -153,6 +107,7 @@
                 }
 
             }
+
 
             function addWord(id, idKey) {
                 var a = Math.random() * (10000) + 2;
@@ -256,13 +211,6 @@
                 row.appendChild(td3);
                 table.appendChild(row);
             }
-
-            function searchByKey(op) {
-            }
-
-            function searchByWord(op) {
-            }
-        }
     </script>
 </head>
 <body>

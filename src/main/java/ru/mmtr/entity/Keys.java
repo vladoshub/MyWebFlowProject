@@ -72,11 +72,12 @@ public class Keys implements Serializable {
 
     public void setWords(Words words) {
 
-        if(this.words!=null)
-        this.words.add(words);
-        else{
-            this.words=new ArrayList<Words>();
-            this.words.add(words);}
+        if (this.words != null)
+            this.words.add(words);
+        else {
+            this.words = new ArrayList<Words>();
+            this.words.add(words);
+        }
     }
 
     @Override

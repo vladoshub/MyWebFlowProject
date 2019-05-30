@@ -158,12 +158,16 @@ public class KeysDaoImpl implements KeysDao {
     }
 
     @Override
-    public String deleteByWord(Long id) { //удаление по слову
+    public String deleteByWord(Long id) {
         try {
             Session session = this.sessionFactory.openSession();
             Transaction tx1 = session.beginTransaction();
-            List<Words> ux = session.createQuery("From Words where id=" + id + "").list();
-            session.delete(ux.get(0));
+
+            Words word = (Words)session.createQuery("From Words where id=" + id + "").uniqueResult();//-1 способо
+
+            word = (Words)session.load(Words.class,id);//2-способ
+            session.delete(word);
+
             tx1.commit();
             session.close();
             return "Ok";
@@ -195,9 +199,9 @@ public class KeysDaoImpl implements KeysDao {
         try {
             Session session = this.sessionFactory.openSession();
             Transaction tx1 = session.beginTransaction();
-            List<Words> ux = session.createQuery("From Words where id=" + id + "").list();
-            ux.get(0).setWord(newWords);
-            session.update(ux.get(0));
+            Words word = (Words)session.createQuery("From Words where id=" + id + "").uniqueResult();
+            word.setWord(newWords);
+            session.update(word);
             tx1.commit();
             session.close();
             return "Ok";

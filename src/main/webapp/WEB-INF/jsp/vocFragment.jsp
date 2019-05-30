@@ -97,7 +97,7 @@
                     </span>
                             </td>
                             <td>
-                                <button type="button" name="_eventId_editWord" onclick="edit2('${words.id}inpM','${items.id}')">Редактировать</button>
+                                <button type="button" name="_eventId_editWord" onclick="edit('${words.id}inpM','${items.id}')">Редактировать</button>
                                 <button type="button" name="_eventId_deletedWord" onclick="del('${words.id}inpM','word')">Удалить</button>
                             </td>
                         </tr>
