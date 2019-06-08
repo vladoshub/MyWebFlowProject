@@ -15,6 +15,7 @@ public class Out implements Serializable {
     private List<Words> words;
     private KeysDto keysDto;
     private WordsDto wordsDto;
+    private boolean addKeyValid;
 
     public KeysDto getKeysDtos() {
         return keysDto;
@@ -30,6 +31,14 @@ public class Out implements Serializable {
 
     public void setWordsDtos(WordsDto wordsDtos) {
         this.wordsDto = wordsDtos;
+    }
+
+    public boolean isAddKeyValid() {
+        return addKeyValid;
+    }
+
+    public void setAddKeyValid(boolean addKeyValid) {
+        this.addKeyValid = addKeyValid;
     }
 
     public Out() {

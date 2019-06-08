@@ -10,6 +10,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <title>Словарь</title>
     <style>
         <%@include file="/WEB-INF/css/table.css"%>
@@ -19,6 +21,8 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/form/jquery.simplePagination.js"></script>
     <script type="application/javascript">
 
+        var rows=0;
+        var rows1=0;
 
         $(window).load(function () {
             $('#light-pagination').pagination({
@@ -67,7 +71,7 @@
 
 
         function hiddRow(id) {
-            $('.' + id).toggle();
+            $('#' + id).toggle();
         }
 
 
@@ -110,7 +114,8 @@
 
 
             function addWord(id, idKey) {
-                var a = Math.random() * (10000) + 2;
+                var a = "rows"+rows;
+                rows++;
                 var tbody = document.getElementById(id);
                 var row = document.createElement("TR");
                 var td1 = document.createElement("TD");
@@ -122,10 +127,12 @@
                 inp.id = a + "input";
                 inp.name = idKey + '';
                 row.id = a + "R";
-                butSave.textContent = "Сохранить";
+                butSave.title = "Сохранить";
                 butSave.type = "button";
-                butSave.name = "_eventId_addWordsss"
-                butDel.textContent = "Удалить";
+                butSave.name = "_eventId_addWordsss";
+                butSave.style="background: url(/images/upload.png);background-size: 38px 35px;";
+                butDel.title = "Удалить";
+                butDel.style="background: url(/images/delete.png);background-size: 38px 35px;";
                 butDel.onclick = function () {
                     var id = a + "R";
                     document.getElementById(id).remove();
@@ -160,7 +167,8 @@
             }
 
             function addKey(id) {
-                var a = Math.random() * (10000) + 2;
+                var a = "rows1"+rows1;
+                rows1++;
                 var table = document.getElementById(id);
                 var row = document.createElement("TR");
                 var td1 = document.createElement("TD");
@@ -173,10 +181,12 @@
                 inp.id = a + "inputWord";
                 inp2.id = a + "inputKey";
                 row.id = a + "R";
-                butSave.textContent = "Сохранить";
+                butSave.title = "Сохранить";
                 butSave.type = "button";
-                butSave.name = "_eventId_addWordss"
-                butDel.textContent = "Удалить";
+                butSave.name = "_eventId_addWordss";
+                butSave.style="background: url(/images/upload.png);background-size: 38px 35px;";
+                butDel.title = "Удалить";
+                butDel.style="background: url(/images/delete.png);background-size: 38px 35px;";
                 butDel.onclick = function () {
                     var id = a + "R";
                     document.getElementById(id).remove();

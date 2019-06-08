@@ -79,7 +79,7 @@ public class Choice {
     public Out addFromWeb(String key, String word, Long voc) throws IOException {
 
 
-        return printKeys(voc, serviceWorker.add(library, voc, key, word));
+        return printKeysAfterAddKey(voc, serviceWorker.add(library, voc, key, word));
 
     }
 
@@ -114,6 +114,13 @@ public class Choice {
         return out;
     }
 
+    public Out printKeysAfterAddKey(Long typeOfVoc, String inPut) throws IOException {
+        out = new Out();
+        out.setKeys(serviceWorker.printKeys(library, typeOfVoc));
+        out.setOutMess(inPut);
+        out.setAddKeyValid(true);
+        return out;
+    }
     public Out printKeys(Long typeOfVoc, String inPut, Long id, Long idKey) throws IOException {
 
         out = new Out();

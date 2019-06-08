@@ -1,5 +1,6 @@
 package ru.mmtr.dao;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -199,7 +200,7 @@ public class KeysDaoImpl implements KeysDao {
         try {
             Session session = this.sessionFactory.openSession();
             Transaction tx1 = session.beginTransaction();
-            Words word = (Words)session.createQuery("From Words where id=" + id + "").uniqueResult();
+            Words word = (Words) session.get(Words.class, id);
             word.setWord(newWords);
             session.update(word);
             tx1.commit();
