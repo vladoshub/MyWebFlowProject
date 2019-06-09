@@ -35,8 +35,12 @@
             });
 
         });
-        function edit(id, op)
-        {
+        function edit(id, op,newword){
+        newword=newword+"";
+            if(newword==document.getElementById(id).value||newword==""){
+                alert("введите что-нибудь или измененное значение");
+            }
+            else {
             if ((op + '') == 'key') {
                 document.getElementById("key").value = document.getElementById(id).value;
                 document.getElementById("ID").value = document.getElementById(id).name;
@@ -66,6 +70,7 @@
                         console.log(error)
                     }
                 });
+            }
             }
         }
 
@@ -132,7 +137,7 @@
                 butSave.name = "_eventId_addWordsss";
                 butSave.style="background: url(/images/upload.png);background-size: 38px 35px;";
                 butDel.title = "Удалить";
-                butDel.style="background: url(/images/delete.png);background-size: 38px 35px;";
+                butDel.style="background: url(/images/del.png);background-size: 38px 35px;";
                 butDel.onclick = function () {
                     var id = a + "R";
                     document.getElementById(id).remove();
@@ -163,6 +168,7 @@
                 row.appendChild(td1);
                 row.appendChild(td2);
                 row.appendChild(td3);
+                row.style="background: deepskyblue;";
                 tbody.appendChild(row);
             }
 
@@ -178,15 +184,19 @@
                 var inp2 = document.createElement("input");
                 var butSave = document.createElement("button");
                 var butDel = document.createElement("button");
+                var addWord = document.createElement("button");
                 inp.id = a + "inputWord";
                 inp2.id = a + "inputKey";
                 row.id = a + "R";
+                addWord.title = "Добавить слово";
+                addWord.type = "button";
+                addWord.style="background: url(/images/add.png);background-size: 38px 35px;";
                 butSave.title = "Сохранить";
                 butSave.type = "button";
                 butSave.name = "_eventId_addWordss";
                 butSave.style="background: url(/images/upload.png);background-size: 38px 35px;";
                 butDel.title = "Удалить";
-                butDel.style="background: url(/images/delete.png);background-size: 38px 35px;";
+                butDel.style="background: url(/images/del.png);background-size: 38px 35px;";
                 butDel.onclick = function () {
                     var id = a + "R";
                     document.getElementById(id).remove();
@@ -216,15 +226,21 @@
                 td2.appendChild(inp);
                 td3.appendChild(butDel);
                 td3.appendChild(butSave);
+                td3.appendChild(addWord);
                 row.appendChild(td1);
                 row.appendChild(td2);
                 row.appendChild(td3);
+                row.style="background: lightblue;";
                 table.appendChild(row);
             }
 
 
-        function edit2(id,id2)
-            {
+        function edit2(id,id2,newword){
+            newword=newword+"";
+        if(newword==document.getElementById(id).value||newword==""){
+            alert("введите что-нибудь или измененное значение");
+        }
+        else {
                 document.getElementById("word").value = document.getElementById(id).value;
                 document.getElementById("ID").value = document.getElementById(id).name;
                 var ids="";
@@ -241,6 +257,7 @@
                         console.log(error)
                     }
                 });
+        }
             }
 
         function del2(id,id2) {

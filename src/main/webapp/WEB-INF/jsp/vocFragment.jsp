@@ -10,23 +10,21 @@
 <div id="voc">
     <table border="0"  width="100%" cellpadding="5" class="one">
         <tr>
-            <td><input id="searchkey" name="searchkey"  type="text" value=""><button type="submit" name="_eventId_SearchKeys" title="Поиск по ключу" style="background: url(/images/search.png);
-    background-size: 38px 35px;" ></button></td>
-            <td><input id="searchwrod" name="searchword" type="text" value=""><button type="submit" name="_eventId_SearchWords" style="background: url(/images/search.png);
-    background-size: 38px 35px;" title="Поиск по слову"></button></td>
-            <td><button type="button" onclick="addKey('table')" title="Добавить ключ" style="background: url(/images/add.png);
-    background-size: 38px 35px;"></button><span style="color: red">
+            <th><input id="searchkey" name="searchkey"  type="text" value=""><button type="submit" name="_eventId_SearchKeys" title="Поиск по ключу" style="background: url(/images/search.png);
+    background-size: 38px 35px;" ></button></th>
+            <th><input id="searchwrod" name="searchword" type="text" value=""><button type="submit" name="_eventId_SearchWords" style="background: url(/images/search.png);
+    background-size: 38px 35px;" title="Поиск по слову"></button></th>
+            <th><button type="button" onclick="addKey('table')" title="Добавить ключ" style="background: url(/images/add.png);margin-right: 122px; background-size: 38px 35px"></button><span style="color: red">
 <c:if test="${not empty out}"><c:if test="${out.addKeyValid == true}">${out.outMess}</c:if>
-</c:if></span></td>
+</c:if></span></th>
         </tr>
     </table>
-    <br>
     <table border="0"  width="100%" cellpadding="5" class="two">
         <thead>
-        <tr>
-            <th>Ключи</th>
-            <th>Значения</th>
-            <th>Действия</th>
+        <tr >
+            <th style="padding-left:15px"><b>Ключи</b></th>
+            <th style="padding-left:15px"><b>Значения</b></th>
+            <th style="padding-left:99px"><b>Действия</b></th>
         </tr>
         </thead>
         <c:if test="${not empty out.words}">
@@ -36,9 +34,9 @@
                     <td><input value="${items.word}" readonly="readonly" id="${items.id}inpW"><button onclick="hiddRow('${items.id}WW')" style="background: url(/images/any.png);
     background-size: 40px 40px;" title="выбор слов"></button></td>
                     <td>
-                        <button type="button" name="_eventId_editKey" onclick="edit('${items.key.id}inpK','key')" style="background: url(/images/edit.svg);
+                        <button type="button" name="_eventId_editKey" onclick="edit('${items.key.id}inpK','key')" style="background: url(/images/edit1.svg);
     background-size: 40px 40px;" title="изменить"></button>
-                        <button type="button" name="_eventId_deletedKey" onclick="del('${items.key.id}inpK','key')" style="background: url(/images/delete.png);
+                        <button type="button" name="_eventId_deletedKey" onclick="del('${items.key.id}inpK','key')" style="background: url(/images/del.png);
     background-size: 40px 40px;" title="удалить"></button></td>
                 </tr>
                 <tr id="${items.id}WW" style="display: none;">
@@ -60,7 +58,7 @@
                     <c:choose><c:when
                             test="${items.words.size()==1}">
                         <td>
-                            <input type="text"  value="${items.words.get(0).word}" id="${items.id}inpOO"/><span style="color: red">
+                            <input type="text"  value="${items.words.get(0).word}" readonly="readonly" id="${items.id}inpOO"/><span style="color: red">
                         <c:if test="${items.words.get(0).id == out.wordsDtos.id}">${out.outMess}</c:if>
                     </span>
                             <button type="button" onclick="hiddRow('${items.id}O')" style="background: url(/images/any.png);
@@ -77,9 +75,9 @@
 
                     </c:when></c:choose>
                     <td>
-                        <button type="button" name="_eventId_editKey" onclick="edit('${items.id}inpK','key')" style="background: url(/images/edit.svg);
+                        <button type="button" name="_eventId_editKey" onclick="edit('${items.id}inpK','key','${items.key}')" style="background: url(/images/edit.png);
     background-size: 38px 35px;" title="изменить"></button>
-                        <button type="button" name="_eventId_deletedKey" onclick="del('${items.id}inpK','key')" style="background: url(/images/delete.png);
+                        <button type="button" name="_eventId_deletedKey" onclick="del('${items.id}inpK','key')" style="background: url(/images/del.png);
     background-size: 38px 35px;" title="удалить"></button>
                         <button type="button" onclick="addWord('${items.id}t2',${items.id})" style="background: url(/images/add.png);
     background-size: 38px 35px;" title="добавить слово"></button>
@@ -94,9 +92,9 @@
                     </span>
                         </td>
                         <td>
-                            <button type="button" name="_eventId_editWord" onclick="edit('${items.words.get(0).id}inpO','word')" style="background: url(/images/edit.svg);
+                            <button type="button" name="_eventId_editWord" onclick="edit('${items.words.get(0).id}inpO','word','${items.words.get(0).word}')" style="background: url(/images/edit.png);
     background-size: 38px 35px;" title="изменить"></button>
-                            <button type="button"  name="_eventId_deletedWord" onclick="del('${items.words.get(0).id}inpO','word')" style="background: url(/images/delete.png);
+                            <button type="button"  name="_eventId_deletedWord" onclick="del('${items.words.get(0).id}inpO','word')" style="background: url(/images/del.png);
     background-size: 38px 35px;" title="удалить"></button>
                         </td>
                     </tr>
@@ -114,9 +112,9 @@
                     </span>
                             </td>
                             <td>
-                                <button type="button" name="_eventId_editWord" onclick="edit2('${words.id}inpM','${items.id}')" style="background: url(/images/edit.svg);
+                                <button type="button" name="_eventId_editWord" onclick="edit2('${words.id}inpM','${items.id}','${words.word}')" style="background: url(/images/edit.png);
     background-size: 38px 35px;" title="изменить"></button>
-                                <button type="button" name="_eventId_deletedWord" onclick="del2('${words.id}inpM','${items.id}')" style="background: url(/images/delete.png);
+                                <button type="button" name="_eventId_deletedWord" onclick="del2('${words.id}inpM','${items.id}')" style="background: url(/images/del.png);
     background-size: 38px 35px;" title="удалить"></button>
                             </td>
                         </tr>

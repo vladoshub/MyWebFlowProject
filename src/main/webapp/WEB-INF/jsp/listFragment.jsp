@@ -17,7 +17,7 @@
                     </button>
                     <button type="button" name="_eventId_editKey" id="${items.id}C" value="${items.id}"
                             onclick="ed(this,'KeyDiv','${items.key}')"><img
-                            src="${pageContext.request.contextPath}/images/edit.svg"/></button>
+                            src="${pageContext.request.contextPath}/images/edit1.svg"/></button>
                     <div class="inp" hidden="false" id="${items.id}KeyDiv"><input type="text" value="${items.key}"/>
                         <button type="button" class="list" onclick="closeBut(this,'KeyDiv')" id="${items.id}"
                                 value="${items.id}"><img src="${pageContext.request.contextPath}/images/undo.png"/>
@@ -31,7 +31,7 @@
                         <button type="button" name="_eventId_editWord" id="${items.words.get(0).id}C"
                                 value="${items.words.get(0).id}"
                                 onclick="ed(this,'WordDiv','${items.words.get(0).word}')" ><img
-                                src="${pageContext.request.contextPath}/images/edit.svg"/></button>
+                                src="${pageContext.request.contextPath}/images/edit1.svg"/></button>
                         <div class="inp" hidden="false" id="${items.words.get(0).id}WordDiv"><input type="text"
                                                                                                     value="${items.words.get(0).word}"/>
 
@@ -49,7 +49,7 @@
                                             src="${pageContext.request.contextPath}/images/delete.png"/></button>
                                     <button type="button" name="_eventId_editWord" id="${words.id}C" value="${words.id}"
                                             onclick="ed(this,'WordDiv','${words.word}')"><img
-                                            src="${pageContext.request.contextPath}/images/edit.svg"/></button>
+                                            src="${pageContext.request.contextPath}/images/edit1.svg"/></button>
                                     <div class="inp" id="${words.id}WordDiv" hidden="false"><input type="text"
                                                                                                    value="${words.word}"/>
                                         <button type="button" onclick="closeBut(this,'WordDiv')" class="list"
