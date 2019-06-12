@@ -154,7 +154,10 @@
                 $('#butAddOneWord' + idKey).toggle();
             }
             check++;
-            if(check==2)$('#butAllWord' + idKey).toggle();
+            if(check==2){
+                $('#butAllWord' + idKey).attr("style","background: url(/images/addAll.png);background-size:38px 35px");
+                $('#butAllWord' + idKey).attr("disabled",false);
+            }
             var a = "rows" + rows;
             rows++;
             var tbody = document.getElementById(id);
@@ -179,12 +182,15 @@
                 check--;
                 var x = document.getElementById(id).getElementsByTagName('input');
                 if(check==1){
-                    $('#butAllWord' + idKey).toggle();
+                    $('#butAllWord' + idKey).attr("style","background: url(/images/addAllBW.png);background-size:38px 35px");
+                    $('#butAllWord' + idKey).attr("disabled",true);
                 }
                 if (!x[0]){
                     check=0;
                     $( "button[name~='WordsInK']" ).toggle();
                     $('#butAddOneWord' + idKey).toggle();
+                    $('#butAllWord' + idKey).attr("style","background: url(/images/addAllBW.png);background-size:38px 35px");
+                    $('#butAllWord' + idKey).attr("disabled",true);
                 }
             }
             butSave.onclick = function () {
@@ -236,10 +242,10 @@
             row.id = a + "R";
             addWord.title = "Добавить слово";
             addWord.type = "button";
-            addWord.style = "background: url(/images/add.png);background-size: 38px 35px;";
+            addWord.style = "background: url(/images/add.png);background-size: 38px 35px;  margin-left:25px;";
             butSave.title = "Сохранить";
             butSave.type = "button";
-            butSave.style = "background: url(/images/upload.png);background-size: 38px 35px;";
+            butSave.style = "background: url(/images/upload.png);background-size: 38px 35px; float:right; margin-left:10px;";
             butDel.title = "Удалить";
             butDel.style = "background: url(/images/del.png);background-size: 38px 35px;";
             butDel.onclick = function () {
@@ -247,7 +253,8 @@
                 var x = document.getElementsByName("rowWord");
                 while (x[0]) x[0].remove();//при обычном for длина массива будет динамически менятся при удалении элемента
                 document.getElementById(id).remove();
-                $('#ButAdd').toggle();
+                $('#ButAdd').attr('disabled', false);
+                $('#ButAdd').attr('style', "background: url(/images/addKey.png);background-size: 38px 35px;float:right;margin-left:10px");
             }
             addWord.onclick = function () {
                 var butDel = document.createElement("button");
@@ -268,7 +275,7 @@
                 wordInKey = wordInKey + 1;
                 tdWInp.appendChild(inpW);
                 rowW.appendChild(tdW);
-                rowW.appendChild(inpW);
+                rowW.appendChild(tdWInp);
                 rowW.appendChild(tdWBut);
                 table.appendChild(rowW);
 
@@ -333,7 +340,8 @@
             row.style = "background: lightblue;";
             table.appendChild(row);
             table.appendChild(row);
-            $('#ButAdd').toggle();
+            $('#ButAdd').attr('disabled', true);
+            $('#ButAdd').attr('style', "background: url(/images/addKeyBW.png);background-size: 38px 35px;float:right;margin-left:10px");
         }
 
 

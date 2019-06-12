@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="disabled" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: влад
@@ -14,7 +15,7 @@
     background-size: 38px 35px;" ></button></th>
             <th><input id="searchwrod" name="searchword" type="text" value=""><button type="submit" name="_eventId_SearchWords" style="background: url(/images/search.png);
     background-size: 38px 35px;" title="Поиск по слову"></button></th>
-            <th><button id="ButAdd" type="button" onclick="addKey('table')" title="Добавить ключ" style="background: url(/images/add.png);background-size: 38px 35px"></button><span style="color: red">
+            <th><button id="ButAdd" type="button" onclick="addKey('table')" title="Добавить ключ" style="background: url(/images/addKey.png);background-size: 38px 35px;float:right;margin-left:10px"></button><span style="color: red">
 <c:if test="${not empty out}"><c:if test="${out.addKeyValid == true}">${out.outMess}</c:if>
 </c:if></span></th>
         </tr>
@@ -81,8 +82,8 @@
     background-size: 38px 35px;" title="удалить"></button>
                         <button type="button" onclick="addWord('${items.id}t2',${items.id})" style="background: url(/images/add.png);
     background-size: 38px 35px;" title="добавить слово" id="butAddOneWord${items.id}" name="WordsInK"></button>
-                        <button type="button" onclick="addAllWord('${items.id}t2',${items.id})" style="background: url(/images/addAll.png);
-    background-size: 38px 35px; display: none;" title="добавить все слова" id="butAllWord${items.id}" name="_editManyWordsInKey"></button>
+                        <button type="button" onclick="addAllWord('${items.id}t2',${items.id})" style="background: url(/images/addAllBW.png);
+    background-size: 38px 35px" disabled="disabled"  title="добавить все слова" id="butAllWord${items.id}" name="_editManyWordsInKey"></button>
                     </td>
                 </tr>
                 <c:if test="${items.words.size()==1}">
