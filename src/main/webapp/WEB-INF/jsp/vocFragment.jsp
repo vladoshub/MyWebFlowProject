@@ -14,7 +14,7 @@
     background-size: 38px 35px;" ></button></th>
             <th><input id="searchwrod" name="searchword" type="text" value=""><button type="submit" name="_eventId_SearchWords" style="background: url(/images/search.png);
     background-size: 38px 35px;" title="Поиск по слову"></button></th>
-            <th><button type="button" onclick="addKey('table')" title="Добавить ключ" style="background: url(/images/add.png);margin-right: 122px; background-size: 38px 35px"></button><span style="color: red">
+            <th><button id="ButAdd" type="button" onclick="addKey('table')" title="Добавить ключ" style="background: url(/images/add.png);background-size: 38px 35px"></button><span style="color: red">
 <c:if test="${not empty out}"><c:if test="${out.addKeyValid == true}">${out.outMess}</c:if>
 </c:if></span></th>
         </tr>
@@ -76,11 +76,13 @@
                     </c:when></c:choose>
                     <td>
                         <button type="button" name="_eventId_editKey" onclick="edit('${items.id}inpK','key','${items.key}')" style="background: url(/images/edit.png);
-    background-size: 38px 35px;" title="изменить"></button>
+    background-size: 38px 35px;" title="изменить ключ"></button>
                         <button type="button" name="_eventId_deletedKey" onclick="del('${items.id}inpK','key')" style="background: url(/images/del.png);
     background-size: 38px 35px;" title="удалить"></button>
                         <button type="button" onclick="addWord('${items.id}t2',${items.id})" style="background: url(/images/add.png);
-    background-size: 38px 35px;" title="добавить слово"></button>
+    background-size: 38px 35px;" title="добавить слово" id="butAddOneWord${items.id}" name="WordsInK"></button>
+                        <button type="button" onclick="addAllWord('${items.id}t2',${items.id})" style="background: url(/images/addAll.png);
+    background-size: 38px 35px; display: none;" title="добавить все слова" id="butAllWord${items.id}" name="_editManyWordsInKey"></button>
                     </td>
                 </tr>
                 <c:if test="${items.words.size()==1}">

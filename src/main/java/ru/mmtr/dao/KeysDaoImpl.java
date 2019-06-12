@@ -1,6 +1,5 @@
 package ru.mmtr.dao;
 
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -43,15 +42,15 @@ public class KeysDaoImpl implements KeysDao {
 
 
     @Override
-    public String addKey(String Key, Long type, String... words) {
+    public String addKey(String Key, Long type, List<String> words) {
         try {
             Session session = this.sessionFactory.openSession();
             Transaction tx1 = session.beginTransaction();
             Keys keys = new Keys();
             keys.setKey(Key);
-            for (int i = 0; i < words.length; i++) {
+            for (String wordStr : words) {
                 Words word = new Words();
-                word.setWord(words[i]);
+                word.setWord(wordStr);
                 keys.setWords(word);
                 word.setKey(keys);
             }
@@ -68,14 +67,58 @@ public class KeysDaoImpl implements KeysDao {
         }
     }
 
+    public String addKey(String Key, Long type, String wordStr) {
+        try {
+            Session session = this.sessionFactory.openSession();
+            Transaction tx1 = session.beginTransaction();
+            Keys keys = new Keys();
+            keys.setKey(Key);
+            Words word = new Words();
+            word.setWord(wordStr);
+            keys.setWords(word);
+            word.setKey(keys);
+            Type typeL = new Type();
+            typeL.setId(type);
+            keys.setType(typeL);
+            session.saveOrUpdate(keys);
+            tx1.commit();
+            session.close();
+            return "Ok";
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return null;
+        }
+    }
+
     @Override
+    public String addWordToKey(Long id, Long type, List<String> words) {
+        try {
+            Session session = this.sessionFactory.openSession();
+            Transaction tx1 = session.beginTransaction();
+            Keys keys = new Keys();
+            keys.setId(id);
+            for (String s : words) {
+                Words word = new Words();
+                word.setWord(s);
+                word.setKey(keys);
+                session.saveOrUpdate(word);
+            }
+            tx1.commit();
+            session.close();
+            return "Ok";
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return null;
+        }
+    }
+
     public String addWordToKey(Long id, Long type, String words) {
         try {
             Session session = this.sessionFactory.openSession();
             Transaction tx1 = session.beginTransaction();
-            Words word = new Words();
             Keys keys = new Keys();
             keys.setId(id);
+            Words word = new Words();
             word.setWord(words);
             word.setKey(keys);
             session.saveOrUpdate(word);
@@ -164,9 +207,9 @@ public class KeysDaoImpl implements KeysDao {
             Session session = this.sessionFactory.openSession();
             Transaction tx1 = session.beginTransaction();
 
-            Words word = (Words)session.createQuery("From Words where id=" + id + "").uniqueResult();//-1 способо
+            Words word = (Words) session.createQuery("From Words where id=" + id + "").uniqueResult();//-1 способо
 
-            word = (Words)session.load(Words.class,id);//2-способ
+            word = (Words) session.load(Words.class, id);//2-способ
             session.delete(word);
 
             tx1.commit();

@@ -19,38 +19,6 @@
     </view-state>
 
 
-    <view-state id="view" view="view">
-        <transition on="editWord" >
-            <evaluate result="out" expression=
-                    "ChangeOps.updateByWordFromWeb(requestParameters.ids,requestParameters.edit,type.type)"/>
-            <render fragments="list,answer"/>
-        </transition>
-        <transition on="editKey" >
-            <evaluate result="out" expression=
-                    "ChangeOps.updateByKeyFromWeb(requestParameters.ids,requestParameters.edit,type.type)"/>
-            <render fragments="list,answer"/>
-        </transition>
-        <transition on="deletedWord" >
-            <evaluate result="out" expression=
-                    "ChangeOps.delFromWebByWord(requestParameters.edit,type.type)"/>
-            <render fragments="list,answer"/>
-        </transition>
-        <transition on="deletedKey" >
-            <evaluate result="out" expression=
-                    "ChangeOps.delFromWebByKey(requestParameters.edit,type.type)"/>
-            <render fragments="list,answer"/>
-        </transition>
-    </view-state>
-
-    <view-state id="addMany" view="addMany">
-        <transition on="addWords" >
-            <evaluate result="out" expression=
-                    "ChangeOps.addFromWeb(requestParameters.inputNameKey,requestParameters.inputNameWord,type.type)"/>
-            <render fragments="editVocAddManyWordsFragment,answer"/>
-        </transition>
-
-    </view-state>
-
     <view-state id="voc" view="voc">
         <transition on="SearchKeys" >
             <evaluate result="out" expression=
@@ -65,49 +33,54 @@
         <transition on="addWordss" >
             <evaluate result="out" expression=
                     "ChangeOps.addFromWeb(requestParameters.key,requestParameters.word,type.type)"/>
-            <render fragments="voc,answer"/>
+            <render fragments="voc"/>
         </transition>
 
         <transition on="addWordsss" >
             <evaluate result="out" expression=
                     "ChangeOps.addFromWebToKey(requestParameters.ID,requestParameters.word,type.type)"/>
-            <render fragments="voc,answer"/>
+            <render fragments="voc"/>
         </transition>
 
         <transition on="editWord" >
             <evaluate result="out" expression=
                     "ChangeOps.updateByWordFromWeb(requestParameters.ID,requestParameters.word,type.type,requestParameters.kID)"/>
-            <render fragments="voc,answer"/>
+            <render fragments="voc"/>
         </transition>
 
         <transition on="editKey" >
             <evaluate result="out" expression=
                     "ChangeOps.updateByKeyFromWeb(requestParameters.ID,requestParameters.key,type.type)"/>
-            <render fragments="voc,answer"/>
+            <render fragments="voc"/>
         </transition>
+
         <transition on="deletedWord" >
             <evaluate result="out" expression=
                     "ChangeOps.delFromWebByWord(requestParameters.ID,type.type,requestParameters.kID)"/>
-            <render fragments="voc,answer"/>
+            <render fragments="voc"/>
         </transition>
+
         <transition on="deletedKey" >
             <evaluate result="out" expression=
                     "ChangeOps.delFromWebByKey(requestParameters.ID,type.type)"/>
-            <render fragments="voc,answer"/>
+            <render fragments="voc"/>
+        </transition>
+
+        <transition on="editManyWordsInKey" >
+            <evaluate result="out" expression=
+                    "ChangeOps.editManyWordsInKey(type.type,requestParameters.ID,requestParameters.word)"/>
+            <render fragments="voc"/>
+        </transition>
+
+        <transition on="addManyWordsAndKey" >
+            <evaluate result="out" expression=
+                    "ChangeOps.addManyWordsAndKey(requestParameters.key,requestParameters.word,type.type)"/>
+            <render fragments="voc"/>
         </transition>
     </view-state>
 
 
-    <view-state id="search" view="search">
-        <transition on="SearchKey" to="search">
-            <evaluate result="out" expression=
-                    "ChangeOps.searchFromWebByKey(requestParameters.Key,type.type)"/>
-        </transition>
-        <transition on="SearchWord" to="search" >
-            <evaluate result="out" expression=
-                    "ChangeOps.searchFromWebByWords(requestParameters.Word,type.type)"/>
-        </transition>
-    </view-state>
+
 
 
     <view-state id="temp" view="temp" model="ChangeOps">
@@ -118,18 +91,6 @@
             <set  name = "type.type"  value = "1"/>
         </transition>
         <transition on="next" to="main"/>
-        <transition on="view" to="view">
-            <evaluate result="out" expression=
-                    "ChangeOps.printKeys(type.type)" />
-        </transition>
-        <transition on="addMany" to="addMany">
-            <evaluate result="out" expression=
-                    "ChangeOps.createOut()" />
-        </transition>
-        <transition on="search" to="search">
-            <evaluate result="out" expression=
-                    "ChangeOps.createOut()" />
-        </transition>
         <transition on="voc" to="voc">
             <evaluate result="out" expression=
                     "ChangeOps.printKeys(type.type)" />

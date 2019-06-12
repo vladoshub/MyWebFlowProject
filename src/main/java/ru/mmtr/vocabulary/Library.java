@@ -147,6 +147,26 @@ public class Library {
 
     }
 
+    public String addToTxt(String key, List<String> value, Long type) {
+        try {
+            return keysDao.addKey(key, type, value);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return null;
+        }
+
+    }
+
+    public String addToKey(Long id, List<String> value, Long type) {
+        try {
+            return keysDao.addWordToKey(id, type, value);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return null;
+        }
+
+    }
+
     public String addToKey(Long id, String value, Long type) {
         try {
             return keysDao.addWordToKey(id, type, value);
@@ -180,16 +200,7 @@ public class Library {
     }
 
 
-    public String addToTxt(String key, String[] value, Long type) {
 
-        try {
-            return keysDao.addKey(key, type, value);
-
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-            return null;
-        }
-    }
 
 
 }

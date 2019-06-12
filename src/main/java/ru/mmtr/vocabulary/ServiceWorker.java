@@ -3,8 +3,10 @@ package ru.mmtr.vocabulary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.mmtr.entity.Keys;
+import ru.mmtr.entity.Words;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component("ServiceWorker")
@@ -54,7 +56,7 @@ public class ServiceWorker {
     }
 
 
-    public String add(Library Library, Long type, String key, String... word) throws IOException {
+    public String add(Library Library, Long type, String key, List<String> word) throws IOException {
         for (String s : word) {
             if (searchFromVocabulary(s, type) == false)
                 return "несоответсвие правилам словаря ";
@@ -62,11 +64,34 @@ public class ServiceWorker {
         return Library.addToTxt(key, word, type);
     }
 
-    public String addToKey(Library Library, Long type, Long id, String word) throws IOException {
-        if (searchFromVocabulary(word, type) == false)
-            return "несоответсвие правилам словаря ";
+    public String add(Library Library, Long type, String key, String word) throws IOException {
+            if (searchFromVocabulary(word, type) == false)
+                return "несоответсвие правилам словаря ";
+        return Library.addToTxt(key, word, type);
+    }
 
-        return Library.addToKey(id, word, type);
+    public String addToKey(Library Library, Long type, Long id, List<String> words) throws IOException {
+        boolean check=false;
+        for (String s:words) {
+            if (searchFromVocabulary(s, type) == true) {
+                check = true;
+            }
+            else {
+                words.remove(s);
+            }
+        }
+        if (!check)
+        return "ни 1 слово не подходит по правилам словаря";
+
+        return Library.addToKey(id,words,type);
+    }
+
+    public String addToKey(Library Library, Long type, Long id, String words) throws IOException {
+
+            if (searchFromVocabulary(words, type) == false)
+            return "ни 1 слово не подходит по правилам словаря";
+
+        return Library.addToKey(id,words,type);
     }
 
     public List<String> printAll(Library Library, Long type) {

@@ -9,6 +9,7 @@ import ru.mmtr.web.converter.ConverterKeys;
 import ru.mmtr.web.converter.ConverterWords;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -92,6 +93,28 @@ public class Choice {
         out.setOutMess("");
         out.setKeys(serviceWorker.printKeys(library, typeOfVoc));
         return out;
+    }
+
+    public Out editManyWordsInKey(Long typeOfVoc,Long id,String words) throws IOException {
+        List<String> regWords = new ArrayList<String>();
+        String masW[]=words.split("#_#");
+        if(masW.length==1)
+            return printKeys(typeOfVoc, serviceWorker.addToKey(library, typeOfVoc, id, masW[0]), id, true);
+        for(int i =0;i<masW.length;i++){
+            regWords.add(masW[i]);
+        }
+        return printKeys(typeOfVoc, serviceWorker.addToKey(library, typeOfVoc, id, regWords), id, true);
+    }
+
+    public Out addManyWordsAndKey(String key, String word, Long voc) throws IOException {
+        List<String> regKey = new ArrayList<String>();
+        String masK[]=word.split("#_#");
+        if(masK.length==1)
+        return printKeysAfterAddKey(voc, serviceWorker.add(library, voc, key, masK[0]));
+        for(int i =0;i<masK.length;i++){
+            regKey.add(masK[i]);
+        }
+        return printKeysAfterAddKey(voc, serviceWorker.add(library, voc, key, regKey));
     }
 
     public Out printKeys(Long typeOfVoc, String inPut, Long id, boolean isKey) throws IOException {

@@ -14,8 +14,10 @@ public interface KeysDao {
 
     public String deleteByKey(Long id);
 
-    public String addKey(String Key, Long type, String... words);
+    public String addKey(String Key, Long type, List<String> words);
+    public String addKey(String Key, Long type, String word);
 
+    public String addWordToKey(Long id, Long type, List<String> words);
     public String addWordToKey(Long id, Long type, String words);
 
     public String updateByKey(Long id, String newKeys, Long type);

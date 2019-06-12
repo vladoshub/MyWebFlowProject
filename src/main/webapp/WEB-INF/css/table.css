@@ -7,10 +7,10 @@
     border-collapse: collapse;
 
 }
-th {
+th{
     font-weight: normal;
     font-size: 14px;
-    color: red;
+    color: #ffd07d;
     text-align:left;
     background: rgba(51, 51, 153, .2);
 }
@@ -23,7 +23,7 @@ td {
     text-align:left;
 }
 tr:hover td {
-    background: rgba(3,240,3,.8 );
+    background: rgba(221, 240, 176, 0.8);
 }
 
 button
