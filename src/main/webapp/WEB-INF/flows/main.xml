@@ -20,6 +20,13 @@
 
 
     <view-state id="voc" view="voc">
+
+        <transition on="backPage" to="temp">
+        </transition>
+
+        <transition on="reload" to="voc">
+        </transition>
+
         <transition on="SearchKeys" >
             <evaluate result="out" expression=
                     "ChangeOps.searchFromWebByKey(requestParameters.searchkey,type.type)"/>
@@ -77,6 +84,8 @@
                     "ChangeOps.addManyWordsAndKey(requestParameters.key,requestParameters.word,type.type)"/>
             <render fragments="voc"/>
         </transition>
+
+
     </view-state>
 
 

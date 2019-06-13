@@ -24,7 +24,7 @@
         var rows = 0;
         var rows1 = 0;
         var wordInKey = 0;
-        var check=0;
+        var check = 0;
 
         $(window).load(function () {
             $('#light-pagination').pagination({
@@ -44,7 +44,7 @@
                 alert("введите что-нибудь или измененное значение");
             }
             else {
-                check=0;
+                check = 0;
                 if ((op + '') == 'key') {
                     document.getElementById("key").value = document.getElementById(id).value;
                     document.getElementById("ID").value = document.getElementById(id).name;
@@ -85,7 +85,7 @@
 
 
         function del(id, op) {
-            check=0;
+            check = 0;
             if ((op + '') == 'key') {
                 document.getElementById("ID").value = document.getElementById(id).name;
                 $("#forma1").ajaxSubmit({
@@ -119,17 +119,17 @@
 
         }
 
-        function addAllWord(id, idKey){
-            check=0;
-            var words="";
+        function addAllWord(id, idKey) {
+            check = 0;
+            var words = "";
             var x = document.getElementById(id).getElementsByTagName('input');
-            for (var i=0;i<x.length;i++) {
+            for (var i = 0; i < x.length; i++) {
                 if (x[i].value != "") {
                     words = words + x[i].value + "#_#";
                 }
             }
-            if(words!=""){
-                words=words.substring(0, words.length - 3);
+            if (words != "") {
+                words = words.substring(0, words.length - 3);
                 document.getElementById("word").value = words;
                 document.getElementById("ID").value = idKey;
                 $("#forma1").ajaxSubmit({
@@ -149,14 +149,14 @@
         }
 
         function addWord(id, idKey) {
-            if(check==0) {
+            if (check == 0) {
                 $("button[name~='WordsInK']").toggle();
                 $('#butAddOneWord' + idKey).toggle();
             }
             check++;
-            if(check==2){
-                $('#butAllWord' + idKey).attr("style","background: url(/images/addAll.png);background-size:38px 35px");
-                $('#butAllWord' + idKey).attr("disabled",false);
+            if (check == 2) {
+                $('#butAllWord' + idKey).attr("style", "background: url(/images/addAll.png);background-size:38px 35px");
+                $('#butAllWord' + idKey).attr("disabled", false);
             }
             var a = "rows" + rows;
             rows++;
@@ -168,6 +168,9 @@
             var inp = document.createElement("input");
             var butSave = document.createElement("button");
             var butDel = document.createElement("button");
+            td1.style = "border-top:0";
+            td2.style = "border-top:0";
+            td3.style = "border-top:0";
             inp.id = a + "input";
             inp.name = idKey + '';
             row.id = a + "R";
@@ -181,20 +184,20 @@
                 document.getElementById(row.id).remove();
                 check--;
                 var x = document.getElementById(id).getElementsByTagName('input');
-                if(check==1){
-                    $('#butAllWord' + idKey).attr("style","background: url(/images/addAllBW.png);background-size:38px 35px");
-                    $('#butAllWord' + idKey).attr("disabled",true);
+                if (check == 1) {
+                    $('#butAllWord' + idKey).attr("style", "background: url(/images/addAllBW.png);background-size:38px 35px");
+                    $('#butAllWord' + idKey).attr("disabled", true);
                 }
-                if (!x[0]){
-                    check=0;
-                    $( "button[name~='WordsInK']" ).toggle();
+                if (!x[0]) {
+                    check = 0;
+                    $("button[name~='WordsInK']").toggle();
                     $('#butAddOneWord' + idKey).toggle();
-                    $('#butAllWord' + idKey).attr("style","background: url(/images/addAllBW.png);background-size:38px 35px");
-                    $('#butAllWord' + idKey).attr("disabled",true);
+                    $('#butAllWord' + idKey).attr("style", "background: url(/images/addAllBW.png);background-size:38px 35px");
+                    $('#butAllWord' + idKey).attr("disabled", true);
                 }
             }
             butSave.onclick = function () {
-                check=0;
+                check = 0;
                 var id = a + "input";
                 var id2 = a + "R";
                 var text = document.getElementById(id).value;
@@ -266,6 +269,9 @@
                 var tdW = document.createElement("TD");
                 var tdWInp = document.createElement("TD");
                 var tdWBut = document.createElement("TD");
+                tdW.style = "border-top:0";
+                tdWInp.style = "border-top:0";
+                tdWBut.style = "border-top:0";
                 var inpW = document.createElement("input");
                 inpW.setAttribute("name", "allInp");
                 tdWBut.appendChild(butDel);
@@ -277,13 +283,14 @@
                 rowW.appendChild(tdW);
                 rowW.appendChild(tdWInp);
                 rowW.appendChild(tdWBut);
+                rowW.style = "background: LIGHTSEAGREEN";
                 table.appendChild(rowW);
 
 
             }
 
             butSave.onclick = function () {
-                check=0;
+                check = 0;
                 var word = a + "inputWord";
                 var id2 = a + "R";
                 var key = a + "inputKey";
@@ -291,13 +298,13 @@
                 var word2 = document.getElementById(word).value;
                 var key2 = document.getElementById(key).value;
                 var x = document.getElementsByName("allInp");
-                for (var i=0;i<x.length;i++) {
+                for (var i = 0; i < x.length; i++) {
                     if (x[i].value != "") {
                         allW = allW + x[i].value + "#_#";
                     }
                 }
                 if (allW != "") {
-                    allW=allW.substring(0, allW.length - 3);
+                    allW = allW.substring(0, allW.length - 3);
                     butSave.name = "_addManyWordsAndKey";
                     document.getElementById("word").value = word2 + "#_#" + allW;
                     document.getElementById("key").value = key2;
@@ -313,23 +320,35 @@
                     });
                 }
                 else {
-                    butSave.name = "_eventId_addWordss";
-                    document.getElementById("word").value = word2;
-                    document.getElementById("key").value = key2;
-                    $("#forma1").ajaxSubmit({
-                        url: "${flowExecutionUrl}&_eventId_addWordss&ajaxSource=true",
-                        success: function (html) {
-                            $("#voc").html($(html).filter("#voc")),
-                                $("#answer").html($(html).filter("#answer"));
-                        },
-                        error: function (error) {
-                            console.log(error)
+                    if (word2 == "") {
+                        alert("введите слово")
+
+                    }
+                    else {
+                        if (key2 == "") {
+                            alert("введите ключ ")
                         }
-                    });
+                        else {
+                            butSave.name = "_eventId_addWordss";
+                            document.getElementById("word").value = word2;
+                            document.getElementById("key").value = key2;
+                            $("#forma1").ajaxSubmit({
+                                url: "${flowExecutionUrl}&_eventId_addWordss&ajaxSource=true",
+                                success: function (html) {
+                                    $("#voc").html($(html).filter("#voc")),
+                                        $("#answer").html($(html).filter("#answer"));
+                                },
+                                error: function (error) {
+                                    console.log(error)
+                                }
+                            });
+                        }
+
+                    }
                 }
             }
 
-            td1.appendChild(inp2)
+            td1.appendChild(inp2);
             td2.appendChild(inp);
             td3.appendChild(butDel);
             td3.appendChild(butSave);
@@ -351,7 +370,7 @@
                 alert("введите что-нибудь или измененное значение");
             }
             else {
-                check=0;
+                check = 0;
                 document.getElementById("word").value = document.getElementById(id).value;
                 document.getElementById("ID").value = document.getElementById(id).name;
                 var ids = "";
@@ -376,7 +395,7 @@
             var ids = "";
             ids = ids + id2;
             document.getElementById("kID").value = ids;
-            check=0;
+            check = 0;
             $("#forma1").ajaxSubmit({
 
                 url: "${flowExecutionUrl}&_eventId_deletedWord&ajaxSource=true",
@@ -401,6 +420,8 @@
     <input id="word" name="word" type="hidden" value="">
     <input id="ID" name="ID" type="hidden" value="">
     <input id="kID" name="kID" type="hidden" value="">
+    <button type="submit" name="_eventId_reload" style="margin-left:0">Перезагрузить</button>
+    <button type="submit" name="_eventId_backPage" style="margin-left: 10px;float:right">Назад</button>
     <tiles:insertAttribute name="voc"/>
 </form>
 </body>

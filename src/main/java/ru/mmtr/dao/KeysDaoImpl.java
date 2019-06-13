@@ -132,7 +132,7 @@ public class KeysDaoImpl implements KeysDao {
     }
 
     @Override
-    public List<Keys> findByKey(String key) { // возврат листы  ключа
+    public List<Keys> findByKey(String key) {
         try {
             Session session = this.sessionFactory.openSession();
             List<Keys> ux = session.createQuery("From Keys where key='" + key + "'").list();
@@ -186,7 +186,7 @@ public class KeysDaoImpl implements KeysDao {
     }
 
     @Override
-    public String deleteByKey(Long id) { //удаление по ключу
+    public String deleteByKey(Long id) {
         try {
             Session session = this.sessionFactory.openSession();
             Transaction tx1 = session.beginTransaction();
@@ -206,10 +206,7 @@ public class KeysDaoImpl implements KeysDao {
         try {
             Session session = this.sessionFactory.openSession();
             Transaction tx1 = session.beginTransaction();
-
-            Words word = (Words) session.createQuery("From Words where id=" + id + "").uniqueResult();//-1 способо
-
-            word = (Words) session.load(Words.class, id);//2-способ
+            Words word = (Words) session.load(Words.class, id);
             session.delete(word);
 
             tx1.commit();
@@ -222,7 +219,7 @@ public class KeysDaoImpl implements KeysDao {
     }
 
     @Override
-    public String updateByKey(Long id, String newKeys, Long type) { //Обновление по ключу
+    public String updateByKey(Long id, String newKeys, Long type) {
         try {
             Session session = this.sessionFactory.openSession();
             Transaction tx1 = session.beginTransaction();
@@ -239,7 +236,7 @@ public class KeysDaoImpl implements KeysDao {
     }
 
     @Override
-    public String updateByWord(Long id, String newWords, Long type) { //Обновление по словам
+    public String updateByWord(Long id, String newWords, Long type) {
         try {
             Session session = this.sessionFactory.openSession();
             Transaction tx1 = session.beginTransaction();

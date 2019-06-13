@@ -25,7 +25,7 @@
         <tr >
             <th style="padding-left:15px"><b>Ключи</b></th>
             <th style="padding-left:15px"><b>Значения</b></th>
-            <th style="padding-left:99px"><b>Действия</b></th>
+            <th style="padding-left:147px"><b>Действия</b></th>
         </tr>
         </thead>
         <c:if test="${not empty out.words}">
@@ -88,13 +88,13 @@
                 </tr>
                 <c:if test="${items.words.size()==1}">
                     <tr id="${items.id}O" style="display: none;">
-                        <td></td>
-                        <td><input id="${items.words.get(0).id}inpO" type="text" name="${items.words.get(0).id}"  value="${items.words.get(0).word}"/>
+                        <td style="border-top:0"></td>
+                        <td style="border-top:0"><input id="${items.words.get(0).id}inpO" type="text" name="${items.words.get(0).id}"  value="${items.words.get(0).word}"/>
                             <span style="color: red">
                         <c:if test="${items.words.get(0).id == out.wordsDtos.id}">${out.outMess}</c:if>
                     </span>
                         </td>
-                        <td>
+                        <td style="border-top:0">
                             <button type="button" name="_eventId_editWord" onclick="edit('${items.words.get(0).id}inpO','word','${items.words.get(0).word}')" style="background: url(/images/edit.png);
     background-size: 38px 35px;" title="изменить"></button>
                             <button type="button"  name="_eventId_deletedWord" onclick="del('${items.words.get(0).id}inpO','word')" style="background: url(/images/del.png);
@@ -108,13 +108,13 @@
                     <tbody id="${items.id}M" style="display: none;">
                     <c:forEach items="${items.words}" var="words">
                         <tr>
-                            <td></td>
-                            <td><input id="${words.id}inpM" type="text" name="${words.id}"  value="${words.word}"/>
+                            <td style="border-top:0"></td>
+                            <td style="border-top:0"><input id="${words.id}inpM" type="text" name="${words.id}"  value="${words.word}"/>
                                 <span style="color: red">
                         <c:if test="${words.id == out.wordsDtos.id}">${out.outMess}</c:if>
                     </span>
                             </td>
-                            <td>
+                            <td style="border-top:0">
                                 <button type="button" name="_eventId_editWord" onclick="edit2('${words.id}inpM','${items.id}','${words.word}')" style="background: url(/images/edit.png);
     background-size: 38px 35px;" title="изменить"></button>
                                 <button type="button" name="_eventId_deletedWord" onclick="del2('${words.id}inpM','${items.id}')" style="background: url(/images/del.png);
