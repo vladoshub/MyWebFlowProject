@@ -5,11 +5,29 @@ img.main{
 img{
      height: 30px;
      width: 30px;
+
  }
 button{
+    color: maroon;
+    text-decoration: none;
     height: 60px;
-    width: 120px;
-    background: url(/images/woodimg.jpg);
+    width: 200px;
+    line-height: 45px;
+    margin: 10px 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 400;
+    box-shadow: 0 8px 15px rgba(0,0,0,.0);
+    transition: .3s;
+    border: 3px;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+}
+button:hover {
+    box-shadow: 0 15px 20px rgba(46,229,157,.0);
+    transform: translateY(-7px);
 }
 body#voc{
     width: 200px;

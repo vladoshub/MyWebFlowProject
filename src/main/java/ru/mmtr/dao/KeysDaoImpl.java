@@ -166,6 +166,31 @@ public class KeysDaoImpl implements KeysDao {
         }
     }
 
+   /* public String getRegWord(Long type) {
+        try {
+            Session session = this.sessionFactory.openSession();
+            Type type1 = (Type) session.createQuery("From Type where type=" + type + "").uniqueResult();
+            session.close();
+            return type1.getRegWord();
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return null;
+        }
+    }
+
+
+    public String getRegKey(Long type) {
+        try {
+            Session session = this.sessionFactory.openSession();
+            Type type1 = (Type) session.createQuery("From Type where type=" + type + "").uniqueResult();
+            session.close();
+            return type1.getRegKey();
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return null;
+        }
+    }
+*/
     @Override
     public void update(Keys keys) {
         Session session = this.sessionFactory.openSession();

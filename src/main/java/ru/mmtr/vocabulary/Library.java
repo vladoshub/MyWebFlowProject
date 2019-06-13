@@ -21,19 +21,12 @@ public class Library {
 
     private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(Library.class);
 
-    @Value("nameFile")
-    private String nameFile;
-    private String regexVocFirstLib;
-    private String regexVocSecondLib;
     private KeysDao keysDao;
     private List<String> print = new ArrayList<>();
 
 
     @Autowired
-    public Library(InfoBase infoBase, SessionFactory ses) {
-        this.nameFile = infoBase.getFileName();
-        this.regexVocFirstLib = infoBase.getRegexVocFirstLib();
-        this.regexVocSecondLib = infoBase.getRegexVocSecondLib();
+    public Library(SessionFactory ses) {
         keysDao = new KeysDaoImpl(ses);
     }
 
@@ -80,7 +73,33 @@ public class Library {
 
     }
 
-    public List<Keys> searchByKey(String key, Long type) {//-	поиск записи по ключу
+   /* public String getRegKey(Long type) {
+
+        try {
+            return keysDao.getRegKey(type);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return null;
+        }
+
+
+    }
+
+
+    public String getRegWord(Long type) {
+
+        try {
+            return keysDao.getRegWord(type);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return null;
+        }
+
+
+    }
+*/
+
+    public List<Keys> searchByKey(String key, Long type) {
 
         try {
             return keysDao.findByKey(key);
@@ -92,7 +111,7 @@ public class Library {
 
     }
 
-    public List<Keys> searchByWord(String word, Long type) {//-	поиск записи по ключу
+    public List<Keys> searchByWord(String word, Long type) {
 
         try {
             return keysDao.findByWord(word, type);
@@ -103,7 +122,7 @@ public class Library {
 
     }
 
-    public List<Keys> getKeys(Long type) {//-	поиск записи по ключу
+    public List<Keys> getKeys(Long type) {
         try {
             return keysDao.getKeysList(type);
         } catch (Exception e) {
@@ -177,7 +196,7 @@ public class Library {
 
     }
 
-    public String updateByKey(Long id, String newKey, Long type) {//--	добавление записей
+    public String updateByKey(Long id, String newKey, Long type) {
 
         try {
             return keysDao.updateByKey(id, newKey, type);
@@ -188,7 +207,7 @@ public class Library {
 
     }
 
-    public String updateByWord(Long id, String newWord, Long type) {//--	добавление записей
+    public String updateByWord(Long id, String newWord, Long type) {
 
         try {
             return keysDao.updateByWord(id, newWord, type);
@@ -198,9 +217,6 @@ public class Library {
         }
 
     }
-
-
-
 
 
 }

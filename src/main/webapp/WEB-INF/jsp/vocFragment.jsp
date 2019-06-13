@@ -28,28 +28,6 @@
             <th style="padding-left:147px"><b>Действия</b></th>
         </tr>
         </thead>
-        <c:if test="${not empty out.words}">
-            <c:forEach items="${out.words}" var="items">
-                <tr>
-                    <td><input value="${items.key.key}" id="${items.key.id}inpK"></td>
-                    <td><input value="${items.word}" readonly="readonly" id="${items.id}inpW"><button onclick="hiddRow('${items.id}WW')" style="background: url(/images/any.png);
-    background-size: 40px 40px;" title="выбор слов"></button></td>
-                    <td>
-                        <button type="button" name="_eventId_editKey" onclick="edit('${items.key.id}inpK','key')" style="background: url(/images/edit1.svg);
-    background-size: 40px 40px;" title="изменить"></button>
-                        <button type="button" name="_eventId_deletedKey" onclick="del('${items.key.id}inpK','key')" style="background: url(/images/del.png);
-    background-size: 40px 40px;" title="удалить"></button></td>
-                </tr>
-                <tr id="${items.id}WW" style="display: none;">
-                    <td></td>
-                    <td><input id="${items.id}inp" type="text"  value="${items.word}"/></td>
-                    <td>
-                        <button type="button" name="_eventId_editWord" onclick="edit('${items.id}inpW','word')">Редактировать</button>
-                        <button type="button" name="_eventId_deletedWord" onclick="del('${items.id}inpW','word')">Удалить</button>
-                    </td>
-                </tr>
-            </c:forEach>
-        </c:if>
         <c:if test="${not empty out.keys}">
             <c:forEach items="${out.keys}" var="items">
                 <tr id="${items.id}">

@@ -420,8 +420,8 @@
     <input id="word" name="word" type="hidden" value="">
     <input id="ID" name="ID" type="hidden" value="">
     <input id="kID" name="kID" type="hidden" value="">
-    <button type="submit" name="_eventId_reload" style="margin-left:0">Перезагрузить</button>
-    <button type="submit" name="_eventId_backPage" style="margin-left: 10px;float:right">Назад</button>
+    <button type="submit" name="_eventId_reload" style="margin-left:0;color:red">Перезагрузить</button>
+    <button type="submit" name="_eventId_backPage" style="margin-left: 10px;float:right;color:red">Назад</button>
     <tiles:insertAttribute name="voc"/>
 </form>
 </body>

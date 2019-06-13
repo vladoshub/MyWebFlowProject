@@ -15,6 +15,9 @@ public class Type implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String type;
+   /* private String RegWord;
+    private String RegKey;
+    */
     @OneToMany(mappedBy = "type", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Keys> keys;
 
@@ -64,6 +67,22 @@ public class Type implements Serializable {
         this.keys.add(keys);
     }
 
+   /* public String getRegKey() {
+        return RegKey;
+    }
+
+    public String getRegWord() {
+        return RegWord;
+    }
+
+    public void setRegKey(String regKey) {
+        RegKey = regKey;
+    }
+
+    public void setRegWord(String regWord) {
+        RegWord = regWord;
+    }
+*/
     @Override
     public String toString() {
         return "KEYS{" +

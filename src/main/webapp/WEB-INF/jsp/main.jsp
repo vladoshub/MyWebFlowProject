@@ -4,7 +4,7 @@
     <body id="main">
         <input type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}"/>
         <br>
-        <h>Выберите словарь</h>
+        <b style="margin-left: 55px">Выберите словарь</b>
         <br>
         <button type="submit" class="button" name="_eventId_nextRus"><img class="main" src="${pageContext.request.contextPath}/images/rus.png"/></button>
         <br>

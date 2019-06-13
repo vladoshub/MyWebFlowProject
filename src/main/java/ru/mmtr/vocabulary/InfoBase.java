@@ -2,38 +2,32 @@ package ru.mmtr.vocabulary;
 
 public class InfoBase {
 
-    private String fileName;
-    private String regexVocFirst;
-    private String regexVocSecond;
-    private String regexVocFirstLib;
-    private String regexVocSecondLib;
+    private String regexVocFirstWords;
+    private String regexVocSecondWords;
+    private String regexVocSecondKeys;
+    private String regexVocFirstKeys;
 
-    InfoBase(String fileName, String regexVocFirst, String regexVocSecond, String regexVocFirstLib, String regexVocSecondLib) {
-        this.fileName = fileName;
-        this.regexVocFirst = regexVocFirst;
-        this.regexVocSecond = regexVocSecond;
-        this.regexVocFirstLib = regexVocFirstLib;
-        this.regexVocSecondLib = regexVocSecondLib;
+    InfoBase(String regexVocFirstWords, String regexVocSecondWords, String regexVocFirstKeys, String regexVocSecondKeys) {
+        this.regexVocFirstWords = regexVocFirstWords;
+        this.regexVocSecondWords = regexVocSecondWords;
+        this.regexVocFirstKeys = regexVocFirstKeys;
+        this.regexVocSecondKeys = regexVocSecondKeys;
 
     }
 
-    public String getRegexVocFirst() {
-        return regexVocFirst;
+    public String getRegexVocFirstWords() {
+        return regexVocFirstWords;
     }
 
-    public String getFileName() {
-        return fileName;
+    public String getRegexVocSecondWords() {
+        return regexVocSecondWords;
     }
 
-    public String getRegexVocSecond() {
-        return regexVocSecond;
+    public String getRegexVocSecondKeys() {
+        return regexVocSecondKeys;
     }
 
-    public String getRegexVocFirstLib() {
-        return regexVocFirstLib;
-    }
-
-    public String getRegexVocSecondLib() {
-        return regexVocSecondLib;
+    public String getRegexVocFirstKeys() {
+        return regexVocFirstKeys;
     }
 }

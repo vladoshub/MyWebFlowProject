@@ -1,9 +1,11 @@
 package ru.mmtr.vocabulary;
 
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import ru.mmtr.dao.KeysDao;
+import ru.mmtr.dao.KeysDaoImpl;
 import ru.mmtr.entity.Keys;
-import ru.mmtr.entity.Words;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,13 +16,21 @@ public class ServiceWorker {
 
 
     @Autowired
-    public ServiceWorker(InfoBase infoBase) {
-        this.firstVoc = infoBase.getRegexVocFirst();
-        this.secondVoc = infoBase.getRegexVocSecond();
+    public ServiceWorker(InfoBase infoBase,SessionFactory ses) {
+        keysDao = new KeysDaoImpl(ses);
+        this.firstVocWords = infoBase.getRegexVocFirstWords();
+        this.secondVocWords = infoBase.getRegexVocSecondWords();
+        this.firstVocKeys = infoBase.getRegexVocFirstKeys();
+        this.secondVocKeys = infoBase.getRegexVocSecondKeys();
+
     }
 
-    private String firstVoc;
-    private String secondVoc;
+
+    private KeysDao keysDao;
+    private String firstVocWords;
+    private String secondVocWords;
+    private String firstVocKeys;
+    private String secondVocKeys;
 
 
     public String delByKey(Library Library, Long id) throws IOException {
@@ -31,11 +41,6 @@ public class ServiceWorker {
         return Library.deleteByWord(id);
     }
 
-    public List<String> seacrh(Library Library, Long type) throws IOException {
-        System.out.println("введите ключ:");
-        String key = Input.input();
-        return Library.readFromTxt(key, type);
-    }
 
     public List<Keys> seacrhByKey(Library Library, String key, Long type) throws IOException {
         return Library.searchByKey(key, type);
@@ -50,46 +55,51 @@ public class ServiceWorker {
     }
 
     public String updateByWord(Library Library, Long id, String newWord, Long type) throws IOException {
-        if (searchFromVocabulary(newWord, type))
+        if (checkWord(newWord, type))
             return Library.updateByWord(id, newWord, type);
         else return "несоответсвие правилам словаря ";
     }
 
 
-    public String add(Library Library, Long type, String key, List<String> word) throws IOException {
-        for (String s : word) {
-            if (searchFromVocabulary(s, type) == false)
-                return "несоответсвие правилам словаря ";
+    public String add(Library Library, Long type, String key, List<String> words) throws IOException {
+        if(!checkKey(key,type))
+            return "ключ не относится к данному словарю";
+        List<String> newWords = new ArrayList<String>();
+        for (String s : words) {
+            if (checkWord(s, type))
+                newWords.add(s);
         }
-        return Library.addToTxt(key, word, type);
+        if(newWords.size()==0) {
+            return "ни 1 слово не подходит по правилам словаря";
+        }
+        else
+        return Library.addToTxt(key, newWords, type);
     }
 
     public String add(Library Library, Long type, String key, String word) throws IOException {
-            if (searchFromVocabulary(word, type) == false)
+        if(!checkKey(key,type))
+            return "ключ не относится к данному словарю";
+            if (!checkWord(word, type))
                 return "несоответсвие правилам словаря ";
         return Library.addToTxt(key, word, type);
     }
 
     public String addToKey(Library Library, Long type, Long id, List<String> words) throws IOException {
-        boolean check=false;
+        List<String> newWords = new ArrayList<String>();
         for (String s:words) {
-            if (searchFromVocabulary(s, type) == true) {
-                check = true;
-            }
-            else {
-                words.remove(s);
-            }
+            if (checkWord(s, type))
+                newWords.add(s);
         }
-        if (!check)
+        if (newWords.size()==0)
         return "ни 1 слово не подходит по правилам словаря";
 
-        return Library.addToKey(id,words,type);
+        return Library.addToKey(id,newWords,type);
     }
 
     public String addToKey(Library Library, Long type, Long id, String words) throws IOException {
 
-            if (searchFromVocabulary(words, type) == false)
-            return "ни 1 слово не подходит по правилам словаря";
+            if (!checkWord(words, type))
+            return "слово не подходит по правилам словаря";
 
         return Library.addToKey(id,words,type);
     }
@@ -102,18 +112,58 @@ public class ServiceWorker {
         return Library.getKeys(type);
     }
 
-    public boolean searchFromVocabulary(String word, Long num) {
-        if ("Latins_Rus" == GetTypeOfVoc.getVocByInt(num.intValue() - 1)) {
-            if (word.matches(firstVoc))
+    public boolean checkWord(String word, Long num) {
+        if ("Latins_Rus".equals(GetTypeOfVoc.getVocByInt(num.intValue() - 1))) {
+            if (word.matches(firstVocWords))
                 return true;
             return false;
         } else {
 
-            if (word.matches(secondVoc))
+            if (word.matches(secondVocWords))
                 return true;
             return false;
         }
     }
 
+    public boolean checkKey(String word, Long num) {
+        if ("Latins_Rus".equals(GetTypeOfVoc.getVocByInt(num.intValue() - 1))) {
+            if (word.matches(firstVocKeys))
+                return true;
+            return false;
+        } else {
+
+            if (word.matches(secondVocKeys))
+                return true;
+            return false;
+        }
+    }
+
+
+  /*  public boolean checkWord(String word, Long num,Library library) {
+        if ("Latins_Rus".equals(GetTypeOfVoc.getVocByInt(num.intValue() - 1))) {
+            if (word.matches(library.getRegWord(num)))
+                return true;
+            return false;
+        } else {
+
+            if (word.matches(library.getRegKey(num)))
+                return true;
+            return false;
+        }
+    }
+
+    public boolean checkKey(String word, Long num,Library library) {
+        if ("Latins_Rus".equals(GetTypeOfVoc.getVocByInt(num.intValue() - 1))) {
+            if (word.matches(library.getRegKey(num)))
+                return true;
+            return false;
+        } else {
+
+            if (word.matches(library.getRegKey(num)))
+                return true;
+            return false;
+        }
+    }
+*/
 
 }
