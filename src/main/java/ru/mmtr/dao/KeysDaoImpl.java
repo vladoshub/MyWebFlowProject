@@ -28,21 +28,7 @@ public class KeysDaoImpl implements KeysDao {
 
 
     @Override
-    public void save(Keys vocabulary) {
-        Session session = this.sessionFactory.openSession();
-        try {
-            Transaction tx = session.beginTransaction();
-            session.persist(vocabulary);
-            tx.commit();
-            session.close();
-        } catch (Exception e) {
-            e.getMessage();
-        }
-    }
-
-
-    @Override
-    public String addKey(String Key, Long type, List<String> words) {
+    public String addKey(String Key, Integer type, List<String> words) {
         try {
             Session session = this.sessionFactory.openSession();
             Transaction tx1 = session.beginTransaction();
@@ -67,7 +53,8 @@ public class KeysDaoImpl implements KeysDao {
         }
     }
 
-    public String addKey(String Key, Long type, String wordStr) {
+    @Override
+    public String addKey(String Key, Integer type, String wordStr) {
         try {
             Session session = this.sessionFactory.openSession();
             Transaction tx1 = session.beginTransaction();
@@ -91,7 +78,7 @@ public class KeysDaoImpl implements KeysDao {
     }
 
     @Override
-    public String addWordToKey(Long id, Long type, List<String> words) {
+    public String addWordToKey(Long id, Integer type, List<String> words) {
         try {
             Session session = this.sessionFactory.openSession();
             Transaction tx1 = session.beginTransaction();
@@ -112,7 +99,8 @@ public class KeysDaoImpl implements KeysDao {
         }
     }
 
-    public String addWordToKey(Long id, Long type, String words) {
+    @Override
+    public String addWordToKey(Long id, Integer type, String words) {
         try {
             Session session = this.sessionFactory.openSession();
             Transaction tx1 = session.beginTransaction();
@@ -144,7 +132,8 @@ public class KeysDaoImpl implements KeysDao {
         }
     }
 
-    public List<Keys> findByWord(String word, Long type) {
+    @Override
+    public List<Keys> findByWord(String word, Integer type) {
         try {
             List<Keys> ux2 = new ArrayList<Keys>();
             int count = 0;
@@ -166,49 +155,41 @@ public class KeysDaoImpl implements KeysDao {
         }
     }
 
-   /* public String getRegWord(Long type) {
+
+    @Override
+    public List<String> getRegexKeys() {
         try {
+            List<String> regKeys = new ArrayList<>();
             Session session = this.sessionFactory.openSession();
-            Type type1 = (Type) session.createQuery("From Type where type=" + type + "").uniqueResult();
+            List<Type> types = session.createQuery("From Type ORDER BY id ASC").list();
+            for (Integer i = 0; i < types.size(); i++) {
+                regKeys.add(types.get(i).getRegkeys());
+            }
             session.close();
-            return type1.getRegWord();
+            return regKeys;
         } catch (Exception e) {
             log.error(e.getMessage(), e);
             return null;
         }
     }
 
-
-    public String getRegKey(Long type) {
+    @Override
+    public List<String> getRegexWords() {
         try {
+            List<String> regWords = new ArrayList<>();
             Session session = this.sessionFactory.openSession();
-            Type type1 = (Type) session.createQuery("From Type where type=" + type + "").uniqueResult();
+            List<Type> types = session.createQuery("From Type ORDER BY id ASC").list();
+            for (Integer i = 0; i < types.size(); i++) {
+                regWords.add(types.get(i).getRegwords());
+            }
             session.close();
-            return type1.getRegKey();
+            return regWords;
         } catch (Exception e) {
             log.error(e.getMessage(), e);
             return null;
         }
     }
-*/
-    @Override
-    public void update(Keys keys) {
-        Session session = this.sessionFactory.openSession();
-        Transaction tx1 = session.beginTransaction();
-        session.update(keys);
-        tx1.commit();
-        session.close();
-    }
 
-
-    @Override
-    public void deleteByObj(Object keys) {
-        Session session = this.sessionFactory.openSession();
-        Transaction tx1 = session.beginTransaction();
-        session.delete(keys);
-        tx1.commit();
-        session.close();
-    }
 
     @Override
     public String deleteByKey(Long id) {
@@ -244,7 +225,7 @@ public class KeysDaoImpl implements KeysDao {
     }
 
     @Override
-    public String updateByKey(Long id, String newKeys, Long type) {
+    public String updateByKey(Long id, String newKeys, Integer type) {
         try {
             Session session = this.sessionFactory.openSession();
             Transaction tx1 = session.beginTransaction();
@@ -261,7 +242,7 @@ public class KeysDaoImpl implements KeysDao {
     }
 
     @Override
-    public String updateByWord(Long id, String newWords, Long type) {
+    public String updateByWord(Long id, String newWords, Integer type) {
         try {
             Session session = this.sessionFactory.openSession();
             Transaction tx1 = session.beginTransaction();
@@ -277,14 +258,9 @@ public class KeysDaoImpl implements KeysDao {
         }
     }
 
-    @Override
-    public Words findWordsById(Long id) {
-
-        return (Words) this.sessionFactory.openSession().get(Words.class, id);
-    }
 
     @Override
-    public List<Keys> getKeysList(Long type) {
+    public List<Keys> getKeysList(Integer type) {
         try {
             Session session = this.sessionFactory.openSession();
             String hql = "FROM Keys WHERE type_id=" + type + " ORDER BY key ASC";

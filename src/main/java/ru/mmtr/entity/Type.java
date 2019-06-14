@@ -1,10 +1,7 @@
 package ru.mmtr.entity;
 
-import org.springframework.transaction.annotation.Transactional;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,11 +10,11 @@ public class Type implements Serializable {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String type;
-   /* private String RegWord;
-    private String RegKey;
-    */
+    private String regwords;
+    private String regkeys;
+
     @OneToMany(mappedBy = "type", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Keys> keys;
 
@@ -40,7 +37,7 @@ public class Type implements Serializable {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -67,22 +64,22 @@ public class Type implements Serializable {
         this.keys.add(keys);
     }
 
-   /* public String getRegKey() {
-        return RegKey;
+    public String getRegkeys() {
+        return regkeys;
     }
 
-    public String getRegWord() {
-        return RegWord;
+    public String getRegwords() {
+        return regwords;
     }
 
-    public void setRegKey(String regKey) {
-        RegKey = regKey;
+    public void setRegkeys(String regKey) {
+        regkeys = regKey;
     }
 
-    public void setRegWord(String regWord) {
-        RegWord = regWord;
+    public void setRegwords(String regWord) {
+        regwords = regWord;
     }
-*/
+
     @Override
     public String toString() {
         return "KEYS{" +

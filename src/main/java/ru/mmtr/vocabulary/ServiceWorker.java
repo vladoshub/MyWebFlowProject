@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import ru.mmtr.dao.KeysDao;
 import ru.mmtr.dao.KeysDaoImpl;
 import ru.mmtr.entity.Keys;
+import ru.mmtr.entity.Type;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,157 +14,165 @@ import java.util.List;
 
 @Component("ServiceWorker")
 public class ServiceWorker {
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(ServiceWorker.class);
+
+    private List<Type> types;
 
 
     @Autowired
-    public ServiceWorker(InfoBase infoBase,SessionFactory ses) {
+    public ServiceWorker(SessionFactory ses) {
         keysDao = new KeysDaoImpl(ses);
-        this.firstVocWords = infoBase.getRegexVocFirstWords();
-        this.secondVocWords = infoBase.getRegexVocSecondWords();
-        this.firstVocKeys = infoBase.getRegexVocFirstKeys();
-        this.secondVocKeys = infoBase.getRegexVocSecondKeys();
+        types = new ArrayList<>();
+        regKeys = keysDao.getRegexKeys();
+        regWords = keysDao.getRegexWords();
 
     }
 
 
     private KeysDao keysDao;
-    private String firstVocWords;
-    private String secondVocWords;
-    private String firstVocKeys;
-    private String secondVocKeys;
+    private List<String> regWords;
+    private List<String> regKeys;
 
 
-    public String delByKey(Library Library, Long id) throws IOException {
-        return Library.deleteByKey(id);
-    }
-
-    public String delByWord(Library Library, Long id) throws IOException {
-        return Library.deleteByWord(id);
-    }
-
-
-    public List<Keys> seacrhByKey(Library Library, String key, Long type) throws IOException {
-        return Library.searchByKey(key, type);
-    }
-
-    public List<Keys> seacrhByWord(Library Library, String word, Long type) throws IOException {
-        return Library.searchByWord(word, type);
-    }
-
-    public String updateByKey(Library Library, Long id, String newKey, Long type) throws IOException {
-        return Library.updateByKey(id, newKey, type);
-    }
-
-    public String updateByWord(Library Library, Long id, String newWord, Long type) throws IOException {
-        if (checkWord(newWord, type))
-            return Library.updateByWord(id, newWord, type);
-        else return "несоответсвие правилам словаря ";
-    }
-
-
-    public String add(Library Library, Long type, String key, List<String> words) throws IOException {
-        if(!checkKey(key,type))
-            return "ключ не относится к данному словарю";
-        List<String> newWords = new ArrayList<String>();
-        for (String s : words) {
-            if (checkWord(s, type))
-                newWords.add(s);
+    public String delByKey(Long id) throws IOException {
+        try {
+            return keysDao.deleteByKey(id);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return null;
         }
-        if(newWords.size()==0) {
+    }
+
+    public String delByWord(Long id) throws IOException {
+        try {
+            return keysDao.deleteByWord(id);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return null;
+        }
+
+    }
+
+
+    public List<Keys> searchByKey(String key, Integer type) throws IOException {
+        try {
+            return keysDao.findByKey(key);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return null;
+        }
+    }
+
+    public List<Keys> searchByWord(String word, Integer type) throws IOException {
+        try {
+            return keysDao.findByWord(word, type);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return null;
+        }
+    }
+
+    public String updateByKey(Long id, String newKey, Integer type) throws IOException {
+        try {
+            if (!checkKey(newKey, type))
+                return "ключ не относится к данному словарю";
+            return keysDao.updateByKey(id, newKey, type);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return null;
+        }
+    }
+
+    public String updateByWord(Long id, String newWord, Integer type) throws IOException {
+
+        try {
+            if (checkWord(newWord, type))
+                return keysDao.updateByWord(id, newWord, type);
+            return "несоответсвие правилам словаря ";
+
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return null;
+        }
+    }
+
+
+    public String add(Integer type, String key, List<String> words) throws IOException {
+        try {
+            if (!checkKey(key, type))
+                return "ключ не относится к данному словарю";
+            List<String> newWords = new ArrayList<String>();
+            for (String s : words) {
+                if (checkWord(s, type))
+                    newWords.add(s);
+            }
+            if (newWords.size() > 0)
+                return keysDao.addKey(key, type, words);
             return "ни 1 слово не подходит по правилам словаря";
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return null;
         }
-        else
-        return Library.addToTxt(key, newWords, type);
     }
 
-    public String add(Library Library, Long type, String key, String word) throws IOException {
-        if(!checkKey(key,type))
-            return "ключ не относится к данному словарю";
-            if (!checkWord(word, type))
-                return "несоответсвие правилам словаря ";
-        return Library.addToTxt(key, word, type);
-    }
-
-    public String addToKey(Library Library, Long type, Long id, List<String> words) throws IOException {
-        List<String> newWords = new ArrayList<String>();
-        for (String s:words) {
-            if (checkWord(s, type))
-                newWords.add(s);
-        }
-        if (newWords.size()==0)
-        return "ни 1 слово не подходит по правилам словаря";
-
-        return Library.addToKey(id,newWords,type);
-    }
-
-    public String addToKey(Library Library, Long type, Long id, String words) throws IOException {
-
-            if (!checkWord(words, type))
+    public String add(Integer type, String key, String word) throws IOException {
+        try {
+            if (!checkKey(key, type))
+                return "ключ не относится к данному словарю";
+            if (checkWord(word, type))
+                return keysDao.addKey(key, type, word);
             return "слово не подходит по правилам словаря";
-
-        return Library.addToKey(id,words,type);
-    }
-
-    public List<String> printAll(Library Library, Long type) {
-        return Library.printAll(type);
-    }
-
-    public List<Keys> printKeys(Library Library, Long type) {
-        return Library.getKeys(type);
-    }
-
-    public boolean checkWord(String word, Long num) {
-        if ("Latins_Rus".equals(GetTypeOfVoc.getVocByInt(num.intValue() - 1))) {
-            if (word.matches(firstVocWords))
-                return true;
-            return false;
-        } else {
-
-            if (word.matches(secondVocWords))
-                return true;
-            return false;
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return null;
         }
     }
 
-    public boolean checkKey(String word, Long num) {
-        if ("Latins_Rus".equals(GetTypeOfVoc.getVocByInt(num.intValue() - 1))) {
-            if (word.matches(firstVocKeys))
-                return true;
-            return false;
-        } else {
+    public String addToKey(Integer type, Long id, List<String> words) throws IOException {
+        try {
+            List<String> newWords = new ArrayList<String>();
+            for (String s : words) {
+                if (checkWord(s, type))
+                    newWords.add(s);
+            }
+            if (newWords.size() > 0)
+                return keysDao.addWordToKey(id, type, words);
+            return "ни 1 слово не подходит по правилам словаря";
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return null;
+        }
 
-            if (word.matches(secondVocKeys))
-                return true;
-            return false;
+    }
+
+    public String addToKey(Integer type, Long id, String word) throws IOException {
+        try {
+            if (checkWord(word, type))
+                return keysDao.addWordToKey(id, type, word);
+            return "слово не подходит по правилам словаря";
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return null;
         }
     }
 
 
-  /*  public boolean checkWord(String word, Long num,Library library) {
-        if ("Latins_Rus".equals(GetTypeOfVoc.getVocByInt(num.intValue() - 1))) {
-            if (word.matches(library.getRegWord(num)))
-                return true;
-            return false;
-        } else {
-
-            if (word.matches(library.getRegKey(num)))
-                return true;
-            return false;
+    public List<Keys> printKeys(Integer type) {
+        try {
+            return keysDao.getKeysList(type);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return null;
         }
     }
 
-    public boolean checkKey(String word, Long num,Library library) {
-        if ("Latins_Rus".equals(GetTypeOfVoc.getVocByInt(num.intValue() - 1))) {
-            if (word.matches(library.getRegKey(num)))
-                return true;
-            return false;
-        } else {
-
-            if (word.matches(library.getRegKey(num)))
-                return true;
-            return false;
-        }
+    public boolean checkWord(String word, Integer num) {
+        return ServiceChecker.checkWord(word, num, regWords);
     }
-*/
+
+    public boolean checkKey(String word, Integer num) {
+        return ServiceChecker.checkKey(word, num, regKeys);
+    }
+
 
 }
