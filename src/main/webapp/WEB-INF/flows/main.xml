@@ -29,59 +29,59 @@
 
         <transition on="SearchKeys" >
             <evaluate result="out" expression=
-                    "ChangeOps.searchFromWebByKey(requestParameters.searchkey,type.type)"/>
+                    "WebFlowService.searchFromWebByKey(requestParameters.searchkey,type.type)"/>
         </transition>
 
         <transition on="SearchWords" >
             <evaluate result="out" expression=
-                    "ChangeOps.searchFromWebByWords(requestParameters.searchword,type.type)"/>
+                    "WebFlowService.searchFromWebByWords(requestParameters.searchword,type.type)"/>
         </transition>
 
         <transition on="addWordss" >
             <evaluate result="out" expression=
-                    "ChangeOps.addFromWeb(requestParameters.key,requestParameters.word,type.type)"/>
+                    "WebFlowService.addFromWeb(requestParameters.key,requestParameters.word,type.type)"/>
             <render fragments="voc"/>
         </transition>
 
         <transition on="addWordsss" >
             <evaluate result="out" expression=
-                    "ChangeOps.addFromWebToKey(requestParameters.ID,requestParameters.word,type.type)"/>
+                    "WebFlowService.addFromWebToKey(requestParameters.ID,requestParameters.word,type.type)"/>
             <render fragments="voc"/>
         </transition>
 
         <transition on="editWord" >
             <evaluate result="out" expression=
-                    "ChangeOps.updateByWordFromWeb(requestParameters.ID,requestParameters.word,type.type,requestParameters.kID)"/>
+                    "WebFlowService.updateByWordFromWeb(requestParameters.ID,requestParameters.word,type.type,requestParameters.kID)"/>
             <render fragments="voc"/>
         </transition>
 
         <transition on="editKey" >
             <evaluate result="out" expression=
-                    "ChangeOps.updateByKeyFromWeb(requestParameters.ID,requestParameters.key,type.type)"/>
+                    "WebFlowService.updateByKeyFromWeb(requestParameters.ID,requestParameters.key,type.type)"/>
             <render fragments="voc"/>
         </transition>
 
         <transition on="deletedWord" >
             <evaluate result="out" expression=
-                    "ChangeOps.delFromWebByWord(requestParameters.ID,type.type,requestParameters.kID)"/>
+                    "WebFlowService.delFromWebByWord(requestParameters.ID,type.type,requestParameters.kID)"/>
             <render fragments="voc"/>
         </transition>
 
         <transition on="deletedKey" >
             <evaluate result="out" expression=
-                    "ChangeOps.delFromWebByKey(requestParameters.ID,type.type)"/>
+                    "WebFlowService.delFromWebByKey(requestParameters.ID,type.type)"/>
             <render fragments="voc"/>
         </transition>
 
         <transition on="editManyWordsInKey" >
             <evaluate result="out" expression=
-                    "ChangeOps.editManyWordsInKey(type.type,requestParameters.ID,requestParameters.word)"/>
+                    "WebFlowService.editManyWordsInKey(type.type,requestParameters.ID,requestParameters.word)"/>
             <render fragments="voc"/>
         </transition>
 
         <transition on="addManyWordsAndKey" >
             <evaluate result="out" expression=
-                    "ChangeOps.addManyWordsAndKey(requestParameters.key,requestParameters.word,type.type)"/>
+                    "WebFlowService.addManyWordsAndKey(requestParameters.key,requestParameters.word,type.type)"/>
             <render fragments="voc"/>
         </transition>
 
@@ -92,7 +92,7 @@
 
 
 
-    <view-state id="temp" view="temp" model="ChangeOps">
+    <view-state id="temp" view="temp" model="WebFlowService">
         <transition on="nextBin" to="temp">
             <set  name = "type.type"  value = "2"/>
         </transition>
@@ -102,7 +102,7 @@
         <transition on="next" to="main"/>
         <transition on="voc" to="voc">
             <evaluate result="out" expression=
-                    "ChangeOps.printKeys(type.type)" />
+                    "WebFlowService.printKeys(type.type)" />
         </transition>
     </view-state>
 </flow>

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Component("ChangeOps")
+@Component("WebFlowService")
 
 public class WebFlowService {
 

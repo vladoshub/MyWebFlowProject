@@ -14,28 +14,13 @@
                 template="/WEB-INF/jsp/main.jsp">
     </definition>
 
-    <definition name="view"
-                template="/WEB-INF/jsp/viewVoc.jsp">
-        <put-attribute name="list" value="/WEB-INF/jsp/listFragment.jsp"/>
-        <put-attribute name="answer" value="/WEB-INF/jsp/answerFragment.jsp"/>
-    </definition>
 
-
-    <definition name="addMany"
-                template="/WEB-INF/jsp/editVoc.jsp">
-        <put-attribute name="editVocAddManyWordsFragment" value="/WEB-INF/jsp/editVocAddManyWordsFragment.jsp"/>
-        <put-attribute name="answer" value="/WEB-INF/jsp/answerFragment.jsp"/>
-    </definition>
 
     <definition name="voc"
                 template="/WEB-INF/jsp/Vocabulary.jsp">
-        <put-attribute name="answer" value="/WEB-INF/jsp/answerFragment.jsp"/>
         <put-attribute name="voc" value="/WEB-INF/jsp/vocFragment.jsp"/>
     </definition>
 
-    <definition name="search"
-                template="/WEB-INF/jsp/searchVoc.jsp">
-    </definition>
 
 
 
