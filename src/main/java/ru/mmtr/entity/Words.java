@@ -1,9 +1,8 @@
 package ru.mmtr.entity;
 
-import org.springframework.transaction.annotation.Transactional;
-
 import javax.persistence.*;
 import java.io.Serializable;
+
 @Entity
 @Table(name = "words")
 public class Words implements Serializable {
@@ -14,7 +13,7 @@ public class Words implements Serializable {
     @Column(name = "word")
     private String word;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="key_id")
+    @JoinColumn(name = "key_id")
     private Keys key;
 
     public void setKey(Keys key) {
@@ -49,7 +48,6 @@ public class Words implements Serializable {
     public void setWord(String word) {
         this.word = word;
     }
-
 
 
     @Override
