@@ -107,7 +107,7 @@ public class ServiceWorker {
                     newWords.add(s);
             }
             if (newWords.size() > 0)
-                return keysDao.addKey(key, type, words);
+                return keysDao.addKey(key, type, newWords);
             return "ни 1 слово не подходит по правилам словаря";
         } catch (Exception e) {
             log.error(e.getMessage(), e);
