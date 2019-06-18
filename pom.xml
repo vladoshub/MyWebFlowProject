@@ -9,6 +9,36 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>3.0.7</version>
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>update</goal>
+                        </goals>
+                        <configuration>
+                            <propertyFileWillOverride>true</propertyFileWillOverride>
+                            <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+                            <changeLogFile>src/main/resources/liquibase/db.changelog-master.xml</changeLogFile>
+                            <propertyFile>src/main/resources/liquibase/liquibase.properties</propertyFile>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <finalName>liquibase</finalName>
+    </build>
     <properties>
         <webflow-version>2.4.1.RELEASE</webflow-version>
         <spring-framework-version>4.1.5.RELEASE</spring-framework-version>
@@ -16,7 +46,6 @@
         <slf4j-version>1.6.1</slf4j-version>
         <mojarra-version>2.2.10</mojarra-version>
         <primefaces-version>5.0</primefaces-version>
-        <postgresql.version>9.1-901-1.jdbc4</postgresql.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <hibernate.version>4.3.6.Final</hibernate.version>
@@ -80,9 +109,9 @@
             <version>${hibernate.version}</version>
         </dependency>
         <dependency>
-            <groupId>postgresql</groupId>
+            <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>${postgresql.version}</version>
+            <version>42.2.5</version>
         </dependency>
 
         <dependency>
@@ -188,7 +217,15 @@
             <version>3.0.1</version>
             <scope>provided</scope>
         </dependency>
-
-
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>3.5.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-cdi</artifactId>
+            <version>3.5.3</version>
+        </dependency>
     </dependencies>
 </project>
