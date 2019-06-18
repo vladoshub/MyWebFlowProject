@@ -8,10 +8,10 @@
 
     <changeSet id="2" author="vladMMTR">
         <insert tableName="types" >
-            <column name="id" value="1"/>
-            <column name="type" valueDate="Rus-Lat"/>
-            <column name="regwords" valueDate="[А-яа-я -]{1,50}$"/>
-            <column name="regkeys" valueDate="^[A-Za-z]{4}$"/>
+            <column name="id" valueNumeric="1"/>
+            <column name="type" value="Rus-Lat"/>
+            <column name="regwords" value="[А-яа-я -]{1,50}$"/>
+            <column name="regkeys" value="^[A-Za-z]{4}$"/>
         </insert>
     </changeSet>
 

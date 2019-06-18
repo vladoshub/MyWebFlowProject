@@ -30,7 +30,7 @@
                 <constraints nullable="true"/>
             </column>
             <column name="type_id" type="integer">
-                <constraints nullable="true" foreignKeyName="keys_type_id_fkey" references="Type(id)"/>
+                <constraints nullable="true" foreignKeyName="keys_type_id_fkey" references="types(id)"/>
             </column>
         </createTable>
 
@@ -42,7 +42,7 @@
                 <constraints nullable="true"/>
             </column>
             <column name="key_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="words_key_id_fkey" references="Keys(id)"/>
+                <constraints nullable="false" foreignKeyName="words_key_id_fkey" references="keys(id)"/>
             </column>
         </createTable>
     </changeSet>

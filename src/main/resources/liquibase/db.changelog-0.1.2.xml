@@ -8,10 +8,10 @@
 
     <changeSet id="3" author="vladMMTR">
         <insert tableName="types" >
-            <column name="id" value="2"/>
-            <column name="type" valueDate="Bin-Dec"/>
-            <column name="regwords" valueDate="[А-яа-я -]{1,50}$"/>
-            <column name="regkeys" valueDate="[0-9]{5}$"/>
+            <column name="id" valueNumeric="2"/>
+            <column name="type" value="Bin-Dec"/>
+            <column name="regwords" value="[А-яа-я -]{1,50}$"/>
+            <column name="regkeys" value="[0-9]{5}$"/>
         </insert>
     </changeSet>
 
