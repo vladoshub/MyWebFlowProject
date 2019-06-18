@@ -30,7 +30,7 @@
                 <constraints nullable="true"/>
             </column>
             <column name="type_id" type="integer">
-                <constraints nullable="true" foreignKeyName="keys_type_id_fkey" references="types(id)"/>
+                <constraints nullable="true" foreignKeyName="keys_types_id_fkey" references="types(id)"/>
             </column>
         </createTable>
 
