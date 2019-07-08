@@ -52,7 +52,7 @@ public class Key implements Serializable {
         this.type = type;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

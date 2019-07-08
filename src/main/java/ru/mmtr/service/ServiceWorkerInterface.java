@@ -1,6 +1,7 @@
 package ru.mmtr.service;
 
 import ru.mmtr.entity.Key;
+import ru.mmtr.entity.Type;
 
 import java.io.IOException;
 import java.util.List;
@@ -32,4 +33,6 @@ public interface ServiceWorkerInterface {
     public boolean checkWord(String word, Integer num);
 
     public boolean checkKey(String word, Integer num);
+
+    public Type findByIdType(String type) throws IOException;
 }

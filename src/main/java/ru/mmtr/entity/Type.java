@@ -36,7 +36,7 @@ public class Type implements Serializable {
         this.id = typeId;
     }
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 

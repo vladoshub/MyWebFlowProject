@@ -239,7 +239,6 @@ public class KeysDaoImpl implements KeysDao {
         }
     }
 
-
     @Override
     public List<Key> getKeysList(Integer type) {
         try {
@@ -248,6 +247,21 @@ public class KeysDaoImpl implements KeysDao {
             List<Key> VocabularyList = session.createQuery(hql).list();
             session.close();
             return VocabularyList;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+
+    }
+
+    @Override
+    public Type findByIdType(String type) {
+        try {
+            Session session = this.sessionFactory.openSession();
+            String hql = "FROM Type WHERE type='"+type+"' ORDER BY type ASC";
+            Type typel = (Type) session.createQuery(hql).uniqueResult();
+            session.close();
+            return typel;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;

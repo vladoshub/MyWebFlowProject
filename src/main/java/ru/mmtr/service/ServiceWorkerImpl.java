@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import ru.mmtr.dao.KeysDao;
 import ru.mmtr.dao.KeysDaoImpl;
 import ru.mmtr.entity.Key;
+import ru.mmtr.entity.Type;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -144,6 +145,17 @@ public class ServiceWorkerImpl implements ServiceWorkerInterface {
         }
 
     }
+    @Override
+    public Type findByIdType(String type) throws IOException {
+        try {
+            return keysDao.findByIdType(type);
+
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return null;
+        }
+
+    }
 
     @Override
     public String addToKey(Integer type, Long id, String word) throws IOException {
@@ -169,12 +181,12 @@ public class ServiceWorkerImpl implements ServiceWorkerInterface {
 
     @Override
     public boolean checkWord(String word, Integer num) {
-        return ServiceChecker.checkWord(word, num, regWords);
+        return ServiceChecker.checkWord(word);
     }
 
     @Override
     public boolean checkKey(String word, Integer num) {
-        return ServiceChecker.checkKey(word, num, regKeys);
+        return ServiceChecker.checkKey(word);
     }
 
 

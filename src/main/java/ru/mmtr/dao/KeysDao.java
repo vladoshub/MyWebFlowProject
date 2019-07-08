@@ -1,6 +1,7 @@
 package ru.mmtr.dao;
 
 import ru.mmtr.entity.Key;
+import ru.mmtr.entity.Type;
 
 import java.util.List;
 
@@ -30,5 +31,7 @@ public interface KeysDao {
     public List<Key> findByWord(String key, Integer type);
 
     public List<Key> getKeysList(Integer type);
+
+    public Type findByIdType(String type);
 
 }

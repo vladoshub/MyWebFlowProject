@@ -3,6 +3,7 @@ package ru.mmtr.web.vocabulary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.mmtr.entity.Key;
+import ru.mmtr.entity.Type;
 import ru.mmtr.flow.Out;
 import ru.mmtr.service.ServiceWorkerImpl;
 import ru.mmtr.web.converter.KeysConverter;
@@ -134,6 +135,11 @@ public class WebFlowService {
         if (id != null) {
             out.setWordsDto(WordsConverter.convertToDto(id));
         }
+        return out;
+    }
+
+    public Type findIdByType(String type) throws IOException {
+        Type out = serviceWorkerImpl.findByIdType(type);
         return out;
     }
 

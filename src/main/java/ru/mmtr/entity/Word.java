@@ -36,7 +36,7 @@ public class Word implements Serializable {
         this.word = word;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
