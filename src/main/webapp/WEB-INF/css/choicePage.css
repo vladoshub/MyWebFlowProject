@@ -3,10 +3,10 @@ img.main{
     width: 40px;
 }
 img{
-     height: 30px;
-     width: 30px;
+    height: 30px;
+    width: 30px;
 
- }
+}
 button{
     color: maroon;
     text-decoration: none;
@@ -36,12 +36,12 @@ body#voc{
     background: url(/images/MainBack.jpg);
     background-size: 100%;
 }
-div#main{
+body#main{
     width: 100%;
-    text-align: center;
     height: 100%;
     padding: 10px;
     margin: auto;
+    text-align: center;
     background: url(/images/MainBack.jpg);
     background-size: 100%;
 }

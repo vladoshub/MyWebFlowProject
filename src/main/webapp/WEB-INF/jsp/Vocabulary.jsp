@@ -18,27 +18,13 @@
     </style>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/form/jquery.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/form/jquery.form.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/form/jquery.simplePagination.js"></script>
     <script type="application/javascript">
-
         var rows = 0;
         var rows1 = 0;
         var wordInKey = 0;
         var check = 0;
 
-        $(window).load(function () {
-            $('#light-pagination').pagination({
-                items: 100,
-                itemsOnPage: 10,
-                hrefTextPrefix: '',
-                hrefTextSuffix: '.html',
-                prevText: 'Начало',
-                nextText: 'Конец'
-            });
-
-        });
-
-        function edit(id, op, newword) {
+        function editKeyOrSingleWord(id, op, newword) {
             newword = newword + "";
             if (newword == document.getElementById(id).value || newword == "") {
                 alert("введите что-нибудь или измененное значение");
@@ -84,7 +70,7 @@
         }
 
 
-        function del(id, op) {
+        function deleteKeyOrSingleWord(id, op) {
             check = 0;
             if ((op + '') == 'keys') {
                 document.getElementById("ID").value = document.getElementById(id).name;
@@ -179,7 +165,7 @@
             butSave.name = "_eventId_addWordsss";
             butSave.style = "background: url(/images/upload.png);background-size: 38px 35px;";
             butDel.title = "Удалить";
-            butDel.style = "background: url(/images/del.png);background-size: 38px 35px;";
+            butDel.style = "background: url(/images/deleteKeyOrSingleWord.png);background-size: 38px 35px;";
             butDel.onclick = function () {
                 document.getElementById(row.id).remove();
                 check--;
@@ -250,7 +236,7 @@
             butSave.type = "button";
             butSave.style = "background: url(/images/upload.png);background-size: 38px 35px; float:right; margin-left:10px;";
             butDel.title = "Удалить";
-            butDel.style = "background: url(/images/del.png);background-size: 38px 35px;";
+            butDel.style = "background: url(/images/deleteKeyOrSingleWord.png);background-size: 38px 35px;";
             butDel.onclick = function () {
                 var id = a + "R";
                 var x = document.getElementsByName("rowWord");
@@ -265,7 +251,7 @@
                 butDel.onclick = function () {
                     document.getElementById(id).remove();
                 }
-                butDel.style = "background: url(/images/del.png);background-size: 38px 35px;";
+                butDel.style = "background: url(/images/deleteKeyOrSingleWord.png);background-size: 38px 35px;";
                 var tdW = document.createElement("TD");
                 var tdWInp = document.createElement("TD");
                 var tdWBut = document.createElement("TD");
@@ -364,7 +350,7 @@
         }
 
 
-        function edit2(id, id2, newword) {
+        function editWords(id, id2, newword) {
             newword = newword + "";
             if (newword == document.getElementById(id).value || newword == "") {
                 alert("введите что-нибудь или измененное значение");
@@ -390,7 +376,7 @@
             }
         }
 
-        function del2(id, id2) {
+        function deleteWords(id, id2) {
             document.getElementById("ID").value = document.getElementById(id).name;
             var ids = "";
             ids = ids + id2;
@@ -410,8 +396,6 @@
             });
 
         }
-
-
     </script>
 </head>
 <body>

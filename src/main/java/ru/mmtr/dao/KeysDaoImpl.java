@@ -178,8 +178,8 @@ public class KeysDaoImpl implements KeysDao {
         try {
             Session session = this.sessionFactory.openSession();
             Transaction tx1 = session.beginTransaction();
-            List<Key> ux = session.createQuery("From Key where id=" + id + "").list();
-            session.delete(ux.get(0));
+            Key key = (Key) session.load(Key.class, id);
+            session.delete(key);
             tx1.commit();
             session.close();
             return "Ok";
@@ -196,7 +196,6 @@ public class KeysDaoImpl implements KeysDao {
             Transaction tx1 = session.beginTransaction();
             Word word = (Word) session.load(Word.class, id);
             session.delete(word);
-
             tx1.commit();
             session.close();
             return "Ok";

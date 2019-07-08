@@ -8,14 +8,14 @@
     <style><%@include file="/WEB-INF/css/choicePage.css"%></style>
 </head>
 <body id="voc">
-<form id="forma1"  method="post">
-    <div id="first"><c:choose><c:when test="${type.type == 1}"><h1 style=" float: left;margin-left: -166px;width: 800px;">Вы выбрали Русско-Латинский словарь</h1></c:when><c:when test="${type.type == 2}"><h1 style=" float: left;margin-left: -166px;width: 800px;">Вы выбрали Десятично-двоичный словарь</h1></c:when></c:choose></div>
+<form method="post">
+    <div id="first"><c:choose><c:when test="${type.type == 1}"><h1 style=" float: left;margin-left: -166px;width: 800px;">Вы выбрали Латинско-Русский словарь</h1></c:when><c:when test="${type.type == 2}"><h1 style=" float: left;margin-left: -166px;width: 800px;">Вы выбрали цифро-буквенный словарь</h1></c:when></c:choose></div>
     <input id="inp"  type="hidden" name="inputNameRus" value=""/>
     <input type="hidden" name="_flowExecutionKey"/>
     <br>
-    <button id="knopka1"  type="submit" class="button" name="_eventId_next">Главная страница</button>
-    <c:choose><c:when test="${type.type == 1}"><button id="knopka7"  type="submit" class="button" name="_eventId_nextBin">другой словарь</button></c:when><c:when test="${type.type == 2}"><button id="knopka5"  type="submit" class="button" name="_eventId_nextRus">другой словарь</button></c:when></c:choose>
-    <button id="knopka8"  type="submit" class="button" name="_eventId_voc">Словарь</button>
+    <button id="returnMainPage"  type="submit" class="button" name="_eventId_next">Главная страница</button>
+    <c:choose><c:when test="${type.type == 1}"><button id="nextVoc"  type="submit" class="button" name="_eventId_nextBin">другой словарь</button></c:when><c:when test="${type.type == 2}"><button id="knopka5"  type="submit" class="button" name="_eventId_nextRus">другой словарь</button></c:when></c:choose>
+    <button id="openVoc"  type="submit" class="button" name="_eventId_voc">Словарь</button>
 </form>
 </body>
 </html>
