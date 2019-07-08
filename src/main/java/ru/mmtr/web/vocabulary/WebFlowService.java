@@ -20,6 +20,7 @@ public class WebFlowService {
 
 
     private ServiceWorkerImpl serviceWorkerImpl;
+
     @Autowired
     public WebFlowService(ServiceWorkerImpl serviceWorkerImpl) {
         this.serviceWorkerImpl = serviceWorkerImpl;

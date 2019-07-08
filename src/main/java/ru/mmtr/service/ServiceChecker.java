@@ -1,18 +1,24 @@
 package ru.mmtr.service;
 
-import ru.mmtr.flow.TypeVoc;
 
-import java.util.HashMap;
-import java.util.List;
+public class ServiceChecker {
 
-class ServiceChecker {
-
+    private static String regKeys;
+    private static String regWords;
 
     static boolean checkWord(String word) {
-        return word.matches(TypeVoc.type.getRegWords());
+        return word.matches(regWords);
     }
 
     static boolean checkKey(String word) {
-        return word.matches(TypeVoc.type.getRegKeys());
+        return word.matches(regKeys);
+    }
+
+    public static void regKeysSet(String keys) {
+        regKeys = keys;
+    }
+
+    public static void regWordsSet(String words) {
+        regWords = words;
     }
 }

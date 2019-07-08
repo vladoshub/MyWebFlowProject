@@ -103,10 +103,10 @@ public class KeysDaoImpl implements KeysDao {
     }
 
     @Override
-    public List<Key> findByKey(String key,Integer type) {
+    public List<Key> findByKey(String key, Integer type) {
         try {
             Session session = this.sessionFactory.openSession();
-            List<Key> ux = session.createQuery("From Key where key='" + key + "' and type_id='"+type +"'").list();
+            List<Key> ux = session.createQuery("From Key where key='" + key + "' and type_id='" + type + "'").list();
             session.close();
             return ux;
         } catch (Exception e) {
@@ -120,7 +120,7 @@ public class KeysDaoImpl implements KeysDao {
         try {
             List<Key> ux2 = new ArrayList<>();
             Session session = this.sessionFactory.openSession();
-            List<Word> ux = session.createQuery("From Word where word='" + word + "' and type_id='"+type +"'").list();
+            List<Word> ux = session.createQuery("From Word where word='" + word + "' and type_id='" + type + "'").list();
             for (Word w : ux) {
                 Key key = new Key();
                 key.setType(w.getKey().getType());
@@ -258,7 +258,7 @@ public class KeysDaoImpl implements KeysDao {
     public Type findByIdType(String type) {
         try {
             Session session = this.sessionFactory.openSession();
-            String hql = "FROM Type WHERE type='"+type+"' ORDER BY type ASC";
+            String hql = "FROM Type WHERE type='" + type + "' ORDER BY type ASC";
             Type typel = (Type) session.createQuery(hql).uniqueResult();
             session.close();
             return typel;
