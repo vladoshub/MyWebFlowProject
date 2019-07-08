@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="20190708-01" author="vladMMTR">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="type"/>
+            </not>
+        </preConditions>
+        <comment>Создание таблицы для хранения типов словарей.</comment>
+        <createTable tableName="type">
+            <column autoIncrement="true" name="id" type="integer">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="type" type="character varying">
+                <constraints nullable="false"/>
+            </column>
+            <column name="regwords" type="character varying">
+                <constraints nullable="true"/>
+            </column>
+            <column name="regkeys" type="character varying">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <changeSet id="20190708-02" author="vladMMTR">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="keys"/>
+            </not>
+        </preConditions>
+        <comment>Создание таблицы для хранения Ключей</comment>
+        <createTable tableName="keys">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="keys" type="character varying">
+                <constraints nullable="true"/>
+            </column>
+            <column name="type_id" type="integer">
+                <constraints nullable="true" foreignKeyName="keys_type_id_fkey" references="types(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20190708-03" author="vladMMTR">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="words"/>
+            </not>
+        </preConditions>
+        <comment>Создание таблицы для хранения значений (слов).</comment>
+        <createTable tableName="words">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="words" type="character varying">
+                <constraints nullable="true"/>
+            </column>
+            <column name="key_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="words_key_id_fkey" references="keys(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <changeSet id="20190708-04" author="vladMMTR">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sqlCheck expectedResult="0">select count(1) from type where type='Rus-Lat'</sqlCheck>
+            </not>
+        </preConditions>
+        <comment>Добавление нового типа словаря в таблицу types</comment>
+        <insert tableName="type">
+            <column name="id" valueNumeric="1"/>
+            <column name="type" value="Rus-Lat"/>
+            <column name="regwords" value="[А-яа-я -]{1,50}$"/>
+            <column name="regkeys" value="^[A-Za-z]{4}$"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="20190708-05" author="vladMMTR">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sqlCheck expectedResult="0">select count(1) from type where type='Bin-Dec'</sqlCheck>
+            </not>
+        </preConditions>
+        <comment>Добавление нового типа словаря в таблицу types</comment>
+        <insert tableName="type" >
+            <column name="id" valueNumeric="2"/>
+            <column name="type" value="Bin-Dec"/>
+            <column name="regwords" value="[А-яа-я -]{1,50}$"/>
+            <column name="regkeys" value="[0-9]{5}$"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

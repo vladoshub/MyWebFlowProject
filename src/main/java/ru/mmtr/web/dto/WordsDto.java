@@ -1,25 +1,25 @@
 package ru.mmtr.web.dto;
 
-import ru.mmtr.entity.Keys;
+import ru.mmtr.entity.Key;
 
 import java.io.Serializable;
 
 public class WordsDto implements Serializable {
     private Long id;
     private String word;
-    private Keys keys;
+    private Key key;
     private boolean validate;
 
     public WordsDto() {
 
     }
 
-    public void setWords(Keys keys) {
-        this.keys = keys;
+    public void setWords(Key key) {
+        this.key = key;
     }
 
-    public Keys getKeys() {
-        return keys;
+    public Key getKey() {
+        return key;
     }
 
     public void setWord(String word) {

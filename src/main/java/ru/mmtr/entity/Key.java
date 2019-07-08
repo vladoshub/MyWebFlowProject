@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "keys")
-public class Keys implements Serializable {
+@Table(name = "key")
+public class Key implements Serializable {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,22 +15,31 @@ public class Keys implements Serializable {
     @Column(name = "key")
     private String key;
     @OneToMany(mappedBy = "key", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private List<Words> words;
+    private List<Word> words;
     @ManyToOne
     @JoinColumn(name = "type_id")
     private Type type;
 
-    public Keys() {
+    public Key() {
         super();
     }
 
-    public Keys(String key, List<Words> words, Type type) {
+    public Key(Long id){
+        this.id=id;
+    }
+
+    public Key(Integer typeId) {
+        this.type = new Type(typeId);
+    }
+
+
+    public Key(String key, List<Word> words, Type type) {
         this.key = key;
         this.words = words;
         this.type = type;
     }
 
-    public Keys(String key, Type type) {
+    public Key(String key, Type type) {
         this.key = key;
         this.type = type;
     }
@@ -59,24 +68,21 @@ public class Keys implements Serializable {
         this.key = key_id;
     }
 
-    public List<Words> getWords() {
+    public List<Word> getWords() {
         return words;
     }
 
-
-    public void setWords(List<Words> words) {
-
-
+    public void setWords(List<Word> words) {
         this.words = words;
     }
 
-    public void setWords(Words words) {
+    public void setWords(Word word) {
 
         if (this.words != null)
-            this.words.add(words);
+            this.words.add(word);
         else {
-            this.words = new ArrayList<Words>();
-            this.words.add(words);
+            this.words = new ArrayList<Word>();
+            this.words.add(word);
         }
     }
 
@@ -85,7 +91,7 @@ public class Keys implements Serializable {
         return "KEYS{" +
                 "id=" + id +
                 ", Key='" + key + '\'' +
-                ", Words=" + words +
+                ", Word=" + words +
                 '}';
     }
 }

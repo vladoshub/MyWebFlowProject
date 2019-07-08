@@ -36,8 +36,10 @@ body#voc{
     background: url(/images/MainBack.jpg);
     background-size: 100%;
 }
-body#main{
-    width: 200px;
+div#main{
+    width: 100%;
+    text-align: center;
+    height: 100%;
     padding: 10px;
     margin: auto;
     background: url(/images/MainBack.jpg);

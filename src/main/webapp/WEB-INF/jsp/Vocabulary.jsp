@@ -45,8 +45,8 @@
             }
             else {
                 check = 0;
-                if ((op + '') == 'key') {
-                    document.getElementById("key").value = document.getElementById(id).value;
+                if ((op + '') == 'keys') {
+                    document.getElementById("keys").value = document.getElementById(id).value;
                     document.getElementById("ID").value = document.getElementById(id).name;
                     $("#forma1").ajaxSubmit({
 
@@ -61,7 +61,7 @@
                     });
                 }
                 else {
-                    document.getElementById("word").value = document.getElementById(id).value;
+                    document.getElementById("words").value = document.getElementById(id).value;
                     document.getElementById("ID").value = document.getElementById(id).name;
                     $("#forma1").ajaxSubmit({
 
@@ -86,7 +86,7 @@
 
         function del(id, op) {
             check = 0;
-            if ((op + '') == 'key') {
+            if ((op + '') == 'keys') {
                 document.getElementById("ID").value = document.getElementById(id).name;
                 $("#forma1").ajaxSubmit({
 
@@ -130,7 +130,7 @@
             }
             if (words != "") {
                 words = words.substring(0, words.length - 3);
-                document.getElementById("word").value = words;
+                document.getElementById("words").value = words;
                 document.getElementById("ID").value = idKey;
                 $("#forma1").ajaxSubmit({
                     url: "${flowExecutionUrl}&_eventId_editManyWordsInKey&ajaxSource=true",
@@ -202,7 +202,7 @@
                 var id2 = a + "R";
                 var text = document.getElementById(id).value;
                 var text2 = document.getElementById(id).name;
-                document.getElementById("word").value = text;
+                document.getElementById("words").value = text;
                 document.getElementById("ID").value = text2;
                 $("#forma1").ajaxSubmit({
 
@@ -245,7 +245,7 @@
             row.id = a + "R";
             addWord.title = "Добавить слово";
             addWord.type = "button";
-            addWord.style = "background: url(/images/add.png);background-size: 38px 35px;  margin-left:25px;";
+            addWord.style = "background: url(/images/addKey.png);background-size: 38px 35px;  margin-left:25px;";
             butSave.title = "Сохранить";
             butSave.type = "button";
             butSave.style = "background: url(/images/upload.png);background-size: 38px 35px; float:right; margin-left:10px;";
@@ -291,12 +291,12 @@
 
             butSave.onclick = function () {
                 check = 0;
-                var word = a + "inputWord";
+                var words = a + "inputWord";
                 var id2 = a + "R";
-                var key = a + "inputKey";
+                var keys = a + "inputKey";
                 var allW = "";
-                var word2 = document.getElementById(word).value;
-                var key2 = document.getElementById(key).value;
+                var word2 = document.getElementById(words).value;
+                var key2 = document.getElementById(keys).value;
                 var x = document.getElementsByName("allInp");
                 for (var i = 0; i < x.length; i++) {
                     if (x[i].value != "") {
@@ -306,8 +306,8 @@
                 if (allW != "") {
                     allW = allW.substring(0, allW.length - 3);
                     butSave.name = "_addManyWordsAndKey";
-                    document.getElementById("word").value = word2 + "#_#" + allW;
-                    document.getElementById("key").value = key2;
+                    document.getElementById("words").value = word2 + "#_#" + allW;
+                    document.getElementById("keys").value = key2;
                     $("#forma1").ajaxSubmit({
                         url: "${flowExecutionUrl}&_eventId_addManyWordsAndKey&ajaxSource=true",
                         success: function (html) {
@@ -330,8 +330,8 @@
                         }
                         else {
                             butSave.name = "_eventId_addWordss";
-                            document.getElementById("word").value = word2;
-                            document.getElementById("key").value = key2;
+                            document.getElementById("words").value = word2;
+                            document.getElementById("keys").value = key2;
                             $("#forma1").ajaxSubmit({
                                 url: "${flowExecutionUrl}&_eventId_addWordss&ajaxSource=true",
                                 success: function (html) {
@@ -371,7 +371,7 @@
             }
             else {
                 check = 0;
-                document.getElementById("word").value = document.getElementById(id).value;
+                document.getElementById("words").value = document.getElementById(id).value;
                 document.getElementById("ID").value = document.getElementById(id).name;
                 var ids = "";
                 ids = ids + id2;
@@ -416,8 +416,8 @@
 </head>
 <body>
 <form id="forma1" method="post">
-    <input id="key" name="key" type="hidden" value="">
-    <input id="word" name="word" type="hidden" value="">
+    <input id="keys" name="keys" type="hidden" value="">
+    <input id="words" name="words" type="hidden" value="">
     <input id="ID" name="ID" type="hidden" value="">
     <input id="kID" name="kID" type="hidden" value="">
     <button type="submit" name="_eventId_reload" style="margin-left:0;color:red">Перезагрузить</button>

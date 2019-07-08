@@ -54,9 +54,9 @@
 
                     </c:when></c:choose>
                     <td>
-                        <button type="button" name="_eventId_editKey" onclick="edit('${items.id}inpK','key','${items.key}')" style="background: url(/images/edit.png);
+                        <button type="button" name="_eventId_editKey" onclick="edit('${items.id}inpK','keys','${items.key}')" style="background: url(/images/edit.png);
     background-size: 38px 35px;" title="изменить ключ"></button>
-                        <button type="button" name="_eventId_deletedKey" onclick="del('${items.id}inpK','key')" style="background: url(/images/del.png);
+                        <button type="button" name="_eventId_deletedKey" onclick="del('${items.id}inpK','keys')" style="background: url(/images/del.png);
     background-size: 38px 35px;" title="удалить"></button>
                         <button type="button" onclick="addWord('${items.id}t2',${items.id})" style="background: url(/images/add.png);
     background-size: 38px 35px;" title="добавить слово" id="butAddOneWord${items.id}" name="WordsInK"></button>
@@ -73,9 +73,9 @@
                     </span>
                         </td>
                         <td style="border-top:0">
-                            <button type="button" name="_eventId_editWord" onclick="edit('${items.words.get(0).id}inpO','word','${items.words.get(0).word}')" style="background: url(/images/edit.png);
+                            <button type="button" name="_eventId_editWord" onclick="edit('${items.words.get(0).id}inpO','words','${items.words.get(0).word}')" style="background: url(/images/edit.png);
     background-size: 38px 35px;" title="изменить"></button>
-                            <button type="button"  name="_eventId_deletedWord" onclick="del('${items.words.get(0).id}inpO','word')" style="background: url(/images/del.png);
+                            <button type="button"  name="_eventId_deletedWord" onclick="del('${items.words.get(0).id}inpO','words')" style="background: url(/images/del.png);
     background-size: 38px 35px;" title="удалить"></button>
                         </td>
                     </tr>

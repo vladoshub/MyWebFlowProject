@@ -7,7 +7,8 @@
 
     <import resource="hibernate.cgh.xml"/>
 
-    <context:component-scan base-package="ru.mmtr.vocabulary"></context:component-scan>
+    <context:component-scan base-package="ru.mmtr.web.vocabulary"></context:component-scan>
+    <context:component-scan base-package="ru.mmtr.service"></context:component-scan>
 
 
 

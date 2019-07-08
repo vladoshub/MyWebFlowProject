@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "words")
-public class Words implements Serializable {
+@Table(name = "word")
+public class Word implements Serializable {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,22 +14,25 @@ public class Words implements Serializable {
     private String word;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "key_id")
-    private Keys key;
+    private Key key;
 
-    public void setKey(Keys key) {
+    public void setKey(Key key) {
         this.key = key;
     }
 
-
-    public Keys getKey() {
+    public Key getKey() {
         return key;
     }
 
-    public Words() {
+    public Word (Long id) {
+        this.key=new Key(id);
+    }
+
+    public Word() {
         super();
     }
 
-    public Words(String word) {
+    public Word(String word) {
         this.word = word;
     }
 
@@ -49,10 +52,9 @@ public class Words implements Serializable {
         this.word = word;
     }
 
-
     @Override
     public String toString() {
-        return "Words{" +
+        return "Word{" +
                 "id=" + id +
                 ", words=" + word +
                 '}';

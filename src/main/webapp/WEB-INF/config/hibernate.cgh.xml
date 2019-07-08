@@ -17,8 +17,8 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
         <property name="dataSource" ref="dataSource" />
         <property name="annotatedClasses">
             <list>
-                <value>ru.mmtr.entity.Words</value>
-                <value>ru.mmtr.entity.Keys</value>
+                <value>ru.mmtr.entity.Word</value>
+                <value>ru.mmtr.entity.Key</value>
                 <value>ru.mmtr.entity.Type</value>
             </list>
         </property>

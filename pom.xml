@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>fbgfgffg</groupId>
-    <artifactId>fgfg</artifactId>
+    <groupId>MMTR</groupId>
+    <artifactId>Study</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
@@ -37,7 +37,6 @@
                 </executions>
             </plugin>
         </plugins>
-        <finalName>liquibase</finalName>
     </build>
     <properties>
         <webflow-version>2.4.1.RELEASE</webflow-version>
@@ -218,11 +217,13 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <scope>provided</scope>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
             <version>3.5.3</version>
         </dependency>
         <dependency>
+            <scope>provided</scope>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-cdi</artifactId>
             <version>3.5.3</version>

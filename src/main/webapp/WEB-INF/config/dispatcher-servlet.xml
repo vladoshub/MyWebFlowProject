@@ -35,7 +35,7 @@
     </bean>
 
     <mvc:annotation-driven/>
-    <context:component-scan base-package="ru.mmtr.vocabulary"/>
+    <context:component-scan base-package="ru.mmtr.web.vocabulary"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>

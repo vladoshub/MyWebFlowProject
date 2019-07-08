@@ -29,59 +29,59 @@
 
         <transition on="SearchKeys" >
             <evaluate result="out" expression=
-                    "WebFlowService.searchFromWebByKey(requestParameters.searchkey,type.type)"/>
+                    "WebFlowService.searchByKey(requestParameters.searchkey,type.type)"/>
         </transition>
 
         <transition on="SearchWords" >
             <evaluate result="out" expression=
-                    "WebFlowService.searchFromWebByWords(requestParameters.searchword,type.type)"/>
+                    "WebFlowService.searchByWords(requestParameters.searchword,type.type)"/>
         </transition>
 
         <transition on="addWordss" >
             <evaluate result="out" expression=
-                    "WebFlowService.addFromWeb(requestParameters.key,requestParameters.word,type.type)"/>
+                    "WebFlowService.addKey(requestParameters.keys,requestParameters.words,type.type)"/>
             <render fragments="voc"/>
         </transition>
 
         <transition on="addWordsss" >
             <evaluate result="out" expression=
-                    "WebFlowService.addFromWebToKey(requestParameters.ID,requestParameters.word,type.type)"/>
+                    "WebFlowService.addWord(requestParameters.ID,requestParameters.words,type.type)"/>
             <render fragments="voc"/>
         </transition>
 
         <transition on="editWord" >
             <evaluate result="out" expression=
-                    "WebFlowService.updateByWordFromWeb(requestParameters.ID,requestParameters.word,type.type,requestParameters.kID)"/>
+                    "WebFlowService.updateWord(requestParameters.ID,requestParameters.words,type.type,requestParameters.kID)"/>
             <render fragments="voc"/>
         </transition>
 
         <transition on="editKey" >
             <evaluate result="out" expression=
-                    "WebFlowService.updateByKeyFromWeb(requestParameters.ID,requestParameters.key,type.type)"/>
+                    "WebFlowService.updateKey(requestParameters.ID,requestParameters.keys,type.type)"/>
             <render fragments="voc"/>
         </transition>
 
         <transition on="deletedWord" >
             <evaluate result="out" expression=
-                    "WebFlowService.delFromWebByWord(requestParameters.ID,type.type,requestParameters.kID)"/>
+                    "WebFlowService.delWordById(requestParameters.ID,type.type,requestParameters.kID)"/>
             <render fragments="voc"/>
         </transition>
 
         <transition on="deletedKey" >
             <evaluate result="out" expression=
-                    "WebFlowService.delFromWebByKey(requestParameters.ID,type.type)"/>
+                    "WebFlowService.delKeyById(requestParameters.ID,type.type)"/>
             <render fragments="voc"/>
         </transition>
 
         <transition on="editManyWordsInKey" >
             <evaluate result="out" expression=
-                    "WebFlowService.editManyWordsInKey(type.type,requestParameters.ID,requestParameters.word)"/>
+                    "WebFlowService.editManyWordsInKey(type.type,requestParameters.ID,requestParameters.words)"/>
             <render fragments="voc"/>
         </transition>
 
         <transition on="addManyWordsAndKey" >
             <evaluate result="out" expression=
-                    "WebFlowService.addManyWordsAndKey(requestParameters.key,requestParameters.word,type.type)"/>
+                    "WebFlowService.addManyWordsAndKey(requestParameters.keys,requestParameters.words,type.type)"/>
             <render fragments="voc"/>
         </transition>
 
@@ -102,7 +102,7 @@
         <transition on="next" to="main"/>
         <transition on="voc" to="voc">
             <evaluate result="out" expression=
-                    "WebFlowService.printKeys(type.type)" />
+                    "WebFlowService.findKeys(type.type)" />
         </transition>
     </view-state>
 </flow>

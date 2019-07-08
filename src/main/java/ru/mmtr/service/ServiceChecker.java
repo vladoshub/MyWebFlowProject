@@ -1,4 +1,4 @@
-package ru.mmtr.vocabulary;
+package ru.mmtr.service;
 
 import java.util.List;
 

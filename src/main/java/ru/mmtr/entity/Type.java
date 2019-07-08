@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "types")
+@Table(name = "type")
 public class Type implements Serializable {
     @Id
     @Column(name = "id")
@@ -16,22 +16,25 @@ public class Type implements Serializable {
     private String regkeys;
 
     @OneToMany(mappedBy = "type", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<Keys> keys;
+    private List<Key> keys;
 
     public Type() {
         super();
     }
 
-    public Type(String type, List<Keys> keys) {
+    public Type(String type, List<Key> keys) {
         this.type = type;
         this.keys = keys;
     }
 
-    public Type(String type, Keys keys) {
+    public Type(String type, Key keys) {
         this.type = type;
         this.keys.add(keys);
     }
 
+    public Type(Integer typeId) {
+        this.id = typeId;
+    }
 
     public long getId() {
         return id;
@@ -49,34 +52,33 @@ public class Type implements Serializable {
         this.type = key_id;
     }
 
-    public List<Keys> getKeys() {
+    public List<Key> getKeys() {
         return keys;
     }
 
-
-    public void setKeys(List<Keys> keys) {
+    public void setKeys(List<Key> keys) {
 
         this.keys = keys;
     }
 
-    public void setKeys(Keys keys) {
+    public void setKeys(Key key) {
 
-        this.keys.add(keys);
+        this.keys.add(key);
     }
 
-    public String getRegkeys() {
+    public String getRegKeys() {
         return regkeys;
     }
 
-    public String getRegwords() {
+    public String getRegWords() {
         return regwords;
     }
 
-    public void setRegkeys(String regKey) {
+    public void setRegKeys(String regKey) {
         regkeys = regKey;
     }
 
-    public void setRegwords(String regWord) {
+    public void setRegWords(String regWord) {
         regwords = regWord;
     }
 
@@ -85,7 +87,7 @@ public class Type implements Serializable {
         return "KEYS{" +
                 "id=" + id +
                 ", Key='" + type + '\'' +
-                ", Words=" + keys +
+                ", Word=" + keys +
                 '}';
     }
 }
